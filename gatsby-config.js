@@ -22,6 +22,10 @@ module.exports = {
     ],
     navigation: [
       {
+        title: `Home`,
+        slug: `/`
+      },
+      {
         title: `Blog`,
         slug: `/blog`
       },
