@@ -20,6 +20,7 @@ module.exports = {
         url: "https://www.linkedin.com/in/adrianbolonio/"
       }
     ],
+    blogPath: `/blog`,
     navigation: [
       {
         title: `Home`,

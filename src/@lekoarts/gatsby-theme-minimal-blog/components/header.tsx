@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx, useColorMode, Styled } from "theme-ui"
+import { jsx, useColorMode, css, Container } from "theme-ui"
 import { Link } from "gatsby"
 import { Flex } from "@theme-ui/components"
 import useSiteMetadata from "@lekoarts/gatsby-theme-minimal-blog/src/hooks/use-site-metadata"
@@ -19,41 +19,33 @@ const Header = () => {
   }
 
   return (
-    <header sx={{ mb: 4 }}>
-      <Flex sx={{ alignItems: `center`, justifyContent: `space-between` }}>
-        <Link
-          to={replaceSlashes(`/${basePath}`)}
-          aria-label={`${siteTitle} - Back to home`}
-          sx={{ color: `heading`, textDecoration: `none` }}
-        >
-          <h1 sx={{ my: 0, fontWeight: `medium`, fontSize: [3, 4] }}>
-            {siteTitle}
-          </h1>
-        </Link>
-        <ColorModeToggle isDark={isDark} toggle={toggleColorMode} />
-      </Flex>
-      <Flex
-        sx={{
-          variant: `dividers.bottom`,
-          alignItems: `center`,
-          justifyContent: `space-between`,
-          mt: 3,
-          color: `secondary`,
-          a: { color: `secondary`, ":hover": { color: `heading` } },
-          flexFlow: `wrap`
-        }}
-      >
-        <Navigation nav={nav} />
-        {/*
-        <div sx={{ "a:not(:first-of-type)": { ml: 3 }, fontSize: [1, `18px`] }}>
-          {externalLinks.map(link => (
-            <Styled.a key={link.url} href={link.url}>
-              {link.name}
-            </Styled.a>
-          ))}
-        </div>
-         */}
-      </Flex>
+    <header>
+      <Container sx={{ py: [3, 3] }}>
+        <Flex sx={{ alignItems: `center`, justifyContent: `space-between` }}>
+          <Link
+            to={replaceSlashes(`/${basePath}`)}
+            aria-label={`${siteTitle} - Back to home`}
+            sx={{ color: `heading`, textDecoration: `none` }}
+          >
+            <h1 sx={{ my: 0, fontWeight: `medium`, fontSize: [3, 4] }}>
+              {siteTitle}
+            </h1>
+          </Link>
+          <Flex sx={{ alignItems: `center`, justifyContent: `space-between` }}>
+            <Navigation nav={nav} />
+            {/*
+            <div sx={{ "a:not(:first-of-type)": { ml: 3 }, fontSize: [1, `18px`] }}>
+            {externalLinks.map(link => (
+                <Styled.a key={link.url} href={link.url}>
+                {link.name}
+                </Styled.a>
+            ))}
+            </div>
+            */}
+            <ColorModeToggle isDark={isDark} toggle={toggleColorMode} />
+          </Flex>
+        </Flex>
+      </Container>
     </header>
   )
 }
