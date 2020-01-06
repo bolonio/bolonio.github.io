@@ -1,82 +1,173 @@
-require(`dotenv`).config({
-  path: `.env`
-})
-
 module.exports = {
   siteMetadata: {
-    siteTitle: `Adrián Bolonio`,
-    siteTitleAlt: `Adrián Bolonio`,
-    externalLinks: [
+    title: `Adrián Bolonio`,
+    author: `Adrián Bolonio`,
+    bio: `Hi, my name is Adrián Bolonio. I’m an experienced Web Team Lead, Frontend Developer, and Web Accessibility (a11y) advocate. I'm from Spain, but since 2012 I've been living and working in Vienna (Austria). When I’m not at the office I enjoy a good read, working my way through any delicious recipe, and indulging my love for travelling to new places.`,
+    description: `Adrián Bolonio - description`,
+    siteUrl: `https://www.adrianbolonio.com/`,
+    social: [
       {
-        name: "Twitter",
-        url: "https://twitter.com/bolonio"
+        twitter: `https://twitter.com/bolonio`,
+        github: `https://github.com/bolonio`,
+        linkedin: `https://www.linkedin.com/in/adrianbolonio/`,
+        instagram: `https://instagram.com/bolonio`,
       },
-      {
-        name: "Github",
-        url: "https://github.com/bolonio"
-      },
-      {
-        name: "Linkedin",
-        url: "https://www.linkedin.com/in/adrianbolonio/"
-      }
     ],
-    blogPath: `/blog`,
     navigation: [
       {
         title: `Home`,
-        slug: `/`
+        slug: `/`,
       },
       {
         title: `Blog`,
-        slug: `/blog`
-      },
-      {
-        title: `About`,
-        slug: `/about`
+        slug: `/blog`,
       },
       {
         title: `Talks`,
-        slug: `/talks`
-      }
-    ]
+        slug: `/talks`,
+      },
+      {
+        title: `About`,
+        slug: `/about`,
+      },
+    ],
   },
   plugins: [
     {
-      resolve: `@lekoarts/gatsby-theme-minimal-blog`,
-      options: {}
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/content/blog`,
+        name: `blog`,
+      },
     },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/content/assets`,
+        name: `assets`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/content/talks`,
+        name: `talks`,
+      },
+    },
+    {
+      resolve: `gatsby-plugin-mdx`,
+      options: {
+        extensions: [".mdx", ".md"],
+        gatsbyRemarkPlugins: [
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              maxWidth: 590,
+              linkImagesToOriginal: false,
+            },
+          },
+          {
+            resolve: `gatsby-remark-responsive-iframe`,
+            options: {
+              wrapperStyle: `margin-bottom: 1.0725rem`,
+            },
+          },
+          {
+            resolve: `gatsby-remark-prismjs`,
+            options: {
+              // Class prefix for <pre> tags containing syntax highlighting;
+              // defaults to 'language-' (e.g. <pre class="language-js">).
+              // If your site loads Prism into the browser at runtime,
+              // (e.g. for use with libraries like react-live),
+              // you may use this to prevent Prism from re-processing syntax.
+              // This is an uncommon use-case though;
+              // If you're unsure, it's best to use the default value.
+              classPrefix: "language-",
+              // This is used to allow setting a language for inline code
+              // (i.e. single backticks) by creating a separator.
+              // This separator is a string and will do no white-space
+              // stripping.
+              // A suggested value for English speakers is the non-ascii
+              // character '›'.
+              inlineCodeMarker: null,
+              // This lets you set up language aliases.  For example,
+              // setting this to '{ sh: "bash" }' will let you use
+              // the language "sh" which will highlight using the
+              // bash highlighter.
+              aliases: {},
+              // This toggles the display of line numbers globally alongside the code.
+              // To use it, add the following line in gatsby-browser.js
+              // right after importing the prism color scheme:
+              //  require("prismjs/plugins/line-numbers/prism-line-numbers.css")
+              // Defaults to false.
+              // If you wish to only show line numbers on certain code blocks,
+              // leave false and use the {numberLines: true} syntax below
+              showLineNumbers: false,
+              // If setting this to true, the parser won't handle and highlight inline
+              // code used in markdown i.e. single backtick code like `this`.
+              noInlineHighlight: false,
+              // This adds a new language definition to Prism or extend an already
+              // existing language definition. More details on this option can be
+              // found under the header "Add new language definition or extend an
+              // existing language" below.
+              languageExtensions: [
+                {
+                  language: "superscript",
+                  extend: "javascript",
+                  definition: {
+                    superscript_types: /(SuperType)/,
+                  },
+                  insertBefore: {
+                    function: {
+                      superscript_keywords: /(superif|superelse)/,
+                    },
+                  },
+                },
+              ],
+              // Customize the prompt used in shell output
+              // Values below are default
+              prompt: {
+                user: "root",
+                host: "localhost",
+                global: false,
+              },
+            },
+          },
+          `gatsby-remark-copy-linked-files`,
+          `gatsby-remark-smartypants`,
+        ],
+      },
+    },
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
-        trackingId: process.env.GOOGLE_ANALYTICS_ID
-      }
+        trackingId: `UA-155221350-1`,
+      },
     },
-    `gatsby-plugin-sitemap`,
+    `gatsby-plugin-feed-mdx`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `minimal-blog - @lekoarts/gatsby-theme-minimal-blog`,
-        short_name: `minimal-blog`,
-        description: `Typography driven, feature-rich blogging theme with minimal aesthetics. Includes tags/categories support and extensive features for code blocks such as live preview, line numbers, and code highlighting.`,
+        name: `Adrián Bolonio`,
+        short_name: `Adrián Bolonio`,
         start_url: `/`,
-        background_color: `#fff`,
-        theme_color: `#6B46C1`,
-        display: `standalone`,
-        icons: [
-          {
-            src: `/android-chrome-192x192.png`,
-            sizes: `192x192`,
-            type: `image/png`
-          },
-          {
-            src: `/android-chrome-512x512.png`,
-            sizes: `512x512`,
-            type: `image/png`
-          }
-        ]
-      }
+        background_color: `#ffffff`,
+        theme_color: `#f3f7f9`,
+        display: `minimal-ui`,
+        icon: `content/assets/gatsby-icon.png`,
+      },
     },
     `gatsby-plugin-offline`,
-    `gatsby-plugin-netlify`
-  ]
+    `gatsby-plugin-react-helmet`,
+    {
+      resolve: `gatsby-plugin-typography`,
+      options: {
+        pathToConfigModule: `src/utils/typography`,
+      },
+    },
+    `gatsby-plugin-typescript`,
+    `gatsby-plugin-styled-components`,
+  ],
 }
