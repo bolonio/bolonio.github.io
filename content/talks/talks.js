@@ -18,8 +18,7 @@ export const talks = [
         location: "Vienna, Austria",
         link: "https://viennajs.org/",
         video: "",
-        slides:
-          "https://speakerdeck.com/bolonio/willhaben-markup-language-whml",
+        slides: "https://speakerdeck.com/bolonio/testing-web-accessibility",
       },
     ],
   },
