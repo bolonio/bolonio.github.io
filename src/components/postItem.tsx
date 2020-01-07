@@ -104,7 +104,7 @@ export const PostItem = (props: PostItemProps) => {
   const title = frontmatter.title || fields.slug
   return (
     <PostContainer>
-      <PostImage src={props.post.frontmatter.image.publicURL} />
+      <PostImage alt="" src={props.post.frontmatter.image.publicURL} />
       <PostContent>
         <PostTitle>
           <PostLink to={slug}>{title}</PostLink>
