@@ -26,6 +26,20 @@ const Article = styled.article`
   }
 `
 
+const ContactLink = styled.a`
+  color: inherit;
+  text-decoration: none;
+  box-shadow: 0 2px 0 0 #0c1e29;
+  :hover {
+    box-shadow: 0 2px 0 0 #0c1e29;
+  }
+  :focus {
+    box-shadow: none;
+    outline: 3px solid #0c1e29;
+    outline-offset: 0.5rem;
+  }
+`
+
 const BlogPostTemplate = (props: BlogPostTemplateProps) => {
   const post = props.data.mdx
   // const { previous, next } = props.pageContext
@@ -42,6 +56,18 @@ const BlogPostTemplate = (props: BlogPostTemplateProps) => {
             date={post.frontmatter.date}
           />
           <MDXRenderer>{post.body}</MDXRenderer>
+          <p>
+            Thank you for reading this article. If you have any question to ask,
+            any recommendation to make, or any appreciation to give, please feel
+            free to contact me. The best way to contact me is either via my{" "}
+            <ContactLink href="https://twitter.com/bolonio" rel="noopener me">
+              twitter
+            </ContactLink>{" "}
+            or you can{" "}
+            <ContactLink href="mailto:adrian.bolonio@gmail.com" rel="me">
+              send me an email.
+            </ContactLink>
+          </p>
         </Article>
       </Content>
     </Layout>

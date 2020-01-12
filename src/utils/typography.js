@@ -73,6 +73,7 @@ Wordpress2016.overrideThemeStyles = () => {
     },
     ".gatsby-highlight": {
       fontFamily: `Montserrat, sans-serif !important`,
+      marginBottom: `1.75rem`,
     },
     ".language-text": {
       padding: ".2em 0.5em !important",

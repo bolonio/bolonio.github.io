@@ -45,6 +45,15 @@ export const talks = [
       },
       {
         title: "Testing Web Accessibility",
+        conference: "Developer Melange",
+        date: "Dec 2019",
+        location: "Podcast",
+        link: "https://developermelange.github.io/",
+        video: "",
+        slides: "",
+      },
+      {
+        title: "Testing Web Accessibility",
         conference: "DevFest Siberia",
         date: "Nov 2019",
         location: "Novosibirsk, Russia",
