@@ -170,4 +170,18 @@ export const talks = [
       },
     ],
   },
+  {
+    year: "2017",
+    talks: [
+      {
+        title: "Dark Patterns - User Interfaces Designed to Trick People",
+        conference: "UX Vienna",
+        date: "Nov 2017",
+        location: "Vienna, Austria",
+        link: "https://uxvienna.at/",
+        video: "",
+        slides: "http://slides.com/adrianbolonio/darkpatterns-uxvienna#/",
+      },
+    ],
+  },
 ]
