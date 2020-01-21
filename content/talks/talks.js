@@ -14,7 +14,7 @@ export const talks = [
       {
         title: "Testing Web Accessibility",
         conference: "FrontConf",
-        date: "March 2020",
+        date: "Mar 2020",
         location: "Munich, Germany",
         link: "https://frontconf.com/",
         video: "",
