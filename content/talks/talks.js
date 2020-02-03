@@ -4,15 +4,6 @@ export const talks = [
     talks: [
       {
         title: "Testing Web Accessibility",
-        conference: "Webinale",
-        date: "May 2020",
-        location: "Berlin, Germany",
-        link: "https://webinale.de/en/",
-        video: "",
-        slides: "https://speakerdeck.com/bolonio/testing-web-accessibility",
-      },
-      {
-        title: "Testing Web Accessibility",
         conference: "FrontConf",
         date: "Mar 2020",
         location: "Munich, Germany",
