@@ -5,7 +5,7 @@ export const talks = [
       {
         title: "Testing Web Accessibility",
         conference: "UXDX Vienna",
-        date: "June 2020",
+        date: "Jun 2020",
         location: "Vienna, Austria",
         link: "https://uxdxconf.com/vienna",
         video: "",
