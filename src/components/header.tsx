@@ -7,6 +7,7 @@ import useSiteMetadata from "../hooks/useSiteMetadata"
 const HeaderLogo = styled.span`
   font-size: 1.5rem;
   font-weight: 300;
+  color: #ffffff;
   @media screen and (max-width: 700px) {
     display: none;
   }
@@ -27,12 +28,13 @@ const MenuLink = styled(Link)`
   font-size: 1.25rem;
   text-decoration: none;
   box-shadow: none;
+  color: #ffffff;
 
   :hover {
-    box-shadow: 0 2px 0 0 #0c1e29;
+    box-shadow: 0 2px 0 0 #ffffff;
   }
   :focus {
-    outline: 3px solid #0c1e29;
+    outline: 3px solid #ffffff;
     outline-offset: 0.5rem;
   }
 `
@@ -45,22 +47,26 @@ const Menu = styled.div`
   }
 `
 
+const HeaderContainer = styled.header`
+  background-color: #23333d;
+`
+
 export const Header = () => {
   const { navigation } = useSiteMetadata()
   return (
-    <header>
+    <HeaderContainer>
       <Content>
         <StyledNav>
           <HeaderLogo>Adrián Bolonio</HeaderLogo>
           <Menu>
             {navigation.map(item => (
               <MenuLink key={item.slug} to={item.slug}>
-                <span>{item.title}</span>
+                {item.title}
               </MenuLink>
             ))}
           </Menu>
         </StyledNav>
       </Content>
-    </header>
+    </HeaderContainer>
   )
 }

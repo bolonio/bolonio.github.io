@@ -2,11 +2,9 @@ import { PageRendererProps } from "gatsby"
 import React from "react"
 import { Layout } from "../components/layout"
 import { SEO } from "../components/seo"
-import { talks } from "../../content/talks/talks"
-import { Talk } from "../components/talk"
 import { Content } from "../components/content"
-import { TalksType, TalkType } from "../utils/types"
 import styled from "styled-components"
+import { tools } from "../../content/tools/tools"
 
 type Props = PageRendererProps
 
@@ -22,8 +20,21 @@ const SectionHeader = styled.div`
 
 const Header = styled.h2`
   margin: 0;
-  margin-bottom: 50px;
   font-size: 3rem;
+`
+
+const ContactLink = styled.a`
+  color: inherit;
+  text-decoration: none;
+  box-shadow: 0 2px 0 0 #0c1e29;
+  :hover {
+    box-shadow: 0 2px 0 0 #0c1e29;
+  }
+  :focus {
+    box-shadow: none;
+    outline: 3px solid #0c1e29;
+    outline-offset: 0.5rem;
+  }
 `
 
 const YearHeader = styled.h2`
@@ -35,23 +46,20 @@ const TalkContainer = styled.div`
   margin-bottom: 40px;
 `
 
-const Talks = (props: Props) => {
+const Tools = (props: Props) => {
   return (
     <Layout location={props.location}>
-      <SEO title="My talks" />
+      <SEO title="Tools" />
       <Section>
         <SectionHeader>
-          <Header>Talks</Header>
+          <Header>Tools</Header>
         </SectionHeader>
-
-        {talks.map((talk: TalksType, i) => (
+      </Section>
+      <Section>
+        <p>I would love to share the tools...TODO</p>
+        {tools.map((tool, i) => (
           <React.Fragment>
-            <YearHeader key={i}>{talk.year}</YearHeader>
-            <TalkContainer>
-              {talk.talks.map((talk: TalkType, i) => (
-                <Talk talk={talk} />
-              ))}
-            </TalkContainer>
+            <a href={tool.link}>{tool.name}</a>
           </React.Fragment>
         ))}
       </Section>
@@ -59,4 +67,4 @@ const Talks = (props: Props) => {
   )
 }
 
-export default Talks
+export default Tools

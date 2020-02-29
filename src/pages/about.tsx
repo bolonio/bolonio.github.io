@@ -59,10 +59,12 @@ const About = (props: Props) => {
           </ContactLink>
         </p>
         <p>
-          If you’d like me to speak at your conference, feel free to send me an{" "}
-          <ContactLink href="mailto:bolonio85@gmail.com">email</ContactLink>,
-          but please include: the dates and location of the conference, the type
-          of conference (what is the topic of the conference, who is your
+          If you’d like me to speak at your conference, feel free to{" "}
+          <ContactLink href="mailto:adrian.bolonio@gmail.com" rel="me">
+            send me an email.
+          </ContactLink>
+          , but please include: the dates and location of the conference, the
+          type of conference (what is the topic of the conference, who is your
           audience, how many people will attend, how many tracks the conference
           will have), the type of the talk (keynote, workshop, panel, lightning
           talk), and if you can cover travel and accommodation costs.

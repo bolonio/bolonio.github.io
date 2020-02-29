@@ -4,7 +4,7 @@ import Wordpress2016 from "typography-theme-wordpress-2016"
 Wordpress2016.overrideThemeStyles = () => {
   return {
     "*": {
-      color: `#485a64`,
+      color: `#23333d`,
       fontFamily:
         "system-ui, -apple-system, BlinkMacSystemFont, Open Sans, sans-serif !important",
     },
@@ -17,37 +17,33 @@ Wordpress2016.overrideThemeStyles = () => {
     "article a": {
       color: "inherit",
       textDecoration: `none`,
-      boxShadow: `0 2px 0 0 #0c1e29`,
+      boxShadow: `0 2px 0 0 #23333d`,
     },
     "article a:hover": {
-      boxShadow: `0 2px 0 0 #0c1e29`,
+      boxShadow: `0 2px 0 0 #23333d`,
     },
     "article a:focus": {
       boxShadow: `none`,
-      outline: `3px solid #0c1e29`,
+      outline: `3px solid #23333d`,
       outlineOffset: `.5rem`,
     },
     h1: {
-      color: `#0c1e29`,
       fontWeight: 600,
       lineHeight: 1,
       fontSize: `3rem`,
     },
     h2: {
-      color: `#0c1e29`,
       fontWeight: 600,
       lineHeight: 1.25,
       fontSize: `2rem`,
       // backgroundImage: `linear-gradient(180deg,transparent 70%,rgba(35, 51, 61, .5) 0);`,
     },
     h3: {
-      color: `#0c1e29`,
       fontWeight: 400,
       lineHeight: 1.25,
       fontSize: `1.75rem`,
     },
     h4: {
-      color: `#0c1e29`,
       fontWeight: 400,
       lineHeight: 1.25,
       fontSize: `1.5rem`,
@@ -55,13 +51,11 @@ Wordpress2016.overrideThemeStyles = () => {
       textTransform: `inherit`,
     },
     h5: {
-      color: `#0c1e29`,
       fontWeight: 400,
       lineHeight: 1.25,
       fontSize: `1.5rem`,
     },
     p: {
-      color: `#485a64`,
       fontSize: `1.25rem`,
       fontWeight: 300,
       lineHeight: 1.5,
