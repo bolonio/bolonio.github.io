@@ -22,7 +22,7 @@ export const talks = [
       },
       {
         title: "Testing Web Accessibility",
-        conference: "JSDayES 2020",
+        conference: "JSDay Spain 2020",
         date: "May 2020",
         location: "Madrid, Spain",
         link: "http://jsday.es/",
