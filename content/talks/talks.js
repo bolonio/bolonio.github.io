@@ -48,13 +48,14 @@ export const talks = [
         slides: "https://speakerdeck.com/bolonio/testing-web-accessibility",
       },
       {
-        title: "Testing Web Accessibility",
+        title: "Accessibility in Web Development",
         conference: "UpLeveled (Workshop)",
         date: "Mar 2020",
         location: "Vienna, Austria",
         link: "https://upleveled.io/",
         video: "",
-        slides: "",
+        slides:
+          "https://speakerdeck.com/bolonio/accessibility-in-web-development",
       },
       {
         title: "Testing Web Accessibility",
@@ -62,7 +63,7 @@ export const talks = [
         date: "Feb 2020",
         location: "Vienna, Austria",
         link: "https://viennajs.org/en/meetup/2020-02",
-        video: "",
+        video: "https://www.youtube.com/watch?v=ZupKHcb9w-k",
         slides: "https://speakerdeck.com/bolonio/testing-web-accessibility",
       },
       {
@@ -100,7 +101,7 @@ export const talks = [
       {
         title: "Testing Web Accessibility",
         conference: "DevFest Siberia",
-        date: "Nov 2019",
+        date: "Dec 2019",
         location: "Novosibirsk, Russia",
         link: "https://gdg-siberia.com/",
         video: "",
