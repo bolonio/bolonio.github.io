@@ -104,7 +104,7 @@ export const talks = [
         date: "Dec 2019",
         location: "Novosibirsk, Russia",
         link: "https://gdg-siberia.com/",
-        video: "",
+        video: "https://www.youtube.com/watch?v=1eDCdL-3uI0",
         slides: "https://speakerdeck.com/bolonio/testing-web-accessibility",
       },
       {
@@ -168,7 +168,8 @@ export const talks = [
         location: "Vienna, Austria",
         link: "https://upleveled.io/",
         video: "",
-        slides: "",
+        slides:
+          "https://speakerdeck.com/bolonio/accessibility-in-web-development",
       },
       {
         title: "Testing Web Accessibility",
