@@ -1,5 +1,19 @@
 export const talks = [
   {
+    year: "2021",
+    talks: [
+      {
+        title: "Testing Web Accessibility",
+        conference: "JSDay Spain 2020",
+        date: "TBD, 2021",
+        location: "Madrid, Spain",
+        link: "http://jsday.es/",
+        video: "",
+        slides: "https://speakerdeck.com/bolonio/testing-web-accessibility",
+      },
+    ],
+  },
+  {
     year: "2020",
     talks: [
       {
@@ -26,15 +40,6 @@ export const talks = [
         date: "May 2020",
         location: "Katowice, Poland [Online]",
         link: "https://pickjs.com/",
-        video: "",
-        slides: "https://speakerdeck.com/bolonio/testing-web-accessibility",
-      },
-      {
-        title: "Testing Web Accessibility",
-        conference: "JSDay Spain 2020",
-        date: "May 2020",
-        location: "Madrid, Spain",
-        link: "http://jsday.es/",
         video: "",
         slides: "https://speakerdeck.com/bolonio/testing-web-accessibility",
       },
