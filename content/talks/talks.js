@@ -20,7 +20,7 @@ export const talks = [
         title: "Testing Web Accessibility",
         conference: "DevTalks Romania",
         date: "Jun 2020",
-        location: "Bucharest, Romania",
+        location: "Bucharest, Romania [Online]",
         link: "https://www.devtalks.ro/",
         video: "",
         slides: "https://speakerdeck.com/bolonio/testing-web-accessibility",
