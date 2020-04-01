@@ -58,9 +58,9 @@ export const talks = [
         title: "Testing Web Accessibility",
         conference: "StayAtHome Conf",
         date: "Mar 2020",
-        location: "[Online]",
+        location: "Home [Online]",
         link: "https://www.stayathomeconf.com/",
-        video: "",
+        video: "https://www.youtube.com/watch?v=XmSK1t0w1L8",
         slides: "https://speakerdeck.com/bolonio/testing-web-accessibility",
       },
       {
