@@ -56,6 +56,15 @@ export const talks = [
       */
       {
         title: "Testing Web Accessibility",
+        conference: "Reactadelphia",
+        date: "Apr 2020",
+        location: "Philadelphia, USA [Online]",
+        link: "https://twitter.com/reactadelphia",
+        video: "",
+        slides: "https://speakerdeck.com/bolonio/testing-web-accessibility",
+      },
+      {
+        title: "Testing Web Accessibility",
         conference: "StayAtHome Conf",
         date: "Mar 2020",
         location: "Home [Online]",
