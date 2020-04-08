@@ -78,7 +78,7 @@ export const talks = [
         date: "Mar 2020",
         location: "Munich, Germany [Online]",
         link: "https://frontconf.com/",
-        video: "",
+        video: "https://www.youtube.com/watch?v=xCGS1Vq777c",
         slides: "https://speakerdeck.com/bolonio/testing-web-accessibility",
       },
       {
