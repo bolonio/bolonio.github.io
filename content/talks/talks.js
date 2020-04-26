@@ -34,6 +34,7 @@ export const talks = [
         video: "",
         slides: "https://speakerdeck.com/bolonio/testing-web-accessibility",
       },
+      /*
       {
         title: "Testing Web Accessibility",
         conference: "Pick JS",
@@ -43,7 +44,6 @@ export const talks = [
         video: "",
         slides: "https://speakerdeck.com/bolonio/testing-web-accessibility",
       },
-      /*
       {
         title: "Testing Web Accessibility",
         conference: "New Devs On The Block",
@@ -60,7 +60,7 @@ export const talks = [
         date: "Apr 2020",
         location: "Philadelphia, USA [Online]",
         link: "https://twitter.com/reactadelphia",
-        video: "",
+        video: "https://www.youtube.com/watch?v=Ocem7jAb-Ik",
         slides: "https://speakerdeck.com/bolonio/testing-web-accessibility",
       },
       {
