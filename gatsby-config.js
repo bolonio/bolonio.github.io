@@ -8,6 +8,7 @@ module.exports = {
     email: "bolonio85@gmail.com",
     language: "en",
     twitterUser: "@bolonio",
+    image: "/images/adrianbolonio.jpg",
     social: [
       {
         twitter: `https://www.twitter.com/bolonio`,

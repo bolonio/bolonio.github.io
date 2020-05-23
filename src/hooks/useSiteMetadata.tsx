@@ -20,6 +20,7 @@ const useSiteMetadata = () => {
           email
           language
           twitterUser
+          image
           social {
             twitter
             github

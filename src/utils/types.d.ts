@@ -34,6 +34,7 @@ export interface SiteMetadata {
   email: string
   language: string
   twitterUser: string
+  image: string
   navigation: Navigation[]
 }
 

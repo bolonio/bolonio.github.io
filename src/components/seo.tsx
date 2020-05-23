@@ -8,7 +8,6 @@
 import React from "react"
 import { Helmet } from "react-helmet"
 import useSiteMetadata from "../hooks/useSiteMetadata"
-import profilePicture from "../../content/assets/adrianbolonio.jpg"
 
 interface SEOProps {
   title?: string
@@ -26,11 +25,13 @@ export const SEO = (props: SEOProps) => {
     author,
     language,
     twitterUser,
+    image,
   } = useSiteMetadata()
   const SEOTitle = props.title ? `${title} | ${props.title}` : title
   const SEODescription = props.description || description
   const SEOCanonical = props.canonical || siteUrl
-  const SEOImage = props.image || profilePicture // TODO: create default image
+  console.debug(`${siteUrl}${image}`)
+  const SEOImage = props.image || `${siteUrl}${image}`
   const SEOImageAtl = props.imageAlt || "A picture of Adrián Bolonio"
 
   return (
