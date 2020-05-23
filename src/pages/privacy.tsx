@@ -5,6 +5,7 @@ import { SEO } from "../components/seo"
 import { Content } from "../components/content"
 import styled from "styled-components"
 import { Bio } from "../components/bio"
+import useSiteMetadata from "../hooks/useSiteMetadata"
 
 type Props = PageRendererProps
 
@@ -39,11 +40,12 @@ const Link = styled.a`
 `
 
 const Privacy = (props: Props) => {
+  const { author } = useSiteMetadata()
   return (
     <Layout location={props.location}>
       <SEO
-        title="Privacy Policy"
-        description="Privacy Policy"
+        title={`Privacy Policy | ${author}`}
+        description="Privacy Policy terms"
         canonical={props.location.href}
       />
       <Section>

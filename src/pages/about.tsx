@@ -5,6 +5,7 @@ import { SEO } from "../components/seo"
 import { Content } from "../components/content"
 import styled from "styled-components"
 import { Bio } from "../components/bio"
+import useSiteMetadata from "../hooks/useSiteMetadata"
 
 type Props = PageRendererProps
 
@@ -38,9 +39,11 @@ const ContactLink = styled.a`
 `
 
 const About = (props: Props) => {
+  const { author } = useSiteMetadata()
+
   return (
     <Layout location={props.location}>
-      <SEO title="About me" canonical={props.location.href} />
+      <SEO title={`About me | ${author}`} canonical={props.location.href} />
       <Section>
         <SectionHeader>
           <Header>About me</Header>

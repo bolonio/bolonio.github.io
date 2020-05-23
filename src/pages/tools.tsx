@@ -5,6 +5,7 @@ import { SEO } from "../components/seo"
 import { Content } from "../components/content"
 import styled from "styled-components"
 import { tools } from "../../content/tools/tools"
+import useSiteMetadata from "../hooks/useSiteMetadata"
 
 type Props = PageRendererProps
 
@@ -48,9 +49,10 @@ const TalkContainer = styled.div`
 
 // TODO: Create this page
 const Tools = (props: Props) => {
+  const { author } = useSiteMetadata()
   return (
     <Layout location={props.location}>
-      <SEO title="Tools" />
+      <SEO title={`Tools | ${author}`} canonical={props.location.href} />
       <Section>
         <SectionHeader>
           <Header>Tools</Header>

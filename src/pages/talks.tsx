@@ -7,6 +7,7 @@ import { Talk } from "../components/talk"
 import { Content } from "../components/content"
 import { TalksType, TalkType } from "../utils/types"
 import styled from "styled-components"
+import useSiteMetadata from "../hooks/useSiteMetadata"
 
 type Props = PageRendererProps
 
@@ -36,9 +37,10 @@ const TalkContainer = styled.div`
 `
 
 const Talks = (props: Props) => {
+  const { author } = useSiteMetadata()
   return (
     <Layout location={props.location}>
-      <SEO title="My talks" canonical={props.location.href} />
+      <SEO title={`My talks | ${author}`} canonical={props.location.href} />
       <Section>
         <SectionHeader>
           <Header>Talks</Header>

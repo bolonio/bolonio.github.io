@@ -27,7 +27,7 @@ export const SEO = (props: SEOProps) => {
     twitterUser,
     image,
   } = useSiteMetadata()
-  const SEOTitle = props.title ? `${title} | ${props.title}` : title
+  const SEOTitle = props.title || title
   const SEODescription = props.description || description
   const SEOCanonical = props.canonical || siteUrl
   console.debug(`${siteUrl}${image}`)

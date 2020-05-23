@@ -6,11 +6,13 @@ import { PostItem } from "../components/postItem"
 import styled from "styled-components"
 import { Content } from "../components/content"
 import useAllBlogPosts from "../hooks/useAllBlogPosts"
+import useSiteMetadata from "../hooks/useSiteMetadata"
 
 type Props = PageRendererProps
 
 const BlogIndex = (props: Props) => {
   const posts = useAllBlogPosts()
+  const { author } = useSiteMetadata()
 
   const Section = styled(Content)`
     padding: 50px 0;
@@ -36,7 +38,7 @@ const BlogIndex = (props: Props) => {
   return (
     <Layout location={props.location}>
       <SEO
-        title="Blog"
+        title={`Blog | ${author}`}
         description="I write mainly about accessibility and frontend development"
         canonical={props.location.href}
       />
