@@ -7,11 +7,13 @@ import { PostItem } from "../components/postItem"
 import styled from "styled-components"
 import { Content } from "../components/content"
 import useLatestPosts from "../hooks/useLatestPosts"
+import useSiteMetadata from "../hooks/useSiteMetadata"
 
 type Props = PageRendererProps
 
 const BlogIndex = (props: Props) => {
   const posts = useLatestPosts()
+  const { author } = useSiteMetadata()
 
   const Section = styled(Content)`
     padding: 50px 0;
@@ -52,6 +54,7 @@ const BlogIndex = (props: Props) => {
     }
   `
 
+  /*
   const PostsGrid = styled.div`
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -64,21 +67,38 @@ const BlogIndex = (props: Props) => {
       grid-template-columns: repeat(1, 1fr);
     }
   `
+  */
+
+  const MainHeader = styled.h1`
+    border: 0;
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    height: 1px;
+    left: 0;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    top: 0;
+    white-space: nowrap;
+    width: 1px;
+  `
 
   return (
     <Layout location={props.location}>
-      <SEO title="Home" />
+      <SEO />
+      <MainHeader>{author}</MainHeader>
       <Bio />
       <Section>
         <SectionHeader>
           <Header>Latest Posts</Header>
-          <SectionHeaderLink to="/blog">Read all posts</SectionHeaderLink>
+          <SectionHeaderLink to="/blog">More blog posts</SectionHeaderLink>
         </SectionHeader>
-        <PostsGrid>
+        <div>
           {posts.map((item, i) => (
             <PostItem key={i} post={item.node} />
           ))}
-        </PostsGrid>
+        </div>
       </Section>
       {/* 
       <hr />

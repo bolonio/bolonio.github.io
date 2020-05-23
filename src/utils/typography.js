@@ -70,7 +70,20 @@ Wordpress2016.overrideThemeStyles = () => {
       marginBottom: `1.75rem`,
     },
     ".language-text": {
-      padding: ".2em 0.5em !important",
+      padding: ".1em 0.5em !important",
+    },
+    ".token.parameter": {
+      color: "#f8c555",
+    },
+    ".gatsby-code-title": {
+      marginBottom: "-0.6rem",
+      padding: "0.5em 1em",
+      backgroundColor: "#2d2d2d",
+      color: "white",
+      zIndex: "0",
+      borderTopLeftRadius: "0.3em",
+      borderTopRightRadius: "0.3em",
+      display: "inline-block",
     },
   }
 }

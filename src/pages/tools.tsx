@@ -18,7 +18,7 @@ const SectionHeader = styled.div`
   align-items: baseline;
 `
 
-const Header = styled.h2`
+const Header = styled.h1`
   margin: 0;
   font-size: 3rem;
 `
@@ -46,6 +46,7 @@ const TalkContainer = styled.div`
   margin-bottom: 40px;
 `
 
+// TODO: Create this page
 const Tools = (props: Props) => {
   return (
     <Layout location={props.location}>
@@ -56,7 +57,7 @@ const Tools = (props: Props) => {
         </SectionHeader>
       </Section>
       <Section>
-        <p>I would love to share the tools...TODO</p>
+        <p>I would love to share the tools...</p>
         {tools.map((tool, i) => (
           <React.Fragment>
             <a href={tool.link}>{tool.name}</a>

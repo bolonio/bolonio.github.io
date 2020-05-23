@@ -20,7 +20,7 @@ const SectionHeader = styled.div`
   align-items: baseline;
 `
 
-const Header = styled.h2`
+const Header = styled.h1`
   margin: 0;
   margin-bottom: 50px;
   font-size: 3rem;
@@ -38,7 +38,7 @@ const TalkContainer = styled.div`
 const Talks = (props: Props) => {
   return (
     <Layout location={props.location}>
-      <SEO title="My talks" />
+      <SEO title="My talks" canonical={props.location.href} />
       <Section>
         <SectionHeader>
           <Header>Talks</Header>

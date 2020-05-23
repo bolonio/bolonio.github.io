@@ -22,7 +22,7 @@ const BlogIndex = (props: Props) => {
     align-items: baseline;
   `
 
-  const Header = styled.h2`
+  const Header = styled.h1`
     margin: 0;
     margin-bottom: 50px;
     font-size: 3rem;
@@ -35,7 +35,11 @@ const BlogIndex = (props: Props) => {
 
   return (
     <Layout location={props.location}>
-      <SEO title="Home" />
+      <SEO
+        title="Blog"
+        description="I write mainly about accessibility and frontend development"
+        canonical={props.location.href}
+      />
       <Section>
         <SectionHeader>
           <Header>Blog</Header>

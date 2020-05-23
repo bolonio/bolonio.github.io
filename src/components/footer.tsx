@@ -1,12 +1,13 @@
 import React from "react"
 import styled from "styled-components"
 import { Content } from "./content"
-import instagram from "../images/instagram.svg"
-import twitter from "../images/twitter1.svg"
-import github from "../images/github1.svg"
-import linkedin from "../images/linkedin.svg"
-import email from "../images/email.svg"
+import InstagramIcon from "../images/instagram.svg"
+import TwitterIcon from "../images/twitter1.svg"
+import GithubIcon from "../images/github1.svg"
+import LinkedinIcon from "../images/linkedin.svg"
+import EmailIcon from "../images/email.svg"
 import { Link } from "gatsby"
+import useSiteMetadata from "../hooks/useSiteMetadata"
 
 const StyledFooter = styled.div`
   display: flex;
@@ -79,6 +80,7 @@ const FooterIconContainer = styled.div`
 `
 
 export const Footer = () => {
+  const { social, email } = useSiteMetadata()
   return (
     <FooterContainer>
       <Content>
@@ -89,23 +91,40 @@ export const Footer = () => {
           </StyledFooter>
 
           <FooterIconContainer>
-            <FooterIconLink href="https://twitter.com/bolonio" target="_blank">
-              <FooterIcon src={twitter} alt="Logo" />
-            </FooterIconLink>
-            <FooterIconLink href="http://instagram.com/bolonio" target="_blank">
-              <FooterIcon src={instagram} alt="Logo" />
-            </FooterIconLink>
-            <FooterIconLink href="http://github.com/bolonio" target="_blank">
-              <FooterIcon src={github} alt="Logo" />
+            <FooterIconLink
+              href={social.twitter}
+              target="_blank"
+              aria-label="Go to my Twitter profile"
+            >
+              <FooterIcon src={TwitterIcon} alt="Twitter logo" />
             </FooterIconLink>
             <FooterIconLink
-              href="https://www.linkedin.com/in/adrianbolonio/"
+              href={social.instagram}
               target="_blank"
+              aria-label="Go to my Instagram profile"
             >
-              <FooterIcon src={linkedin} alt="Logo" />
+              <FooterIcon src={InstagramIcon} alt="Instagram logo" />
             </FooterIconLink>
-            <FooterIconLink href="mailto:bolonio85@gmail.com" target="_blank">
-              <FooterIcon src={email} alt="Logo" />
+            <FooterIconLink
+              href={social.github}
+              target="_blank"
+              aria-label="Go to my GitHub profile"
+            >
+              <FooterIcon src={GithubIcon} alt="GitHub logo" />
+            </FooterIconLink>
+            <FooterIconLink
+              href={social.linkedin}
+              target="_blank"
+              aria-label="Go to my Linkedin profile"
+            >
+              <FooterIcon src={LinkedinIcon} alt="Linkedin logo" />
+            </FooterIconLink>
+            <FooterIconLink
+              href={`mailto:${email}`}
+              target="_blank"
+              aria-label="Send me an email"
+            >
+              <FooterIcon src={EmailIcon} alt="Email logo" />
             </FooterIconLink>
           </FooterIconContainer>
         </StyledFooter>

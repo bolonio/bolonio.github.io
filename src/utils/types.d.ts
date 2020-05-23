@@ -15,6 +15,7 @@ export interface PostFrontmatter {
   title: string
   description: string
   image: PostImage
+  imageAlt: string
 }
 
 export interface PostImage {
@@ -29,6 +30,10 @@ export interface SiteMetadata {
   description: string
   bio: string
   social: Social
+  siteUrl: string
+  email: string
+  language: string
+  twitterUser: string
   navigation: Navigation[]
 }
 

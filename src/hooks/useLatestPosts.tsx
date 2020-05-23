@@ -30,6 +30,7 @@ const useLatestPosts = () => {
                 name
                 publicURL
               }
+              imageAlt
             }
           }
         }

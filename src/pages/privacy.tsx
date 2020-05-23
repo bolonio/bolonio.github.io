@@ -18,7 +18,7 @@ const SectionHeader = styled.div`
   align-items: baseline;
 `
 
-const Header = styled.h2`
+const Header = styled.h1`
   margin: 0;
   margin-bottom: 50px;
   font-size: 3rem;
@@ -41,7 +41,11 @@ const Link = styled.a`
 const Privacy = (props: Props) => {
   return (
     <Layout location={props.location}>
-      <SEO title="Privacy Policy" />
+      <SEO
+        title="Privacy Policy"
+        description="Privacy Policy"
+        canonical={props.location.href}
+      />
       <Section>
         <SectionHeader>
           <Header>Privacy Policy</Header>

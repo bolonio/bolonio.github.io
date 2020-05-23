@@ -1,5 +1,5 @@
 import { PageRendererProps } from "gatsby"
-import React, { ReactNode } from "react"
+import React, { ReactNode, Fragment } from "react"
 import { Header } from "./header"
 import { Footer } from "./footer"
 import styled from "styled-components"
@@ -16,11 +16,11 @@ const Main = styled.main`
 export const Layout = (props: Props) => {
   const { children } = props
   return (
-    <div>
+    <Fragment>
       <SkipToContent />
       <Header />
       <Main id="content">{children}</Main>
       <Footer />
-    </div>
+    </Fragment>
   )
 }

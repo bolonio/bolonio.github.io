@@ -49,6 +49,9 @@ const BlogPostTemplate = (props: BlogPostTemplateProps) => {
         <SEO
           title={post.frontmatter.title}
           description={post.frontmatter.description || post.excerpt}
+          image={post.frontmatter.image.publicURL}
+          imageAlt={post.frontmatter.imageAlt}
+          canonical={props.location.href}
         />
         <Article>
           <PostTitle
@@ -72,7 +75,6 @@ const BlogPostTemplate = (props: BlogPostTemplateProps) => {
       </Content>
     </Layout>
   )
-  // }
 }
 
 export default BlogPostTemplate
@@ -92,6 +94,7 @@ export const pageQuery = graphql`
           name
           publicURL
         }
+        imageAlt
       }
     }
   }

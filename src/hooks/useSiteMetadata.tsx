@@ -16,6 +16,10 @@ const useSiteMetadata = () => {
           author
           description
           bio
+          siteUrl
+          email
+          language
+          twitterUser
           social {
             twitter
             github

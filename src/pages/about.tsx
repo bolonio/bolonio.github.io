@@ -18,7 +18,7 @@ const SectionHeader = styled.div`
   align-items: baseline;
 `
 
-const Header = styled.h2`
+const Header = styled.h1`
   margin: 0;
   font-size: 3rem;
 `
@@ -40,7 +40,7 @@ const ContactLink = styled.a`
 const About = (props: Props) => {
   return (
     <Layout location={props.location}>
-      <SEO title="About me" />
+      <SEO title="About me" canonical={props.location.href} />
       <Section>
         <SectionHeader>
           <Header>About me</Header>
@@ -61,13 +61,14 @@ const About = (props: Props) => {
         <p>
           If you’d like me to speak at your conference, feel free to{" "}
           <ContactLink href="mailto:adrian.bolonio@gmail.com" rel="me">
-            send me an email.
+            send me an email
           </ContactLink>
-          , but please include: the dates and location of the conference, the
-          type of conference (what is the topic of the conference, who is your
-          audience, how many people will attend, how many tracks the conference
-          will have), the type of the talk (keynote, workshop, panel, lightning
-          talk), and if you can cover travel and accommodation costs.
+          , but please include the dates and location of the conference, the
+          type of conference (the topic of the conference, the type of audience,
+          the number of attendees, the number of tracks), the type of the talk
+          (keynote, workshop, panel, lightning talk), and if you can cover
+          travel and accommodation costs, and the accessibility details of the
+          venue.
         </p>
       </Section>
     </Layout>

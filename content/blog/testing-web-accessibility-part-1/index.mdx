@@ -1,8 +1,9 @@
 ---
-title: Testing Web Accessibility - Part 1
+title: Testing Web Accessibility - Part 1 - Testing the code
 date: 2020-01-05T00:01
-description: Our role as frontend and web developers is to create clear interfaces to make people understand and care about data, independently of their disabilities or impairments.
+description: Our role as frontend and web developers is to create clear interfaces to make people understand and care about data, independently of their disabilities or impairments, so the only way to be sure that the websites we develop are fully accessible is to test our code.
 image: ../../assets/blog/testing-the-code.jpeg
+imageAlt: this is a test
 tags:
   - testing
   - accessibility
@@ -77,7 +78,7 @@ $ npm install --save-dev react-axe
 Then you need to call the exported function passing in the React and ReactDOM objects as well as a timing delay in milliseconds that will be observed between each component change and the time the analysis starts.
 You need to be sure that this is only done in a development environment and not in production.
 
-```js
+```js:title=IconAccessibility.js
 if (process.env.NODE_ENV !== "production") {
   var axe = require("react-axe")
   axe(React, ReactDOM, 1000)
@@ -97,7 +98,7 @@ Several occurrences of the same violation are grouped.
 If you're using eslinter in your application, you can include the [eslint-plugin-jsx-a11y](https://github.com/evcohen/eslint-plugin-jsx-a11y) with the accessibility rules.
 You just need to add jsx-a11y to the plugins section of your .eslintrc configuration file. You can omit the "eslint-plugin-" prefix. Then configure the rules you want to use under the rules section.
 
-```json
+```json:title=.eslintrc.json
 {
     "plugins": ["jsx-a11y"],
     "extends": ["plugin:jsx-a11y/recommended"],
@@ -129,7 +130,7 @@ $ npm install --save-dev jest-axe
 You can now write automated accessibility unit tests using jest and ReactDOMServer to render the html of your application to check for errors, bugs, and vulnerabilities.
 Here it is an example of a very simple one:
 
-```js
+```js:title=App.test.js
 import { axe, toHaveNoViolations } from "jest-axe"
 import React from "react"
 import ReactDOMServer from "react-dom/server"

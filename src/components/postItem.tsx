@@ -64,7 +64,6 @@ const PostDescription = styled.span`
 `
 
 export const PostItem = (props: PostItemProps) => {
-  console.debug(props)
   const frontmatter = props.post!.frontmatter!
   const fields = props.post!.fields!
   const slug = fields.slug!
@@ -85,6 +84,7 @@ export const PostItem = (props: PostItemProps) => {
     flex-direction: column;
   `
 
+  /*
   const PostImage = styled.img`
     margin-bottom: 0px;
 
@@ -100,17 +100,20 @@ export const PostItem = (props: PostItemProps) => {
     }`
       : ""};
   `
+  */
 
   const title = frontmatter.title || fields.slug
   return (
     <PostContainer>
-      <PostImage alt="" src={props.post.frontmatter.image.publicURL} />
+      {/* <PostImage alt="" src={props.post.frontmatter.image.publicURL} /> */}
       <PostContent>
         <PostTitle>
           <PostLink to={slug}>{title}</PostLink>
         </PostTitle>
         <PostDate>{date}</PostDate>
-        <PostDescription>{frontmatter.description}</PostDescription>
+        <PostDescription>
+          {frontmatter.description || props.post.excerpt}
+        </PostDescription>
       </PostContent>
     </PostContainer>
   )

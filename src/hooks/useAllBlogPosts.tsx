@@ -44,6 +44,7 @@ const useAllBlogPosts = () => {
                 name
                 publicURL
               }
+              imageAlt
             }
           }
         }
