@@ -49,7 +49,7 @@ const BlogPostTemplate = (props: BlogPostTemplateProps) => {
         <SEO
           title={post.frontmatter.title}
           description={post.frontmatter.description || post.excerpt}
-          image={post.frontmatter.image.publicURL}
+          // image={post.frontmatter.image.publicURL}
           imageAlt={post.frontmatter.imageAlt}
           canonical={props.location.href}
         />
