@@ -94,6 +94,7 @@ export const Footer = () => {
             <FooterIconLink
               href={social.twitter}
               target="_blank"
+              rel="noopener"
               aria-label="Go to my Twitter profile"
             >
               <FooterIcon src={TwitterIcon} alt="Twitter logo" />
@@ -101,6 +102,7 @@ export const Footer = () => {
             <FooterIconLink
               href={social.instagram}
               target="_blank"
+              rel="noopener"
               aria-label="Go to my Instagram profile"
             >
               <FooterIcon src={InstagramIcon} alt="Instagram logo" />
@@ -108,6 +110,7 @@ export const Footer = () => {
             <FooterIconLink
               href={social.github}
               target="_blank"
+              rel="noopener"
               aria-label="Go to my GitHub profile"
             >
               <FooterIcon src={GithubIcon} alt="GitHub logo" />
@@ -115,6 +118,7 @@ export const Footer = () => {
             <FooterIconLink
               href={social.linkedin}
               target="_blank"
+              rel="noopener"
               aria-label="Go to my Linkedin profile"
             >
               <FooterIcon src={LinkedinIcon} alt="Linkedin logo" />
