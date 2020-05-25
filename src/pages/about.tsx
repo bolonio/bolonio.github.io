@@ -54,7 +54,7 @@ const About = (props: Props) => {
         <p>
           The best way to contact me is either via my{" "}
           <ContactLink href="https://twitter.com/bolonio" rel="noopener me">
-            twitter
+            Twitter
           </ContactLink>{" "}
           or you can{" "}
           <ContactLink href="mailto:adrian.bolonio@gmail.com" rel="me">

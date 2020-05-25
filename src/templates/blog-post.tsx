@@ -64,7 +64,7 @@ const BlogPostTemplate = (props: BlogPostTemplateProps) => {
             any recommendation to make, or any appreciation to give, please feel
             free to contact me. The best way to contact me is either via my{" "}
             <ContactLink href="https://twitter.com/bolonio" rel="noopener me">
-              twitter
+              Twitter
             </ContactLink>{" "}
             or you can{" "}
             <ContactLink href="mailto:adrian.bolonio@gmail.com" rel="me">
