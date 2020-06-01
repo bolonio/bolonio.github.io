@@ -103,7 +103,6 @@ export const Footer = () => {
       <Content>
         <StyledFooter>
           <StyledFooter>
-            <FooterText>Adrián Bolonio - {new Date().getFullYear()}</FooterText>
             <FooterLink to="/privacy">Privacy Policy</FooterLink>
             <FooterAnchorLink href="/rss.xml">RSS</FooterAnchorLink>
           </StyledFooter>

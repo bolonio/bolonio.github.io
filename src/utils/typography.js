@@ -61,6 +61,11 @@ Wordpress2016.overrideThemeStyles = () => {
       lineHeight: 1.5,
       // "-webkit-font-smoothing": "antialiased",
     },
+    li: {
+      fontWeight: 300,
+      fontSize: `1.25rem`,
+      lineHeight: 1.5,
+    },
     blockquote: {
       marginLeft: "0 !important",
       marginRight: "0 !important",
@@ -74,11 +79,17 @@ Wordpress2016.overrideThemeStyles = () => {
       borderRadius: "4px",
       backgroundColor: "#282c34",
     },
+    'code[class*="language-"], pre[class*="language-"]': {
+      color: "#ffffff !important",
+    },
     ".language-text": {
       padding: ".1em 0.5em !important",
     },
-    ".token.parameter": {
+    ".token.parameter, .token.script": {
       color: "#f8c555",
+    },
+    ".token.plain-text": {
+      color: "#ffffff",
     },
     ".gatsby-code-title": {
       marginBottom: "-0.6rem",
