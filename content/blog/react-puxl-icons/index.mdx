@@ -5,7 +5,6 @@ description: I decided to create a React library based on the collection of acce
 image: ../../assets/blog/testing-the-code.jpeg
 tags:
   - React
-  - react-puxl-icons
   - accessibility
   - development
 ---
@@ -178,15 +177,19 @@ Following the [guide to publish a React package to npm](https://blog.logrocket.c
 after building my package, I linked the package to a new demo app, created with create-react-app, using `yarn link` to test it, so my package was ready to be published to npm.
 I wrote a complete and meaningful documentation in the readme file and I published it.
 
-Now anyone can install it using npm or yarn
+## How can I use the PUXL icons library in my React application?
+
+The package is published in the npm registry, so anyone can install it using npm or yarn
 
 ```bash
 $ npm i --save react-puxl-icons
+```
 
+```bash
 $ yarn add react-puxl-icons
 ```
 
-and each icon can be individually imported into a React application, like:
+Each icon can be individually imported into a React application, like:
 
 ```tsx:title=App.tsx
 import React from "react"
@@ -215,7 +218,7 @@ export const App = () => (
 )
 ```
 
-You can find the **react-puxl-icons** library in [npm](https://www.npmjs.com/package/react-puxl-icons) and in [GitHub](https://github.com/bolonio/react-puxl-icons).
+You can find the **react-puxl-icons** package in [npm](https://www.npmjs.com/package/react-puxl-icons) and you can find the source code in [GitHub](https://github.com/bolonio/react-puxl-icons).
 
 This is an open source project, so if you have any suggestion on how this project could be improved, please read the [contributing guidelines](https://github.com/bolonio/react-puxl-icons/blob/master/CONTRIBUTING.md).
 I'd love all and any contributions. You can submit issues and enhancement requests through the [issues page on GitHub](https://github.com/bolonio/react-puxl-icons/issues).

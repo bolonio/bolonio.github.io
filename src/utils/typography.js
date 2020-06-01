@@ -62,12 +62,17 @@ Wordpress2016.overrideThemeStyles = () => {
       // "-webkit-font-smoothing": "antialiased",
     },
     blockquote: {
-      marginLeft: 0,
-      marginRight: 0,
+      marginLeft: "0 !important",
+      marginRight: "0 !important",
     },
     ".gatsby-highlight": {
       fontFamily: `Montserrat, sans-serif !important`,
-      marginBottom: `1.75rem`,
+      marginBottom: `2rem`,
+      boxShadow: "0 20px 60px rgba(0,0,0,.3)",
+    },
+    'pre[class*="language-"]': {
+      borderRadius: "4px",
+      backgroundColor: "#282c34",
     },
     ".language-text": {
       padding: ".1em 0.5em !important",
@@ -77,13 +82,16 @@ Wordpress2016.overrideThemeStyles = () => {
     },
     ".gatsby-code-title": {
       marginBottom: "-0.6rem",
-      padding: "0.5em 1em",
-      backgroundColor: "#2d2d2d",
-      color: "white",
+      padding: "0.3em 0.5em",
+      fontSize: "0.8rem",
       zIndex: "0",
-      borderTopLeftRadius: "0.3em",
-      borderTopRightRadius: "0.3em",
+      borderRadius: "0.3em",
       display: "inline-block",
+      position: "relative",
+      top: "15px",
+      right: "-10px",
+      backgroundColor: "#f8c555",
+      color: "#23333d",
     },
   }
 }

@@ -62,6 +62,23 @@ const FooterLink = styled(Link)`
   }
 `
 
+const FooterAnchorLink = styled.a`
+  color: #ffffff;
+  margin-left: 20px;
+  box-shadow: none;
+  :hover {
+    box-shadow: 0 2px 0 0 #ffffff;
+  }
+  :focus {
+    box-shadow: none;
+    outline: 3px solid #ffffff;
+    outline-offset: 0.5rem;
+  }
+  @media screen and (max-width: 700px) {
+    margin-left: 0px;
+  }
+`
+
 const FooterIconLink = styled.a`
   margin-left: 20px;
   display: flex;
@@ -88,6 +105,7 @@ export const Footer = () => {
           <StyledFooter>
             <FooterText>Adrián Bolonio - {new Date().getFullYear()}</FooterText>
             <FooterLink to="/privacy">Privacy Policy</FooterLink>
+            <FooterAnchorLink href="/rss.xml">RSS</FooterAnchorLink>
           </StyledFooter>
 
           <FooterIconContainer>

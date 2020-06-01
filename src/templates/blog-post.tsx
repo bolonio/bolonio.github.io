@@ -21,8 +21,12 @@ interface BlogPostTemplateProps extends PageRendererProps {
 
 const Article = styled.article`
   padding: 0 1.5rem;
-  @media screen and (max-width: 700px) {
+  width: 75%;
+  margin-right: auto;
+  margin-left: auto;
+  @media screen and (max-width: 900px) {
     padding: 0;
+    width: 100%;
   }
 `
 
@@ -72,6 +76,9 @@ const BlogPostTemplate = (props: BlogPostTemplateProps) => {
             </ContactLink>
           </p>
         </Article>
+        {/* 
+        HERE COMES THE RELATED BLOGS POST
+        */}
       </Content>
     </Layout>
   )
