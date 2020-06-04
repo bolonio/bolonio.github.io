@@ -16,6 +16,7 @@ export interface PostFrontmatter {
   description: string
   image: PostImage
   imageAlt: string
+  tags: string[]
 }
 
 export interface PostImage {

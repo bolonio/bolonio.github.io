@@ -96,7 +96,7 @@ const BlogIndex = (props: Props) => {
         </SectionHeader>
         <div>
           {posts.map((item, i) => (
-            <PostItem key={i} post={item.node} />
+            <PostItem key={i} post={item.node} mode="horizontal" />
           ))}
         </div>
       </Section>

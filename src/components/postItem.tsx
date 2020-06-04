@@ -12,14 +12,7 @@ interface PostItemProps {
 const PostLink = styled(Link)`
   box-shadow: 0 2px 0 0 #0c1e29;
   color: inherit;
-  :before  {
-    content: "";
-    left: 0;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    width: 100%;
-  }
+
   :hover {
     box-shadow: 0 2px 0 0 #0c1e29;
   }
@@ -31,7 +24,7 @@ const PostLink = styled(Link)`
 `
 
 const PostTitle = styled.h2`
-  margin-top: 15px;
+  margin-top: 0px;
   margin-bottom: 10px;
   font-weight: 400;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, Open Sans,
@@ -49,6 +42,7 @@ const PostDate = styled.span`
   font-weight: 300;
   font-size: 1rem;
   line-height: 1.5;
+  margin-bottom: 5px;
 `
 
 const PostDescription = styled.span`
@@ -63,6 +57,27 @@ const PostDescription = styled.span`
   }
 `
 
+const PostContent = styled.div`
+  display: flex;
+  flex-direction: column;
+`
+
+const PostTagsContainer = styled.span`
+  display: flex;
+  margin-bottom: 10px;
+`
+
+const PostTagLink = styled(PostLink)`
+  font-size: 0.8rem;
+  margin-right: 10px;
+  line-height: 1.5;
+  box-shadow: 0 1px 0 0 #0c1e29;
+
+  :hover {
+    box-shadow: 0 1px 0 0 #0c1e29;
+  }
+`
+
 export const PostItem = (props: PostItemProps) => {
   const frontmatter = props.post!.frontmatter!
   const fields = props.post!.fields!
@@ -73,18 +88,13 @@ export const PostItem = (props: PostItemProps) => {
     position: relative;
     display: flex;
     flex-direction: ${props.mode === "horizontal" ? "row" : "column"};
+    align-items: flex-start;
     @media screen and (max-width: 700px) {
       flex-direction: column;
     }
     margin-bottom: 20px;
   `
 
-  const PostContent = styled.div`
-    display: flex;
-    flex-direction: column;
-  `
-
-  /*
   const PostImage = styled.img`
     margin-bottom: 0px;
 
@@ -100,20 +110,31 @@ export const PostItem = (props: PostItemProps) => {
     }`
       : ""};
   `
-  */
 
   const title = frontmatter.title || fields.slug
   return (
     <PostContainer>
-      {/* <PostImage alt="" src={props.post.frontmatter.image.publicURL} /> */}
+      <PostImage
+        alt={props.post.frontmatter.imageAlt}
+        src={props.post.frontmatter.image.publicURL}
+      />
       <PostContent>
         <PostTitle>
           <PostLink to={slug}>{title}</PostLink>
         </PostTitle>
         <PostDate>{date}</PostDate>
-        <PostDescription>
-          {frontmatter.description || props.post.excerpt}
-        </PostDescription>
+        <PostTagsContainer>
+          {frontmatter.tags.map((tag, i) => (
+            <PostTagLink
+              key={i}
+              to={`/blog/tag/${tag}`}
+              aria-label={`See all posts with the tag ${tag}`}
+            >
+              #{tag}
+            </PostTagLink>
+          ))}
+        </PostTagsContainer>
+        <PostDescription>{props.post.excerpt}</PostDescription>
       </PostContent>
     </PostContainer>
   )

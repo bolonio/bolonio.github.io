@@ -9,10 +9,13 @@ interface Props {
   }
 }
 
-const useAllBlogPosts = () => {
+const useA11yInReactBlogPosts = () => {
   const data = useStaticQuery<Props>(graphql`
     query {
-      allMdx(sort: { fields: [frontmatter___date], order: DESC }) {
+      allMdx(
+        filter: { frontmatter: { tags: { in: ["accessibility-in-react"] } } }
+        sort: { fields: [frontmatter___date], order: DESC }
+      ) {
         edges {
           node {
             id
@@ -42,4 +45,4 @@ const useAllBlogPosts = () => {
   return data.allMdx.edges
 }
 
-export default useAllBlogPosts
+export default useA11yInReactBlogPosts

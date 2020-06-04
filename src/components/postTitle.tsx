@@ -1,10 +1,12 @@
 import React from "react"
 import styled from "styled-components"
 import { getFormattedDate } from "../utils/date"
+import { Link } from "gatsby"
 
 interface PostTitleProps {
   title: string
   date: string
+  tags: string[]
 }
 
 const StyledHeader = styled.header`
@@ -18,13 +20,41 @@ const StyledH1 = styled.h1`
 
 const StyledDate = styled.span`
   font-weight: 300;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   line-height: 1.5;
+  margin-bottom: 5px;
+`
+
+const PostTagsContainer = styled.span`
+  display: flex;
+  margin-bottom: 10px;
+`
+
+const PostTagLink = styled(Link)`
+  font-size: 1rem;
+  margin-right: 10px;
+  line-height: 1.5;
+  box-shadow: 0 1px 0 0 #0c1e29;
+
+  :hover {
+    box-shadow: 0 1px 0 0 #0c1e29;
+  }
 `
 
 export const PostTitle = (props: PostTitleProps) => (
   <StyledHeader>
     <StyledH1>{props.title}</StyledH1>
     <StyledDate>{getFormattedDate(props.date)}</StyledDate>
+    <PostTagsContainer>
+      {props.tags.map((tag, i) => (
+        <PostTagLink
+          key={i}
+          to={`/blog/tag/${tag}`}
+          aria-label={`See all posts with the tag ${tag}`}
+        >
+          #{tag}
+        </PostTagLink>
+      ))}
+    </PostTagsContainer>
   </StyledHeader>
 )

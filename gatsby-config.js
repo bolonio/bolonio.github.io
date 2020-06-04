@@ -35,6 +35,37 @@ module.exports = {
     ],
   },
   plugins: [
+    /*
+    {
+      resolve: `gatsby-plugin-breadcrumb`,
+      options: {
+        // useAutoGen: required 'true' to use autogen
+        useAutoGen: true,
+        // autoGenHomeLabel: optional 'Home' is default
+        autoGenHomeLabel: `Root`,
+        // exlude: optional, include this array to overwrite paths you don't want to
+        // generate breadcrumbs for.
+        exclude: [
+          `/dev-404-page/`,
+          `/404/`,
+          `/404.html`,
+          `/offline-plugin-app-shell-fallback/`,
+        ],
+        // crumbLabelUpdates: optional, update specific crumbLabels in the path
+        crumbLabelUpdates: [
+          {
+            pathname: "/book",
+            crumbLabel: "Books",
+          },
+        ],
+        // trailingSlashes: optional, will add trailing slashes to the end
+        // of crumb pathnames. default is false
+        trailingSlashes: true,
+        // usePathPrefix: optional, if you are using pathPrefix above
+        usePathPrefix: "/blog",
+      },
+    },
+    */
     {
       resolve: `gatsby-plugin-feed`,
       options: {
@@ -83,6 +114,7 @@ module.exports = {
                         name
                         publicURL
                       }
+                      tags
                       imageAlt
                     }
                   }
@@ -110,7 +142,7 @@ module.exports = {
         langKeyDefault: "en",
         useLangKeyLayout: false,
         markdownRemark: {
-          postPage: "src/templates/blog-post.js",
+          postPage: "src/templates/blogPostTemplate.js",
           query: `
             {
               allMdx {

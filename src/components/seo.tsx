@@ -50,7 +50,7 @@ export const SEO = (props: SEOProps) => {
       <meta name="application-name" content={siteUrl} />
       <meta name="theme-color" content="#23333d" />
 
-      <meta name="twitter:card" content="summary" />
+      <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:site" content={twitterUser} />
       <meta name="twitter:creator" content={twitterUser} />
       <meta name="twitter:description" content={SEODescription} />

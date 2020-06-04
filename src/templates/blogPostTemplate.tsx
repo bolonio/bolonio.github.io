@@ -44,6 +44,21 @@ const ContactLink = styled.a`
   }
 `
 
+const BlogPostThanks = () => (
+  <p>
+    Thank you for reading this article. If you have any question to ask, any
+    recommendation to make, or any appreciation to give, please feel free to
+    contact me. The best way to contact me is either via my{" "}
+    <ContactLink href="https://twitter.com/bolonio" rel="noopener me">
+      Twitter
+    </ContactLink>{" "}
+    or you can{" "}
+    <ContactLink href="mailto:adrian.bolonio@gmail.com" rel="me">
+      send me an email.
+    </ContactLink>
+  </p>
+)
+
 const BlogPostTemplate = (props: BlogPostTemplateProps) => {
   const post = props.data.mdx
   // const { previous, next } = props.pageContext
@@ -53,7 +68,7 @@ const BlogPostTemplate = (props: BlogPostTemplateProps) => {
         <SEO
           title={post.frontmatter.title}
           description={post.frontmatter.description || post.excerpt}
-          // image={post.frontmatter.image.publicURL}
+          image={post.frontmatter.image.publicURL}
           imageAlt={post.frontmatter.imageAlt}
           canonical={props.location.href}
         />
@@ -61,24 +76,19 @@ const BlogPostTemplate = (props: BlogPostTemplateProps) => {
           <PostTitle
             title={post.frontmatter.title}
             date={post.frontmatter.date}
+            tags={post.frontmatter.tags}
           />
-          <MDXRenderer>{post.body}</MDXRenderer>
-          <p>
-            Thank you for reading this article. If you have any question to ask,
-            any recommendation to make, or any appreciation to give, please feel
-            free to contact me. The best way to contact me is either via my{" "}
-            <ContactLink href="https://twitter.com/bolonio" rel="noopener me">
-              Twitter
-            </ContactLink>{" "}
-            or you can{" "}
-            <ContactLink href="mailto:adrian.bolonio@gmail.com" rel="me">
-              send me an email.
-            </ContactLink>
-          </p>
         </Article>
-        {/* 
-        HERE COMES THE RELATED BLOGS POST
-        */}
+        <img
+          alt={post.frontmatter.imageAlt}
+          src={post.frontmatter.image.publicURL}
+        />
+        <Article>
+          <MDXRenderer>{post.body}</MDXRenderer>
+          <BlogPostThanks />
+          {/*  HERE COMES THE GO TO TOP BUTTON */}
+        </Article>
+        {/*  HERE COMES THE RELATED BLOGS POST */}
       </Content>
     </Layout>
   )
@@ -101,6 +111,7 @@ export const pageQuery = graphql`
           name
           publicURL
         }
+        tags
         imageAlt
       }
     }

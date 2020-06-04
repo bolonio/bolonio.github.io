@@ -1,14 +1,16 @@
 const path = require(`path`)
 const { createFilePath } = require(`gatsby-source-filesystem`)
+const _ = require("lodash")
 
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
 
-  const blogPost = path.resolve(`./src/templates/blog-post.tsx`)
+  const blogPostTemplate = path.resolve(`./src/templates/blogPostTemplate.tsx`)
+  const tagTemplate = path.resolve("./src/templates/tagPageTemplate.tsx")
   const result = await graphql(
     `
       {
-        allMdx(
+        postsGroup: allMdx(
           sort: { fields: [frontmatter___date], order: DESC }
           limit: 1000
         ) {
@@ -19,8 +21,14 @@ exports.createPages = async ({ graphql, actions }) => {
               }
               frontmatter {
                 title
+                tags
               }
             }
+          }
+        }
+        tagsGroup: allMdx(limit: 2000) {
+          group(field: frontmatter___tags) {
+            fieldValue
           }
         }
       }
@@ -32,7 +40,7 @@ exports.createPages = async ({ graphql, actions }) => {
   }
 
   // Create blog posts pages.
-  const posts = result.data.allMdx.edges
+  const posts = result.data.postsGroup.edges
 
   posts.forEach((post, index) => {
     const previous = index === posts.length - 1 ? null : posts[index + 1].node
@@ -40,11 +48,24 @@ exports.createPages = async ({ graphql, actions }) => {
 
     createPage({
       path: post.node.fields.slug,
-      component: blogPost,
+      component: blogPostTemplate,
       context: {
         slug: post.node.fields.slug,
         previous,
         next,
+      },
+    })
+  })
+
+  // Create tag pages.
+  const tags = result.data.tagsGroup.group
+
+  tags.forEach(tag => {
+    createPage({
+      path: `/blog/tag/${_.kebabCase(tag.fieldValue)}/`,
+      component: tagTemplate,
+      context: {
+        tag: tag.fieldValue,
       },
     })
   })
