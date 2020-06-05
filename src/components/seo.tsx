@@ -31,7 +31,9 @@ export const SEO = (props: SEOProps) => {
   const SEOTitle = props.title || title
   const SEODescription = props.description || description
   const SEOCanonical = props.canonical || siteUrl
-  const SEOImage = props.image || `${siteUrl}${image}`
+  const SEOImage = props.image
+    ? `${siteUrl}${props.image}`
+    : `${siteUrl}${image}`
   const SEOImageAtl = props.imageAlt || "A picture of Adrián Bolonio"
   const OGTwitterCard = props.image ? "summary_large_image" : "summary"
 
