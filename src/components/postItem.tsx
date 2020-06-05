@@ -116,7 +116,7 @@ export const PostItem = (props: PostItemProps) => {
     <PostContainer>
       <PostImage
         alt={props.post.frontmatter.imageAlt}
-        src={props.post.frontmatter.image.publicURL}
+        src={props.post.frontmatter.image.childImageSharp.resize.src}
       />
       <PostContent>
         <PostTitle>

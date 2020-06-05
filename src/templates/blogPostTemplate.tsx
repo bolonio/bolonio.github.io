@@ -60,6 +60,7 @@ const BlogPostThanks = () => (
 )
 
 const BlogPostTemplate = (props: BlogPostTemplateProps) => {
+  console.debug(props)
   const post = props.data.mdx
   // const { previous, next } = props.pageContext
   return (
@@ -68,7 +69,7 @@ const BlogPostTemplate = (props: BlogPostTemplateProps) => {
         <SEO
           title={post.frontmatter.title}
           description={post.frontmatter.description || post.excerpt}
-          image={post.frontmatter.image.publicURL}
+          image={post.frontmatter.image.childImageSharp.resize.src}
           imageAlt={post.frontmatter.imageAlt}
           canonical={props.location.href}
         />
@@ -81,7 +82,7 @@ const BlogPostTemplate = (props: BlogPostTemplateProps) => {
         </Article>
         <img
           alt={post.frontmatter.imageAlt}
-          src={post.frontmatter.image.publicURL}
+          src={post.frontmatter.image.childImageSharp.resize.src}
         />
         <Article>
           <MDXRenderer>{post.body}</MDXRenderer>
@@ -107,9 +108,13 @@ export const pageQuery = graphql`
         title
         description
         image {
-          id
-          name
-          publicURL
+          childImageSharp {
+            resize(width: 1200) {
+              src
+              height
+              width
+            }
+          }
         }
         tags
         imageAlt

@@ -26,9 +26,13 @@ const useLatestPosts = () => {
               title
               description
               image {
-                id
-                name
-                publicURL
+                childImageSharp {
+                  resize(width: 1200) {
+                    src
+                    height
+                    width
+                  }
+                }
               }
               tags
               imageAlt

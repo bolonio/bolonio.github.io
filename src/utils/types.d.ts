@@ -20,9 +20,13 @@ export interface PostFrontmatter {
 }
 
 export interface PostImage {
-  id: string
-  name: string
-  publicURL: string
+  childImageSharp: {
+    resize: {
+      src: string
+      height: string
+      width: string
+    }
+  }
 }
 
 export interface SiteMetadata {

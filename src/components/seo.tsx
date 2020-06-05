@@ -27,46 +27,125 @@ export const SEO = (props: SEOProps) => {
     twitterUser,
     image,
   } = useSiteMetadata()
+  const lang = language || "es"
   const SEOTitle = props.title || title
   const SEODescription = props.description || description
   const SEOCanonical = props.canonical || siteUrl
-  console.debug(`${siteUrl}${image}`)
   const SEOImage = props.image || `${siteUrl}${image}`
   const SEOImageAtl = props.imageAlt || "A picture of Adrián Bolonio"
 
   return (
-    <Helmet>
-      <html lang={language || "en"} />
-      <meta charSet="utf-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <title>{SEOTitle}</title>
-      <meta name="robots" content="index,follow" />
-      <meta name="googlebot" content="index,follow" />
-      <meta name="description" content={SEODescription} />
-      <link rel="canonical" href={SEOCanonical} />
-      <meta name="author" content={author}></meta>
-
-      <meta name="apple-mobile-web-app-title" content={siteUrl} />
-      <meta name="application-name" content={siteUrl} />
-      <meta name="theme-color" content="#23333d" />
-
-      <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:site" content={twitterUser} />
-      <meta name="twitter:creator" content={twitterUser} />
-      <meta name="twitter:title" content={SEOTitle} />
-      <meta name="twitter:description" content={SEODescription} />
-      <meta name="twitter:image" content={SEOImage} />
-
-      <meta property="og:type" content="website" />
-      <meta property="og:locale" content="en_US" />
-      <meta property="og:title" content={SEOTitle} />
-      <meta property="og:url" content={SEOCanonical} />
-      <meta property="og:image" content={SEOImage} />
-      <meta property="og:image:alt" content={SEOImageAtl} />
-      <meta property="og:description" content={SEODescription} />
-      <meta property="og:site_name" content={siteUrl} />
-
-      <meta property="DC.title" content={SEOTitle} />
-    </Helmet>
+    <Helmet
+      htmlAttributes={{
+        lang,
+      }}
+      title={SEOTitle}
+      link={
+        SEOCanonical
+          ? [
+              {
+                rel: "canonical",
+                href: SEOCanonical,
+              },
+            ]
+          : []
+      }
+      meta={[
+        {
+          name: `description`,
+          content: SEODescription,
+        },
+        {
+          name: `author`,
+          content: author,
+        },
+        {
+          name: `viewport`,
+          content: "width=device-width, initial-scale=1.0",
+        },
+        {
+          name: `robots`,
+          content: "index,follow",
+        },
+        {
+          name: `googlebot`,
+          content: "index,follow",
+        },
+        {
+          name: `apple-mobile-web-app-title`,
+          content: siteUrl,
+        },
+        {
+          name: `application-name`,
+          content: siteUrl,
+        },
+        {
+          name: `theme-color`,
+          content: "#23333d",
+        },
+        // Twitter
+        {
+          name: `twitter:card`,
+          content: "summary_large_image",
+        },
+        {
+          name: `twitter:site`,
+          content: twitterUser,
+        },
+        {
+          name: `twitter:creator`,
+          content: twitterUser,
+        },
+        {
+          name: `twitter:title`,
+          content: SEOTitle,
+        },
+        {
+          name: `twitter:description`,
+          content: SEODescription,
+        },
+        {
+          name: `twitter:image`,
+          content: SEOImage,
+        },
+        // OpenGrapth
+        {
+          name: `og:type`,
+          content: "website",
+        },
+        {
+          name: `og:locale`,
+          content: "en_US",
+        },
+        {
+          name: `og:title`,
+          content: SEOTitle,
+        },
+        {
+          name: `og:url`,
+          content: SEOCanonical,
+        },
+        {
+          name: `og:image`,
+          content: SEOImage,
+        },
+        {
+          name: `og:image:alt`,
+          content: SEOImageAtl,
+        },
+        {
+          name: `og:description`,
+          content: SEODescription,
+        },
+        {
+          name: `og:site_name`,
+          content: siteUrl,
+        },
+        {
+          name: `DC.title`,
+          content: SEOTitle,
+        },
+      ]}
+    />
   )
 }
