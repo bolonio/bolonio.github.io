@@ -20,13 +20,17 @@ export interface PostFrontmatter {
 }
 
 export interface PostImage {
-  childImageSharp: {
-    resize: {
-      src: string
-      height: string
-      width: string
-    }
-  }
+  childImageSharp: childImageSharp
+}
+
+export interface childImageSharp {
+  resize: childImageSharpResize
+}
+
+export interface childImageSharpResize {
+  src: string
+  height: string
+  width: string
 }
 
 export interface SiteMetadata {

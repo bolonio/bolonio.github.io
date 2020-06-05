@@ -33,6 +33,7 @@ export const SEO = (props: SEOProps) => {
   const SEOCanonical = props.canonical || siteUrl
   const SEOImage = props.image || `${siteUrl}${image}`
   const SEOImageAtl = props.imageAlt || "A picture of Adrián Bolonio"
+  const OGTwitterCard = props.image ? "summary_large_image" : "summary"
 
   return (
     <Helmet
@@ -86,7 +87,7 @@ export const SEO = (props: SEOProps) => {
         // Twitter
         {
           name: `twitter:card`,
-          content: "summary_large_image",
+          content: OGTwitterCard,
         },
         {
           name: `twitter:site`,
@@ -110,35 +111,35 @@ export const SEO = (props: SEOProps) => {
         },
         // OpenGrapth
         {
-          name: `og:type`,
+          property: `og:type`,
           content: "website",
         },
         {
-          name: `og:locale`,
+          property: `og:locale`,
           content: "en_US",
         },
         {
-          name: `og:title`,
+          property: `og:title`,
           content: SEOTitle,
         },
         {
-          name: `og:url`,
+          property: `og:url`,
           content: SEOCanonical,
         },
         {
-          name: `og:image`,
+          property: `og:image`,
           content: SEOImage,
         },
         {
-          name: `og:image:alt`,
+          property: `og:image:alt`,
           content: SEOImageAtl,
         },
         {
-          name: `og:description`,
+          property: `og:description`,
           content: SEODescription,
         },
         {
-          name: `og:site_name`,
+          property: `og:site_name`,
           content: siteUrl,
         },
         {
