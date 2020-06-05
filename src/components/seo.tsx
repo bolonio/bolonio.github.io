@@ -53,7 +53,9 @@ export const SEO = (props: SEOProps) => {
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:site" content={twitterUser} />
       <meta name="twitter:creator" content={twitterUser} />
+      <meta name="twitter:title" content={SEOTitle} />
       <meta name="twitter:description" content={SEODescription} />
+      <meta name="twitter:image" content={SEOImage} />
 
       <meta property="og:type" content="website" />
       <meta property="og:locale" content="en_US" />
