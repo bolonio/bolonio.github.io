@@ -62,9 +62,10 @@ const PostContent = styled.div`
   flex-direction: column;
 `
 
-const PostTagsContainer = styled.span`
+const PostTagsContainer = styled.div`
   display: flex;
   margin-bottom: 10px;
+  flex-wrap: wrap;
 `
 
 const PostTagLink = styled(PostLink)`

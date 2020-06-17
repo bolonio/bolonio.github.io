@@ -1,16 +1,11 @@
-import React from "react"
+import React, { FunctionComponent } from "react"
 import { graphql, PageProps } from "gatsby"
-import { MDXRenderer } from "gatsby-plugin-mdx"
-import { Layout } from "../components/layout"
-import { SEO } from "../components/seo"
 import styled from "styled-components"
-import { PostTitle } from "../components/postTitle"
-import { Content } from "../components/content"
-import { PostFrontmatter, Post } from "../utils/types"
-import useSiteMetadata from "../hooks/useSiteMetadata"
+import { Post } from "../utils/types"
 import { PostItem } from "../components/postItem"
+import { Page } from "./Page"
 
-type Props = {
+interface TagPageTemplateProps extends PageProps {
   data: {
     allMdx: {
       edges: {
@@ -18,67 +13,30 @@ type Props = {
       }[]
     }
   }
-} & PageProps
+}
 
-const TagPageTemplate = (props: Props) => {
-  const { author } = useSiteMetadata()
-  const posts = props.data.allMdx.edges
-  const { tag } = props.pageContext
-
-  const Section = styled(Content)`
-    padding: 50px 0;
-  `
-
-  const SectionHeader = styled.div`
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-  `
-
-  const Header = styled.h1`
-    margin: 0;
-    margin-bottom: 50px;
-    font-size: 3rem;
-  `
+const TagPageTemplate: FunctionComponent<TagPageTemplateProps> = ({
+  location,
+  data,
+  pageContext,
+}) => {
+  const posts = data.allMdx.edges
+  const { tag } = pageContext
 
   const PostsGrid = styled.div`
     display: flex;
     flex-direction: column;
   `
 
-  const IntroText = styled.p`
-    font-weight: 300;
-    font-size: 1.75rem;
-    margin: 0;
-    @media screen and (max-width: 1000px) {
-      font-size: 1.5rem;
-    }
-    @media screen and (max-width: 800px) {
-      font-size: 1.25rem;
-    }
-  `
-
   return (
-    <Layout location={props.location}>
-      <SEO
-        title={`Accessibility in React | ${author}`}
-        description="I write mainly about accessibility and frontend development"
-        canonical={props.location.href}
-      />
-      <Section>
-        <SectionHeader>
-          <Header>
-            Tag: {tag} ({posts.length} posts)
-          </Header>
-        </SectionHeader>
-        <PostsGrid>
-          {posts.map((item, i) => (
-            <PostItem key={i} post={item.node} mode="horizontal" />
-          ))}
-        </PostsGrid>
-        {/* <span>HERE IT COMES THE PAGINATION</span> */}
-      </Section>
-    </Layout>
+    <Page title={`Tag: ${tag} (${posts.length} posts)`} location={location}>
+      <PostsGrid>
+        {posts.map((item, i) => (
+          <PostItem key={i} post={item.node} mode="horizontal" />
+        ))}
+      </PostsGrid>
+      {/* <span>HERE IT COMES THE PAGINATION</span> */}
+    </Page>
   )
 }
 

@@ -1,6 +1,6 @@
-import React from "react"
+import React, { FunctionComponent } from "react"
 import styled from "styled-components"
-import { Content } from "./content"
+import { LayoutContent } from "./content"
 import InstagramIcon from "../images/instagram.svg"
 import TwitterIcon from "../images/twitter1.svg"
 import GithubIcon from "../images/github1.svg"
@@ -22,12 +22,12 @@ const StyledFooter = styled.div`
 `
 
 const FooterContainer = styled.footer`
-  background-color: #23333d;
-  padding: 15px 15px;
+  background-color: #f3f7f9;
+  padding: 15px 0;
 `
 
 const FooterText = styled.span`
-  color: #ffffff;
+  color: #23333d;
   display: flex;
   align-items: center;
   @media screen and (max-width: 700px) {
@@ -37,7 +37,7 @@ const FooterText = styled.span`
 `
 
 const FooterIcon = styled.img`
-  fill: #ffffff;
+  fill: #23333d;
   margin: 0;
   width: 20px;
   @media screen and (max-width: 700px) {
@@ -46,15 +46,15 @@ const FooterIcon = styled.img`
 `
 
 const FooterLink = styled(Link)`
-  color: #ffffff;
-  margin-left: 20px;
+  color: #23333d;
+  margin-right: 20px;
   box-shadow: none;
   :hover {
-    box-shadow: 0 2px 0 0 #ffffff;
+    box-shadow: 0 2px 0 0 #23333d;
   }
   :focus {
     box-shadow: none;
-    outline: 3px solid #ffffff;
+    outline: 3px solid #23333d;
     outline-offset: 0.5rem;
   }
   @media screen and (max-width: 700px) {
@@ -63,15 +63,15 @@ const FooterLink = styled(Link)`
 `
 
 const FooterAnchorLink = styled.a`
-  color: #ffffff;
-  margin-left: 20px;
+  color: #23333d;
+  margin-right: 20px;
   box-shadow: none;
   :hover {
-    box-shadow: 0 2px 0 0 #ffffff;
+    box-shadow: 0 2px 0 0 #23333d;
   }
   :focus {
     box-shadow: none;
-    outline: 3px solid #ffffff;
+    outline: 3px solid #23333d;
     outline-offset: 0.5rem;
   }
   @media screen and (max-width: 700px) {
@@ -84,9 +84,10 @@ const FooterIconLink = styled.a`
   display: flex;
   text-decoration: none;
   box-shadow: none;
+  :hover,
   :focus {
     box-shadow: none;
-    outline: 3px solid #ffffff;
+    outline: 3px solid #23333d;
     outline-offset: 0.5rem;
   }
 `
@@ -96,11 +97,11 @@ const FooterIconContainer = styled.div`
   justify-content: space-between;
 `
 
-export const Footer = () => {
+export const Footer: FunctionComponent = () => {
   const { social, email } = useSiteMetadata()
   return (
     <FooterContainer>
-      <Content>
+      <LayoutContent>
         <StyledFooter>
           <StyledFooter>
             <FooterLink to="/privacy">Privacy Policy</FooterLink>
@@ -149,7 +150,7 @@ export const Footer = () => {
             </FooterIconLink>
           </FooterIconContainer>
         </StyledFooter>
-      </Content>
+      </LayoutContent>
     </FooterContainer>
   )
 }

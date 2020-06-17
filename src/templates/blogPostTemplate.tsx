@@ -1,11 +1,11 @@
-import React from "react"
+import React, { FunctionComponent } from "react"
 import { graphql, PageRendererProps } from "gatsby"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 import { Layout } from "../components/layout"
 import { SEO } from "../components/seo"
 import styled from "styled-components"
 import { PostTitle } from "../components/postTitle"
-import { Content } from "../components/content"
+import { LayoutContent } from "../components/content"
 import { PostFrontmatter } from "../utils/types"
 
 interface BlogPostTemplateProps extends PageRendererProps {
@@ -43,8 +43,7 @@ const ContactLink = styled.a`
     outline-offset: 0.5rem;
   }
 `
-
-const BlogPostThanks = () => (
+const BlogPostThanks: FunctionComponent = () => (
   <p>
     Thank you for reading this article. If you have any question to ask, any
     recommendation to make, or any appreciation to give, please feel free to
@@ -59,19 +58,20 @@ const BlogPostThanks = () => (
   </p>
 )
 
-const BlogPostTemplate = (props: BlogPostTemplateProps) => {
-  console.debug(props)
-  const post = props.data.mdx
-  // const { previous, next } = props.pageContext
+const BlogPostTemplate: FunctionComponent<BlogPostTemplateProps> = ({
+  location,
+  data,
+}) => {
+  const post = data.mdx
   return (
-    <Layout location={props.location}>
-      <Content>
+    <Layout location={location}>
+      <LayoutContent>
         <SEO
           title={post.frontmatter.title}
           description={post.frontmatter.description || post.excerpt}
           image={post.frontmatter.image.childImageSharp.resize.src}
           imageAlt={post.frontmatter.imageAlt}
-          canonical={props.location.href}
+          canonical={location.href}
         />
         <Article>
           <PostTitle
@@ -90,7 +90,7 @@ const BlogPostTemplate = (props: BlogPostTemplateProps) => {
           {/*  HERE COMES THE GO TO TOP BUTTON */}
         </Article>
         {/*  HERE COMES THE RELATED BLOGS POST */}
-      </Content>
+      </LayoutContent>
     </Layout>
   )
 }

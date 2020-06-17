@@ -4,7 +4,7 @@ export const talks = [
     talks: [
       {
         title: "Testing Web Accessibility",
-        conference: "JSDay Spain 2020",
+        conference: "JSDay Spain",
         date: "TBD, 2021",
         location: "Madrid, Spain",
         link: "http://jsday.es/",
@@ -18,7 +18,7 @@ export const talks = [
     talks: [
       {
         title: "Testing Web Accessibility",
-        conference: "DevTalks Romania",
+        conference: "DevTalks Reimagined",
         date: "Jun 2020",
         location: "Bucharest, Romania [Online]",
         link: "https://www.devtalks.ro/",
@@ -27,33 +27,23 @@ export const talks = [
       },
       {
         title: "Testing Web Accessibility",
-        conference: "UXDX Vienna",
+        conference: "UXDX Community Eastern Europe",
         date: "Jun 2020",
         location: "Vienna, Austria [Online]",
-        link: "https://uxdxconf.com/vienna",
-        video: "",
-        slides: "https://speakerdeck.com/bolonio/testing-web-accessibility",
-      },
-      /*
-      {
-        title: "Testing Web Accessibility",
-        conference: "Pick JS",
-        date: "May 2020",
-        location: "Katowice, Poland [Online]",
-        link: "https://pickjs.com/",
-        video: "",
+        link: "https://uxdx.com/community/easterneurope/2020",
+        video: "https://www.youtube.com/watch?v=-dBsgG7L2EQ",
         slides: "https://speakerdeck.com/bolonio/testing-web-accessibility",
       },
       {
-        title: "Testing Web Accessibility",
-        conference: "New Devs On The Block",
-        date: "Apr 2020",
+        title: "Accessibility in Web Development",
+        conference: "UpLeveled (Workshop)",
+        date: "Jun 2020",
         location: "Vienna, Austria",
-        link: "https://newdevs.org/",
+        link: "https://upleveled.io/",
         video: "",
-        slides: "https://speakerdeck.com/bolonio/testing-web-accessibility",
+        slides:
+          "https://speakerdeck.com/bolonio/accessibility-in-web-development",
       },
-      */
       {
         title: "Testing Web Accessibility",
         conference: "Reactadelphia",
@@ -83,7 +73,7 @@ export const talks = [
       },
       {
         title: "Testing Web Accessibility",
-        conference: "A11y Club Berlin",
+        conference: "A11yClub Berlin",
         date: "Mar 2020",
         location: "Berlin, Germany [Online]",
         link: "https://a11y-meetup-berlin.de/",
@@ -102,7 +92,7 @@ export const talks = [
       },
       {
         title: "Testing Web Accessibility",
-        conference: "Vienna JS",
+        conference: "ViennaJS",
         date: "Feb 2020",
         location: "Vienna, Austria",
         link: "https://viennajs.org/en/meetup/2020-02",
@@ -156,7 +146,7 @@ export const talks = [
         date: "Dec 2019",
         location: "Podcast",
         link: "https://developermelange.github.io/",
-        video: "",
+        video: "http://developermelange.com/025-accessibility-101/",
         slides: "",
       },
       {
@@ -250,7 +240,7 @@ export const talks = [
       },
       {
         title: "Willhaben Markup Language WHML",
-        conference: "Vienna JS",
+        conference: "ViennaJS",
         date: "May 2018",
         location: "Vienna, Austria",
         link: "https://viennajs.org/",

@@ -1,14 +1,16 @@
-import React from "react"
+import React, { FunctionComponent } from "react"
 // import styled from "styled-components"
 
-type Props = {
+interface ColorModeToggleProps {
   isDark: boolean
   toggle: (e: any) => void
 }
 
 // Adapted from: https://codepen.io/aaroniker/pen/KGpXZo and https://github.com/narative/gatsby-theme-novela/blob/master/%40narative/gatsby-theme-novela/src/components/Navigation/Navigation.Header.tsx
-
-const ColorModeToggle = ({ isDark, toggle }: Props) => (
+export const ColorModeToggle: FunctionComponent<ColorModeToggleProps> = ({
+  isDark,
+  toggle,
+}) => (
   <button
     onClick={toggle}
     type="button"
@@ -77,5 +79,3 @@ const ColorModeToggle = ({ isDark, toggle }: Props) => (
     />
   </button>
 )
-
-export default ColorModeToggle

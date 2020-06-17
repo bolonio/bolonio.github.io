@@ -1,63 +1,44 @@
 import { PageRendererProps } from "gatsby"
-import React from "react"
-import { Layout } from "../components/layout"
-import { SEO } from "../components/seo"
-import { talks } from "../../content/talks/talks"
-import { Talk } from "../components/talk"
-import { Content } from "../components/content"
-import { TalksType, TalkType } from "../utils/types"
+import React, { FunctionComponent, Fragment } from "react"
+import { Page } from "../templates/Page"
 import styled from "styled-components"
-import useSiteMetadata from "../hooks/useSiteMetadata"
-
-type Props = PageRendererProps
-
-const Section = styled(Content)`
-  padding: 50px 0;
-`
-
-const SectionHeader = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-`
-
-const Header = styled.h1`
-  margin: 0;
-  margin-bottom: 50px;
-  font-size: 3rem;
-`
+import { TalksType, TalkType } from "../utils/types"
+import { talks } from "../../content/talks/talks"
+import { Talk } from "../components/Talk"
 
 const YearHeader = styled.h2`
   margin: 0;
   margin-bottom: 30px;
+  font-size: 2.5rem;
 `
 
 const TalkContainer = styled.div`
-  margin-bottom: 40px;
+  margin-bottom: 3rem;
 `
 
-const Talks = (props: Props) => {
-  const { author } = useSiteMetadata()
+const Talks: FunctionComponent<PageRendererProps> = ({ location }) => {
   return (
-    <Layout location={props.location}>
-      <SEO title={`My talks | ${author}`} canonical={props.location.href} />
-      <Section>
-        <SectionHeader>
-          <Header>Talks</Header>
-        </SectionHeader>
-
-        {talks.map((talk: TalksType, i) => (
-          <React.Fragment>
-            <YearHeader key={i}>{talk.year}</YearHeader>
-            <TalkContainer>
-              {talk.talks.map((talk: TalkType, i) => (
-                <Talk talk={talk} />
-              ))}
-            </TalkContainer>
-          </React.Fragment>
-        ))}
-      </Section>
-    </Layout>
+    <Page title="My Talks" location={location}>
+      {/* 
+      <PageParagraph>
+        but please include the dates and location of the conference, the type of
+        conference (the topic of the conference, the type of audience, the
+        number of attendees, the number of tracks), the type of the talk
+        (keynote, workshop, panel, lightning talk), and if you can cover travel
+        and accommodation costs, and the accessibility details of the venue.
+      </PageParagraph>
+      */}
+      {talks.map((talk: TalksType, i) => (
+        <Fragment>
+          <YearHeader key={i}>{talk.year}</YearHeader>
+          <TalkContainer>
+            {talk.talks.map((talk: TalkType, i) => (
+              <Talk talk={talk} />
+            ))}
+          </TalkContainer>
+        </Fragment>
+      ))}
+    </Page>
   )
 }
 

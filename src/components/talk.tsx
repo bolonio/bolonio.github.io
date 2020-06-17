@@ -1,4 +1,4 @@
-import React from "react"
+import React, { FunctionComponent } from "react"
 import styled from "styled-components"
 import { TalkType } from "../utils/types"
 
@@ -59,20 +59,19 @@ const TalkGroup = styled.div`
     flex-direction: column;
   }
 `
-
-export const Talk = (props: TalkProps) => (
+export const Talk: FunctionComponent<TalkProps> = ({ talk }) => (
   <TalkContainer>
     <TalkConference>
-      <TalkLink href={props.talk.link} target="_blank">
-        {props.talk.conference}
+      <TalkLink href={talk.link} target="_blank">
+        {talk.conference}
       </TalkLink>
     </TalkConference>
     <TalkGroup>
-      <TalkItem>{props.talk.location}</TalkItem>
-      <TalkItem>{props.talk.date}</TalkItem>
+      <TalkItem>{talk.location}</TalkItem>
+      <TalkItem>{talk.date}</TalkItem>
       <TalkItem>
-        {props.talk.slides ? (
-          <TalkLink href={props.talk.slides} target="_blank">
+        {talk.slides ? (
+          <TalkLink href={talk.slides} target="_blank">
             Slides
           </TalkLink>
         ) : (
@@ -80,8 +79,8 @@ export const Talk = (props: TalkProps) => (
         )}
       </TalkItem>
       <TalkItem>
-        {props.talk.video ? (
-          <TalkLink href={props.talk.video} target="_blank">
+        {talk.video ? (
+          <TalkLink href={talk.video} target="_blank">
             Video
           </TalkLink>
         ) : (

@@ -1,58 +1,13 @@
 import { PageRendererProps, Link } from "gatsby"
-import React from "react"
-import { Layout } from "../components/layout"
-import { SEO } from "../components/seo"
-import { Bio } from "../components/bio"
-import { PostItem } from "../components/postItem"
+import React, { FunctionComponent } from "react"
 import styled from "styled-components"
 import { Content } from "../components/content"
-import useLatestPosts from "../hooks/useLatestPosts"
 import useSiteMetadata from "../hooks/useSiteMetadata"
+import { Page, PageParagraph } from "../templates/Page"
+import { LatestPosts } from "../components/LatestPosts"
 
-type Props = PageRendererProps
-
-const BlogIndex = (props: Props) => {
-  const posts = useLatestPosts()
-  const { author } = useSiteMetadata()
-
-  const Section = styled(Content)`
-    padding: 50px 0;
-  `
-
-  const SectionHeader = styled.div`
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    @media screen and (max-width: 700px) {
-      flex-direction: column;
-    }
-  `
-
-  const SectionHeaderLink = styled(Link)`
-    font-size: 1.25rem;
-    box-shadow: 0 2px 0 0 #0c1e29;
-    color: inherit;
-    :hover {
-      box-shadow: 0 2px 0 0 #0c1e29;
-    }
-    :focus {
-      box-shadow: none;
-      outline: 3px solid #0c1e29;
-      outline-offset: 0.5rem;
-    }
-    @media screen and (max-width: 700px) {
-      margin-bottom: 40px;
-    }
-  `
-
-  const Header = styled.h2`
-    margin: 0;
-    margin-bottom: 50px;
-    font-size: 2.5rem;
-    @media screen and (max-width: 700px) {
-      margin-bottom: 20px;
-    }
-  `
+const Home: FunctionComponent<PageRendererProps> = ({ location }) => {
+  const { bio, author } = useSiteMetadata()
 
   /*
   const PostsGrid = styled.div`
@@ -69,7 +24,7 @@ const BlogIndex = (props: Props) => {
   `
   */
 
-  const MainHeader = styled.h1`
+  const VisuallyHiddenHeader = styled.h1`
     border: 0;
     clip: rect(0 0 0 0);
     clip-path: inset(50%);
@@ -84,22 +39,23 @@ const BlogIndex = (props: Props) => {
     width: 1px;
   `
 
+  const BioParagraph = styled(PageParagraph)`
+    font-size: 1.5rem;
+    margin-bottom: 3rem;
+  `
+
+  const Header = styled.h2`
+    margin: 0;
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+  `
+
   return (
-    <Layout location={props.location}>
-      <SEO />
-      <MainHeader>{author}</MainHeader>
-      <Bio />
-      <Section>
-        <SectionHeader>
-          <Header>Latest Posts</Header>
-          <SectionHeaderLink to="/blog">More blog posts</SectionHeaderLink>
-        </SectionHeader>
-        <div>
-          {posts.map((item, i) => (
-            <PostItem key={i} post={item.node} mode="horizontal" />
-          ))}
-        </div>
-      </Section>
+    <Page location={location}>
+      <VisuallyHiddenHeader>{author}</VisuallyHiddenHeader>
+      <Header>Hello</Header>
+      <BioParagraph>{bio}</BioParagraph>
+      <LatestPosts />
       {/* 
       <hr />
       <Section>
@@ -109,8 +65,8 @@ const BlogIndex = (props: Props) => {
         </SectionHeader>
       </Section>
       */}
-    </Layout>
+    </Page>
   )
 }
 
-export default BlogIndex
+export default Home

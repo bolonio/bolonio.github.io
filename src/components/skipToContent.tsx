@@ -1,4 +1,4 @@
-import React from "react"
+import React, { FunctionComponent } from "react"
 import styled from "styled-components"
 
 const SkipContainer = styled.a`
@@ -21,7 +21,6 @@ const SkipContainer = styled.a`
     top: -200px;
   }
 `
-
-export const SkipToContent = () => {
-  return <SkipContainer href="#content">Skip to content</SkipContainer>
-}
+export const SkipToContent: FunctionComponent = () => (
+  <SkipContainer href="#content">Skip to content</SkipContainer>
+)

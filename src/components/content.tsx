@@ -9,3 +9,13 @@ export const Content = styled.div`
     margin-right: 20px;
   }
 `
+
+export const LayoutContent = styled.div`
+  max-width: 90rem;
+  width: 70%;
+  margin: 0px auto;
+
+  @media screen and (max-width: 1180px) {
+    width: 90%;
+  }
+`
