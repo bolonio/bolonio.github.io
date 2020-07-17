@@ -18,6 +18,24 @@ export const talks = [
     talks: [
       {
         title: "Testing Web Accessibility",
+        conference: "Intersection conference",
+        date: "Oct 2020",
+        location: "Milano, Italy [Online]",
+        link: "https://www.intersection-conference.eu/",
+        video: "",
+        slides: "https://speakerdeck.com/bolonio/testing-web-accessibility",
+      },
+      {
+        title: "Testing Web Accessibility",
+        conference: "BarcelonaJS",
+        date: "Jul 2020",
+        location: "Barcelona, Spain [Online]",
+        link: "https://www.meetup.com/BarcelonaJS/",
+        video: "https://www.youtube.com/watch?v=sc1CfX2-8v0",
+        slides: "https://speakerdeck.com/bolonio/testing-web-accessibility",
+      },
+      {
+        title: "Testing Web Accessibility",
         conference: "DevTalks Reimagined",
         date: "Jun 2020",
         location: "Bucharest, Romania [Online]",
