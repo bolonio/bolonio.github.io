@@ -5,7 +5,7 @@ export const talks = [
       {
         title: "Testing Web Accessibility",
         conference: "JSDay Spain",
-        date: "TBD, 2021",
+        date: "TBD 2021",
         location: "Madrid, Spain",
         link: "http://jsday.es/",
         video: "",
@@ -23,6 +23,25 @@ export const talks = [
         location: "Milano, Italy [Online]",
         link: "https://www.intersection-conference.eu/",
         video: "",
+        slides: "https://speakerdeck.com/bolonio/testing-web-accessibility",
+      },
+      {
+        title: "Accessibility in Web Development",
+        conference: "UpLeveled (Workshop)",
+        date: "Oct 2020",
+        location: "Vienna, Austria",
+        link: "https://upleveled.io/",
+        video: "",
+        slides:
+          "https://speakerdeck.com/bolonio/accessibility-in-web-development",
+      },
+      {
+        title: "Testing Web Accessibility",
+        conference: "Frontend Love Meetup",
+        date: "Aug 2020",
+        location: "YouTube [Online]",
+        link: "http://frontenddeveloperlove.com/",
+        video: "https://www.youtube.com/watch?v=XDncZ-UZ8Hw",
         slides: "https://speakerdeck.com/bolonio/testing-web-accessibility",
       },
       {
