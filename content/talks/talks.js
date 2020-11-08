@@ -17,12 +17,21 @@ export const talks = [
     year: "2020",
     talks: [
       {
+        title: "How does your website 'sound' like?",
+        conference: "DevFest Siberia",
+        date: "Dec 2020",
+        location: "Novosibirsk, Russia [Online]",
+        link: "https://gdg-siberia.com/",
+        video: "",
+        slides: "https://speakerdeck.com/bolonio/how-does-your-website-sound-like",
+      },
+      {
         title: "Testing Web Accessibility",
         conference: "Intersection conference",
         date: "Oct 2020",
         location: "Milano, Italy [Online]",
         link: "https://www.intersection-conference.eu/",
-        video: "",
+        video: "https://www.youtube.com/watch?v=Zc5T_Y2ueKY",
         slides: "https://speakerdeck.com/bolonio/testing-web-accessibility",
       },
       {
