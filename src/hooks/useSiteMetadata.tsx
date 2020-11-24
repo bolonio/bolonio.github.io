@@ -1,5 +1,5 @@
 import { graphql, useStaticQuery } from "gatsby"
-import { SiteMetadata } from "../utils/types"
+import { SiteMetadata } from "@utils/types"
 
 interface Props {
   site: {
@@ -31,6 +31,8 @@ const useSiteMetadata = () => {
             title
             slug
           }
+          languages
+          defaultLang
         }
       }
     }

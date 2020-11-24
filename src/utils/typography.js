@@ -28,32 +28,46 @@ Wordpress2016.overrideThemeStyles = () => {
       outlineOffset: `.5rem`,
     },
     h1: {
-      fontWeight: 600,
+      fontFamily:
+        "Mulish, -apple-system, BlinkMacSystemFont, Open Sans, sans-serif !important",
+      fontWeight: 900,
       lineHeight: 1,
       fontSize: `3rem`,
+      letterSpacing: "-1px",
     },
     h2: {
-      fontWeight: 600,
+      fontFamily:
+        "Mulish, -apple-system, BlinkMacSystemFont, Open Sans, sans-serif !important",
+      fontWeight: 900,
       lineHeight: 1.25,
       fontSize: `2rem`,
+      letterSpacing: "-1px",
       // backgroundImage: `linear-gradient(180deg,transparent 70%,rgba(35, 51, 61, .5) 0);`,
     },
     h3: {
+      fontFamily:
+        "Mulish, -apple-system, BlinkMacSystemFont, Open Sans, sans-serif !important",
       fontWeight: 400,
       lineHeight: 1.25,
       fontSize: `1.75rem`,
+      letterSpacing: "-1px",
     },
     h4: {
+      fontFamily:
+        "Mulish, -apple-system, BlinkMacSystemFont, Open Sans, sans-serif !important",
       fontWeight: 400,
       lineHeight: 1.25,
       fontSize: `1.5rem`,
-      letterSpacing: `inherit`,
       textTransform: `inherit`,
+      letterSpacing: "-1px",
     },
     h5: {
+      fontFamily:
+        "Mulish, -apple-system, BlinkMacSystemFont, Open Sans, sans-serif !important",
       fontWeight: 400,
       lineHeight: 1.25,
       fontSize: `1.5rem`,
+      letterSpacing: "-1px",
     },
     p: {
       fontSize: `1.25rem`,

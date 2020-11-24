@@ -1,6 +1,6 @@
 import React from "react"
 import styled from "styled-components"
-import { getFormattedDate } from "../utils/date"
+import { getFormattedDate } from "@utils/date"
 import { Link } from "gatsby"
 
 interface PostTitleProps {

@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from "react"
 import styled from "styled-components"
-import { TalkType } from "../utils/types"
+import { TalkType } from "@utils/types"
 
 interface TalkProps {
   talk: TalkType

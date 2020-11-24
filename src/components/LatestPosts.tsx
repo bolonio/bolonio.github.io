@@ -1,8 +1,8 @@
 import { PageRendererProps, Link } from "gatsby"
 import React, { FunctionComponent, Fragment } from "react"
-import { PostItem } from "../components/postItem"
+import { PostItem } from "@components/postItem"
 import styled from "styled-components"
-import useLatestPosts from "../hooks/useLatestPosts"
+import useLatestPosts from "@hooks/useLatestPosts"
 
 const SectionHeader = styled.div`
   display: flex;

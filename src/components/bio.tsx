@@ -1,8 +1,8 @@
 import React, { FunctionComponent } from "react"
 import styled from "styled-components"
-import { LayoutContent } from "./content"
-import useSiteMetadata from "../hooks/useSiteMetadata"
-import { BlueContainer } from "./blueContainer"
+import { LayoutContent } from "@components/content"
+import useSiteMetadata from "@hooks/useSiteMetadata"
+import { BlueContainer } from "@components/blueContainer"
 
 const BioText = styled.p`
   font-weight: 300;

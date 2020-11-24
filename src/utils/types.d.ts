@@ -2,12 +2,13 @@ export interface Post {
   id: string
   excerpt: string
   fields: PostFields
-  body: string
+  html: string
   frontmatter: PostFrontmatter
 }
 
 export interface PostFields {
   slug: string
+  langKey: string
 }
 
 export interface PostFrontmatter {
@@ -45,6 +46,8 @@ export interface SiteMetadata {
   twitterUser: string
   image: string
   navigation: Navigation[]
+  languages: string[]
+  defaultLang: string
 }
 
 interface Social {

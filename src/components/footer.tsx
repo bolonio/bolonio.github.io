@@ -1,20 +1,21 @@
 import React, { FunctionComponent } from "react"
 import styled from "styled-components"
-import { LayoutContent } from "./content"
-import InstagramIcon from "../images/instagram.svg"
-import TwitterIcon from "../images/twitter1.svg"
-import GithubIcon from "../images/github1.svg"
-import LinkedinIcon from "../images/linkedin.svg"
-import EmailIcon from "../images/email.svg"
+import { LayoutContent } from "@components/content"
+import InstagramIcon from "@images/instagram.svg"
+import TwitterIcon from "@images/twitter1.svg"
+import GithubIcon from "@images/github1.svg"
+import LinkedinIcon from "@images/linkedin.svg"
+import EmailIcon from "@images/email.svg"
 import { Link } from "gatsby"
-import useSiteMetadata from "../hooks/useSiteMetadata"
+import useSiteMetadata from "@hooks/useSiteMetadata"
+import Logo from "@images/logo_white.svg"
 
 const StyledFooter = styled.div`
   display: flex;
   justify-content: space-between;
+  align-items: center;
   font-weight: 400;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, Open Sans,
-    sans-serif !important;
+  font-family: Mulish, -apple-system, BlinkMacSystemFont, Open Sans, sans-serif !important;
   @media screen and (max-width: 700px) {
     flex-direction: column;
     margin-bottom: 20px;
@@ -22,12 +23,12 @@ const StyledFooter = styled.div`
 `
 
 const FooterContainer = styled.footer`
-  background-color: #f3f7f9;
+  background-color: #23333d;
   padding: 15px 0;
 `
 
 const FooterText = styled.span`
-  color: #23333d;
+  color: #ffffff;
   display: flex;
   align-items: center;
   @media screen and (max-width: 700px) {
@@ -37,24 +38,26 @@ const FooterText = styled.span`
 `
 
 const FooterIcon = styled.img`
-  fill: #23333d;
+  fill: #ffffff;
   margin: 0;
-  width: 20px;
+  width: 25px;
   @media screen and (max-width: 700px) {
     width: 30px;
   }
 `
 
 const FooterLink = styled(Link)`
-  color: #23333d;
+  color: #ffffff;
   margin-right: 20px;
   box-shadow: none;
+  font-family: Mulish, -apple-system, BlinkMacSystemFont, Open Sans, sans-serif !important;
+
   :hover {
-    box-shadow: 0 2px 0 0 #23333d;
+    box-shadow: 0 2px 0 0 #ffffff;
   }
   :focus {
     box-shadow: none;
-    outline: 3px solid #23333d;
+    outline: 3px solid #ffffff;
     outline-offset: 0.5rem;
   }
   @media screen and (max-width: 700px) {
@@ -63,15 +66,15 @@ const FooterLink = styled(Link)`
 `
 
 const FooterAnchorLink = styled.a`
-  color: #23333d;
+  color: #ffffff;
   margin-right: 20px;
   box-shadow: none;
   :hover {
-    box-shadow: 0 2px 0 0 #23333d;
+    box-shadow: 0 2px 0 0 #ffffff;
   }
   :focus {
     box-shadow: none;
-    outline: 3px solid #23333d;
+    outline: 3px solid #ffffff;
     outline-offset: 0.5rem;
   }
   @media screen and (max-width: 700px) {
@@ -87,7 +90,7 @@ const FooterIconLink = styled.a`
   :hover,
   :focus {
     box-shadow: none;
-    outline: 3px solid #23333d;
+    outline: 3px solid #ffffff;
     outline-offset: 0.5rem;
   }
 `
@@ -97,6 +100,16 @@ const FooterIconContainer = styled.div`
   justify-content: space-between;
 `
 
+const LogoImage = styled.img`
+  fill: #ffffff;
+  margin: 0;
+  width: 100px;
+  margin-right: 2rem;
+  @media screen and (max-width: 700px) {
+    width: 30px;
+  }
+`
+
 export const Footer: FunctionComponent = () => {
   const { social, email } = useSiteMetadata()
   return (
@@ -104,6 +117,7 @@ export const Footer: FunctionComponent = () => {
       <LayoutContent>
         <StyledFooter>
           <StyledFooter>
+            <LogoImage src={Logo} alt="Logo" />
             <FooterLink to="/privacy">Privacy Policy</FooterLink>
             <FooterAnchorLink href="/rss.xml">RSS</FooterAnchorLink>
           </StyledFooter>

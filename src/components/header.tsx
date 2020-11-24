@@ -1,8 +1,9 @@
 import React, { FunctionComponent } from "react"
 import styled from "styled-components"
 import { Link } from "gatsby"
-import { LayoutContent } from "./content"
-import useSiteMetadata from "../hooks/useSiteMetadata"
+import { LayoutContent } from "@components/content"
+import useSiteMetadata from "@hooks/useSiteMetadata"
+import Logo from "@images/logo.svg"
 
 const HeaderLogo = styled.span`
   font-size: 1.5rem;
@@ -12,10 +13,11 @@ const HeaderLogo = styled.span`
     display: none;
   }
 `
+
 const HeaderContainer = styled.header`
   background-color: #ffffff;
-  padding-top: 1.5rem;
-  padding-bottom: 1.5rem;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
 `
 
 const StyledNav = styled.nav`
@@ -26,11 +28,11 @@ const StyledNav = styled.nav`
 `
 
 const MenuLink = styled(Link)`
-  font-weight: 300;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, Open Sans,
-    sans-serif !important;
+  font-weight: 800;
+  font-family: Mulish, -apple-system, BlinkMacSystemFont, Open Sans, sans-serif !important;
+  letter-spacing: -1px;
   margin-right: 25px;
-  font-size: 1.25rem;
+  font-size: 1.5rem;
   text-decoration: none;
   box-shadow: none;
   color: #23333d;
@@ -51,19 +53,34 @@ const Menu = styled.div`
     justify-content: space-between;
   }
 `
+
+const LogoImage = styled.img`
+  fill: #23333d;
+  margin: 0;
+  width: 100px;
+  @media screen and (max-width: 700px) {
+    width: 30px;
+  }
+`
+
 export const Header: FunctionComponent = () => {
-  const { navigation } = useSiteMetadata()
+  const { navigation, languages } = useSiteMetadata()
   return (
     <HeaderContainer>
       <LayoutContent>
         <StyledNav>
-          <HeaderLogo>Adrián Bolonio</HeaderLogo>
+          <LogoImage src={Logo} alt="Logo" />
           <Menu>
             {navigation.map(item => (
               <MenuLink key={item.slug} to={item.slug}>
                 {item.title}
               </MenuLink>
             ))}
+            {/* languages.map((lang, i) => (
+              <MenuLink key={i} to={`/${lang}`}>
+                {lang}
+              </MenuLink>
+            )) */}
           </Menu>
         </StyledNav>
       </LayoutContent>

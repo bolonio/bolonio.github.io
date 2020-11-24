@@ -1,10 +1,12 @@
-import { PageRendererProps, Link } from "gatsby"
+import { PageRendererProps } from "gatsby"
 import React, { FunctionComponent } from "react"
 import styled from "styled-components"
-import { Content } from "../components/content"
-import useSiteMetadata from "../hooks/useSiteMetadata"
-import { Page, PageParagraph } from "../templates/Page"
-import { LatestPosts } from "../components/LatestPosts"
+import useSiteMetadata from "@hooks/useSiteMetadata"
+import { Paragraph } from "@components/Paragraph"
+import { LatestPosts } from "@components/LatestPosts"
+import introImage from "@images/intro2.png"
+import { Layout } from "@layouts/Layout"
+import { PageLayoutContent } from "@components/content"
 
 const Home: FunctionComponent<PageRendererProps> = ({ location }) => {
   const { bio, author } = useSiteMetadata()
@@ -39,7 +41,7 @@ const Home: FunctionComponent<PageRendererProps> = ({ location }) => {
     width: 1px;
   `
 
-  const BioParagraph = styled(PageParagraph)`
+  const BioParagraph = styled(Paragraph)`
     font-size: 1.5rem;
     margin-bottom: 3rem;
   `
@@ -51,11 +53,14 @@ const Home: FunctionComponent<PageRendererProps> = ({ location }) => {
   `
 
   return (
-    <Page location={location}>
+    <Layout location={location}>
       <VisuallyHiddenHeader>{author}</VisuallyHiddenHeader>
-      <Header>Hello</Header>
-      <BioParagraph>{bio}</BioParagraph>
-      <LatestPosts />
+      <img src={introImage} alt="" />
+      <PageLayoutContent>
+        <Header>Hello</Header>
+        <BioParagraph>{bio}</BioParagraph>
+        <LatestPosts />
+      </PageLayoutContent>
       {/* 
       <hr />
       <Section>
@@ -65,7 +70,7 @@ const Home: FunctionComponent<PageRendererProps> = ({ location }) => {
         </SectionHeader>
       </Section>
       */}
-    </Page>
+    </Layout>
   )
 }
 

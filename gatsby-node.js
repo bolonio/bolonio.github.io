@@ -5,12 +5,13 @@ const _ = require("lodash")
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
 
-  const blogPostTemplate = path.resolve(`./src/templates/blogPostTemplate.tsx`)
-  const tagTemplate = path.resolve("./src/templates/tagPageTemplate.tsx")
+  const BlogPostLayout = path.resolve(`./src/layouts/BlogPostLayout.tsx`)
+  const tagTemplate = path.resolve("./src/layouts/TagPageLayout.tsx")
+
   const result = await graphql(
     `
       {
-        postsGroup: allMdx(
+        postsGroup: allMarkdownRemark(
           sort: { fields: [frontmatter___date], order: DESC }
           limit: 1000
         ) {
@@ -18,6 +19,7 @@ exports.createPages = async ({ graphql, actions }) => {
             node {
               fields {
                 slug
+                langKey
               }
               frontmatter {
                 title
@@ -26,7 +28,7 @@ exports.createPages = async ({ graphql, actions }) => {
             }
           }
         }
-        tagsGroup: allMdx(limit: 2000) {
+        tagsGroup: allMarkdownRemark(limit: 2000) {
           group(field: frontmatter___tags) {
             fieldValue
           }
@@ -48,7 +50,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
     createPage({
       path: post.node.fields.slug,
-      component: blogPostTemplate,
+      component: BlogPostLayout,
       context: {
         slug: post.node.fields.slug,
         previous,
@@ -74,7 +76,7 @@ exports.createPages = async ({ graphql, actions }) => {
 exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions
 
-  if (node.internal.type === `Mdx`) {
+  if (node.internal.type === `MarkdownRemark` && node.internal.fieldOwners.slug !== 'gatsby-plugin-i18n') {
     const value = createFilePath({ node, getNode })
     createNodeField({
       name: `slug`,

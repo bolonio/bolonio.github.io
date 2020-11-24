@@ -1,71 +1,26 @@
+const siteMetadata = require("./src/data/siteMetadata")
+
 module.exports = {
-  siteMetadata: {
-    title: `Adrián Bolonio | Frontend Web Developer & Web Accessibility (a11y) advocate`,
-    author: `Adrián Bolonio`,
-    bio: `Hi, my name is Adrián Bolonio. I’m an experienced Team Lead, Frontend Developer, and Web Accessibility (a11y) advocate. I'm from Spain, but since 2012 I've been living and working in Vienna (Austria). When I’m not at the office I enjoy a good read, working my way through any delicious recipe, and indulging my love for travelling to new places.`,
-    description: `I’m an experienced Team Lead, Frontend Developer, and Web Accessibility (a11y) advocate.`,
-    siteUrl: `https://www.adrianbolonio.com`,
-    email: "bolonio85@gmail.com",
-    language: "en",
-    twitterUser: "@bolonio",
-    image: "/images/adrianbolonio.jpg",
-    social: {
-      twitter: `https://www.twitter.com/bolonio`,
-      github: `https://www.github.com/bolonio`,
-      linkedin: `https://www.linkedin.com/in/adrianbolonio`,
-      instagram: `https://www.instagram.com/bolonio`,
-    },
-    navigation: [
-      {
-        title: `Home`,
-        slug: `/`,
-      },
-      {
-        title: `Blog`,
-        slug: `/blog`,
-      },
-      {
-        title: `Talks`,
-        slug: `/talks`,
-      },
-      {
-        title: `About`,
-        slug: `/about`,
-      },
-    ],
-  },
+  siteMetadata,
   plugins: [
-    /*
     {
-      resolve: `gatsby-plugin-breadcrumb`,
+      resolve: `gatsby-plugin-alias-imports`,
       options: {
-        // useAutoGen: required 'true' to use autogen
-        useAutoGen: true,
-        // autoGenHomeLabel: optional 'Home' is default
-        autoGenHomeLabel: `Root`,
-        // exlude: optional, include this array to overwrite paths you don't want to
-        // generate breadcrumbs for.
-        exclude: [
-          `/dev-404-page/`,
-          `/404/`,
-          `/404.html`,
-          `/offline-plugin-app-shell-fallback/`,
+        alias: {
+          '@content': 'content',
+          '@components': 'src/components',
+          '@layouts': 'src/layouts',
+          '@hooks': 'src/hooks',
+          '@images': 'src/images',
+          '@data': 'src/data',
+          '@utils': 'src/utils',
+          '@styles': 'src/styles',
+        },
+        extensions: [
+          "tsx", "ts", "js", "json"
         ],
-        // crumbLabelUpdates: optional, update specific crumbLabels in the path
-        crumbLabelUpdates: [
-          {
-            pathname: "/book",
-            crumbLabel: "Books",
-          },
-        ],
-        // trailingSlashes: optional, will add trailing slashes to the end
-        // of crumb pathnames. default is false
-        trailingSlashes: true,
-        // usePathPrefix: optional, if you are using pathPrefix above
-        usePathPrefix: "/blog",
-      },
-    },
-    */
+      }
+    }, 
     {
       resolve: `gatsby-plugin-feed`,
       options: {
@@ -83,8 +38,8 @@ module.exports = {
         `,
         feeds: [
           {
-            serialize: ({ query: { site, allMdx } }) => {
-              return allMdx.edges.map(edge => {
+            serialize: ({ query: { site, allMarkdownRemark } }) => {
+              return allMarkdownRemark.edges.map(edge => {
                 return Object.assign({}, edge.node.frontmatter, {
                   description: edge.node.excerpt,
                   date: edge.node.frontmatter.date,
@@ -96,15 +51,16 @@ module.exports = {
             },
             query: `
             {
-              allMdx(sort: { fields: [frontmatter___date], order: DESC }) {
+              allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
                 edges {
                   node {
                     id
                     excerpt
                     fields {
                       slug
+                      langKey
                     }
-                    body
+                    html
                     frontmatter {
                       date(formatString: "MMMM DD, YYYY")
                       title
@@ -139,32 +95,32 @@ module.exports = {
         ],
       },
     },
-    /*
     {
-      resolve: "gatsby-plugin-i18n",
+      resolve: 'gatsby-plugin-i18n',
       options: {
-        langKeyDefault: "en",
-        useLangKeyLayout: false,
+        langKeyForNull: 'any',
+        langKeyDefault: 'en',
+        useLangKeyLayout: true,
+        pagesPaths: [`${__dirname}/src/pages`, `${__dirname}/content/blog`],
         markdownRemark: {
-          postPage: "src/templates/blogPostTemplate.js",
+          postPage: "src/layouts/BlogPostLayout.tsx",
           query: `
-            {
-              allMdx {
-                edges {
+          {
+              allMarkdownRemark {
+                  edges {
                   node {
-                    fields {
-                      slug,
-                      langKey
-                    }
+                      fields {
+                        slug,
+                        langKey
+                      }
                   }
-                }
+                  }
               }
-            }
-          `,
-        },
-      },
+          }
+          `
+        }
+      }
     },
-    */
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -187,10 +143,9 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-mdx`,
+      resolve: `gatsby-transformer-remark`,
       options: {
-        extensions: [".mdx", ".md"],
-        gatsbyRemarkPlugins: [
+        plugins: [
           {
             resolve: "gatsby-remark-code-titles",
             /*
@@ -286,7 +241,7 @@ module.exports = {
         trackingId: `UA-155221350-1`,
       },
     },
-    `gatsby-plugin-feed-mdx`,
+    `gatsby-plugin-feed`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -309,5 +264,13 @@ module.exports = {
     },
     `gatsby-plugin-typescript`,
     `gatsby-plugin-styled-components`,
+    {
+      resolve: `gatsby-plugin-google-fonts`,
+      options: {
+        fonts: [
+          "Mulish\:300,400,500,600,700,800,900"
+        ],
+      },
+    }
   ],
 }

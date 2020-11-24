@@ -1,8 +1,8 @@
 import { graphql, useStaticQuery } from "gatsby"
-import { Post } from "../utils/types"
+import { Post } from "@utils/types"
 
 interface Props {
-  allMdx: {
+  allMarkdownRemark: {
     edges: {
       node: Post
     }[]
@@ -12,15 +12,19 @@ interface Props {
 const useAllBlogPosts = () => {
   const data = useStaticQuery<Props>(graphql`
     query {
-      allMdx(sort: { fields: [frontmatter___date], order: DESC }) {
+      allMarkdownRemark(
+        sort: { fields: [frontmatter___date], order: DESC }
+        filter: { fields: { langKey: { regex: "/(en|any)/" } } }
+      ) {
         edges {
           node {
             id
             excerpt
             fields {
               slug
+              langKey
             }
-            body
+            html
             frontmatter {
               date(formatString: "MMMM DD, YYYY")
               title
@@ -43,7 +47,7 @@ const useAllBlogPosts = () => {
     }
   `)
 
-  return data.allMdx.edges
+  return data.allMarkdownRemark.edges
 }
 
 export default useAllBlogPosts

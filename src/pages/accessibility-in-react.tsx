@@ -1,10 +1,13 @@
 import { PageRendererProps } from "gatsby"
 import React, { FunctionComponent } from "react"
-import { PostItem } from "../components/postItem"
+import { PostItem } from "@components/postItem"
 import styled from "styled-components"
-import { LayoutContent } from "../components/content"
-import useA11yInReactBlogPosts from "../hooks/useA11yInReactBlogPosts"
-import { Page, PageParagraph } from "../templates/Page"
+import { LayoutContent, PageLayoutContent } from "@components/content"
+import useA11yInReactBlogPosts from "@hooks/useA11yInReactBlogPosts"
+import { PageLayout } from "@layouts/PageLayout"
+import { Layout } from "@layouts/Layout"
+import { PageHeading } from "@components/headings/headings"
+import { Paragraph } from "@components/Paragraph"
 
 const AccessibilityInReact: FunctionComponent<PageRendererProps> = ({
   location,
@@ -17,23 +20,26 @@ const AccessibilityInReact: FunctionComponent<PageRendererProps> = ({
   `
 
   return (
-    <Page
+    <Layout
       title="Accessibility in React"
       description="I write mainly about accessibility and frontend development"
       location={location}
     >
-      <PageParagraph>
-        Accessibility in React is a serie of articles to explain how to make
-        your React applications accessible.
-      </PageParagraph>
+      <PageLayoutContent>
+        <PageHeading>Accessibility in React</PageHeading>
+        <Paragraph>
+          Accessibility in React is a serie of articles to explain how to make
+          your React applications accessible.
+        </Paragraph>
 
-      <PostsGrid>
-        {posts.map((item, i) => (
-          <PostItem key={i} post={item.node} mode="horizontal" />
-        ))}
-      </PostsGrid>
-      {/* <span>HERE IT COMES THE PAGINATION</span> */}
-    </Page>
+        <PostsGrid>
+          {posts.map((item, i) => (
+            <PostItem key={i} post={item.node} mode="horizontal" />
+          ))}
+        </PostsGrid>
+        {/* <span>HERE IT COMES THE PAGINATION</span> */}
+      </PageLayoutContent>
+    </Layout>
   )
 }
 

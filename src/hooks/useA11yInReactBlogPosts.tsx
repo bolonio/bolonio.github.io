@@ -1,8 +1,8 @@
 import { graphql, useStaticQuery } from "gatsby"
-import { Post } from "../utils/types"
+import { Post } from "@utils/types"
 
 interface Props {
-  allMdx: {
+  allMarkdownRemark: {
     edges: {
       node: Post
     }[]
@@ -12,7 +12,7 @@ interface Props {
 const useA11yInReactBlogPosts = () => {
   const data = useStaticQuery<Props>(graphql`
     query {
-      allMdx(
+      allMarkdownRemark(
         filter: { frontmatter: { tags: { in: ["accessibility-in-react"] } } }
         sort: { fields: [frontmatter___date], order: DESC }
       ) {
@@ -22,8 +22,9 @@ const useA11yInReactBlogPosts = () => {
             excerpt
             fields {
               slug
+              langKey
             }
-            body
+            html
             frontmatter {
               date(formatString: "MMMM DD, YYYY")
               title
@@ -46,7 +47,7 @@ const useA11yInReactBlogPosts = () => {
     }
   `)
 
-  return data.allMdx.edges
+  return data.allMarkdownRemark.edges
 }
 
 export default useA11yInReactBlogPosts

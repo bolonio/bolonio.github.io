@@ -1,8 +1,8 @@
 import React from "react"
 import styled from "styled-components"
 import { Link } from "gatsby"
-import { getFormattedDate } from "../utils/date"
-import { Post } from "../utils/types"
+import { getFormattedDate } from "@utils/date"
+import { Post } from "@utils/types"
 
 interface PostItemProps {
   mode?: "horizontal" | "vertical"

@@ -19,3 +19,11 @@ export const LayoutContent = styled.div`
     width: 90%;
   }
 `
+
+export const PageLayoutContent = styled(LayoutContent)`
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  @media screen and (max-width: 1180px) {
+    padding-top: 0px;
+  }
+`
