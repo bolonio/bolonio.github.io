@@ -6,7 +6,7 @@ import useAllBlogPosts from "@hooks/useAllBlogPosts"
 import { Layout } from "@layouts/Layout"
 import { PageLayoutContent } from "@components/content"
 import { PageHeading } from "@components/headings/headings"
-import introImage from "@images/blog.png"
+import introImage from "@images/blog.jpg"
 
 const Blog: FunctionComponent<PageRendererProps> = ({ location }) => {
   const posts = useAllBlogPosts()

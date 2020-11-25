@@ -4,7 +4,7 @@ import styled from "styled-components"
 import useSiteMetadata from "@hooks/useSiteMetadata"
 import { Paragraph } from "@components/Paragraph"
 import { LatestPosts } from "@components/LatestPosts"
-import introImage from "@images/intro2.png"
+import introImage from "@images/intro.jpg"
 import { Layout } from "@layouts/Layout"
 import { PageLayoutContent } from "@components/content"
 

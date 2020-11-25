@@ -7,7 +7,7 @@ import styled from "styled-components"
 import { PageLayoutContent } from "@components/content"
 import { PageHeading } from "@components/headings/headings"
 import { Layout } from "@layouts/Layout"
-import introImage from "@images/about.png"
+import introImage from "@images/about.jpg"
 
 const BioParagraph = styled(Paragraph)`
   font-size: 1.5rem;

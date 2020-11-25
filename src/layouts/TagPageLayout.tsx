@@ -6,7 +6,7 @@ import { PostItem } from "@components/postItem"
 import { PageLayoutContent } from "@components/content"
 import { PageHeading } from "@components/headings/headings"
 import { Layout } from "@layouts/Layout"
-import introImage from "@images/blog.png"
+import introImage from "@images/blog.jpg"
 
 interface TagPageTemplateProps extends PageProps {
   data: {

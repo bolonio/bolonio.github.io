@@ -7,7 +7,7 @@ import { Talk } from "@components/Talk"
 import { Layout } from "@layouts/Layout"
 import { PageLayoutContent } from "@components/content"
 import { PageHeading } from "@components/headings/headings"
-import introImage from "@images/talks.png"
+import introImage from "@images/talks.jpg"
 
 const YearHeader = styled.h2`
   margin: 0;
