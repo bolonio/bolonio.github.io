@@ -35,7 +35,9 @@ const TagPageTemplate: FunctionComponent<TagPageTemplateProps> = ({
     <Layout title={`Tag: ${tag} (${posts.length} posts)`} location={location}>
       <img src={introImage} alt="" />
       <PageLayoutContent>
-        <PageHeading>{`Tag: ${tag} (${posts.length} posts)`}</PageHeading>
+        <PageHeading>{`Tag: ${tag} (${posts.length} ${
+          posts.length > 1 ? "posts" : "post"
+        })`}</PageHeading>
         <PostsGrid>
           {posts.map((item, i) => (
             <PostItem key={i} post={item.node} mode="horizontal" />
@@ -60,8 +62,7 @@ export const pageQuery = graphql`
           id
           excerpt
           fields {
-            slug
-            langKey
+            locale
           }
           html
           frontmatter {

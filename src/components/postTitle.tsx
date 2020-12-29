@@ -2,6 +2,7 @@ import React from "react"
 import styled from "styled-components"
 import { getFormattedDate } from "@utils/date"
 import { Link } from "gatsby"
+import { useIntl } from "gatsby-plugin-intl"
 
 interface PostTitleProps {
   title: string
@@ -41,20 +42,24 @@ const PostTagLink = styled(Link)`
   }
 `
 
-export const PostTitle = (props: PostTitleProps) => (
-  <StyledHeader>
-    <StyledH1>{props.title}</StyledH1>
-    <StyledDate>{getFormattedDate(props.date)}</StyledDate>
-    <PostTagsContainer>
-      {props.tags.map((tag, i) => (
-        <PostTagLink
-          key={i}
-          to={`/blog/tag/${tag}`}
-          aria-label={`See all posts with the tag ${tag}`}
-        >
-          #{tag}
-        </PostTagLink>
-      ))}
-    </PostTagsContainer>
-  </StyledHeader>
-)
+export const PostTitle = (props: PostTitleProps) => {
+  const intl = useIntl()
+
+  return (
+    <StyledHeader>
+      <StyledH1>{props.title}</StyledH1>
+      <StyledDate>{getFormattedDate(props.date, intl.locale)}</StyledDate>
+      <PostTagsContainer>
+        {props.tags.map((tag, i) => (
+          <PostTagLink
+            key={i}
+            to={`/${intl.locale}/blog/tag/${tag}`}
+            aria-label={`See all posts with the tag ${tag}`}
+          >
+            #{tag}
+          </PostTagLink>
+        ))}
+      </PostTagsContainer>
+    </StyledHeader>
+  )
+}

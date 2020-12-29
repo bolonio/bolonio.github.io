@@ -17,6 +17,7 @@
         "noUnusedParameters": true,
         "paths": {
             "@content/*": ["content/*"],
+            "@context/*": ["src/context/*"],
             "@components/*": ["src/components/*"],
             "@layouts/*": ["src/layouts/*"],
             "@hooks/*": ["src/hooks/*"],
@@ -31,6 +32,9 @@
         "skipLibCheck": true,
         "sourceMap": true,
         "strict": true,
+        "typeRoots": [
+            "./src/types"
+        ]
     },
     "exclude": ["node_modules"],
     "include": ["**/*.ts", "**/*.tsx"]

@@ -42,6 +42,7 @@ const ContactLink = styled.a`
     outline-offset: 0.5rem;
   }
 `
+/*
 const BlogPostThanks: FunctionComponent = () => (
   <p>
     Thank you for reading this article. If you have any question to ask, any
@@ -56,6 +57,7 @@ const BlogPostThanks: FunctionComponent = () => (
     </ContactLink>
   </p>
 )
+*/
 
 const BlogPostLayout: FunctionComponent<BlogPostLayoutProps> = ({
   location,
@@ -68,7 +70,7 @@ const BlogPostLayout: FunctionComponent<BlogPostLayoutProps> = ({
         <SEO
           title={post.frontmatter.title}
           description={post.frontmatter.description || post.excerpt}
-          image={post.frontmatter.image.childImageSharp.resize.src}
+          image={post.frontmatter.image?.childImageSharp.resize.src}
           imageAlt={post.frontmatter.imageAlt}
           canonical={location.href}
         />
@@ -79,15 +81,17 @@ const BlogPostLayout: FunctionComponent<BlogPostLayoutProps> = ({
             tags={post.frontmatter.tags}
           />
         </Article>
-        <Article>
-          <img
-            alt={post.frontmatter.imageAlt}
-            src={post.frontmatter.image.childImageSharp.resize.src}
-          />
-        </Article>
+        {post.frontmatter.image && post.frontmatter.imageAlt && (
+          <Article>
+            <img
+              alt={post.frontmatter.imageAlt}
+              src={post.frontmatter.image.childImageSharp.resize.src}
+            />
+          </Article>
+        )}
         <Article>
           <section dangerouslySetInnerHTML={{ __html: post.html }} />
-          <BlogPostThanks />
+          {/* <BlogPostThanks /> */}
           {/*  HERE COMES THE GO TO TOP BUTTON */}
         </Article>
         {/*  HERE COMES THE RELATED BLOGS POST */}
@@ -99,12 +103,20 @@ const BlogPostLayout: FunctionComponent<BlogPostLayoutProps> = ({
 export default BlogPostLayout
 
 export const pageQuery = graphql`
-  query BlogPostBySlug($slug: String!) {
-    markdownRemark(fields: { slug: { eq: $slug } }) {
+  query BlogPostBySlug($locale: String!, $title: String!) {
+    markdownRemark(
+      frontmatter: { title: { eq: $title } }
+      fields: { locale: { eq: $locale } }
+    ) {
       id
       excerpt(pruneLength: 160)
+      fields {
+        slug
+        locale
+      }
       html
       frontmatter {
+        lang
         date(formatString: "MMMM DD, YYYY")
         title
         description

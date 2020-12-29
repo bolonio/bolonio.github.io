@@ -1,25 +1,27 @@
 ---
+lang: es
 title: Testeando Accesibilidad Web
-date: 2020-09-28
+date: 2020-10-13
 description: a accesibilidad web no se trata solo de navegación por teclado, contraste de color, o lectores de pantalla. La accesibilidad es un indicador perfecto de la calidad de un sitio web. Cuando un sitio web es accesible, generalmente significa que es inclusivo, usable, ofrece una excelente experiencia de usuario para todos, y además es rápido.
-image: ramps.jpeg
-imageAlt: Cuatro fotos de rampas que deberían ser accesibles y no lo son
+image: testeando-intro.png
+imageAlt: Imagen decorativa con dos capturas de pantalla y el titulo del articulo, "Testeando Accesibilidad Web"
 tags:
   - accesibilidad
+  - testing
+  - desarrollo
 ---
 
-La accesibilidad web no se trata solo de navegación por teclado, contraste de color, o lectores de pantalla. La accesibilidad es un indicador perfecto de la calidad de un sitio web.
-Cuando un sitio web es accesible, generalmente significa que es inclusivo, usable, ofrece una excelente experiencia de usuario para todos, y además es rápido.
-
-![Cuatro fotos de rampas que deberían ser accesibles y no lo son"](./ramps.jpeg)
+> Este artículo fue originalmente publicado en [Octuweb](https://octuweb.com/testeando-accesibilidad-web/) el 13 Octubre de 2020.
 
 ¿Por qué es tan obvio en el mundo real que estas cuatro rampas son completamente inaccesibles?.
 Es muy probable que estas rampas fueron construidas por personas sin discapacidades, o quizás nadie pensó en el usuario. Incluso podríamos pensar que ni siquiera se realizaron tests básicos de usabilidad, durante la fase de diseño, ni en la fase de construcción.
 Pero espero que estéis de acuerdo conmigo en que parece claro y obvio, que una persona discapacitada tendré series problemas a la hora de usar cualquiera de esas rampas “accesibles”.
 
+![Cuatro fotos de rampas que deberían ser accesibles y no lo son](./ramps.jpeg)
+
 Pero, ¿cómo podríamos trasladar esta realidad al mundo online?. A diferencia de los ejemplos anteriores, la mayoría de nosotros, usuarios sin discapacidad visual, tendríamos dificultades en identificar si un sitio web es accesible o no.
 
-Vamos a verlo mejor con un ejemplo. Imaginad que visitáis vuestra tienda online favorita, y llamas a atención al cliente porque no encontráis vuestra últimas compras, o quizás queréis cambiar vuestra dirección de correo.
+Vamos a verlo mejor con un ejemplo. Imagina que visitas tu tienda online favorita, y llamas a atención al cliente porque no encuentras tus últimas compras, o quizás quieres cambiar tu dirección de correo.
 Una respuesta típica podría ser “debe hacer clic en el botón en la esquina superior derecha”, o “debe hacer clic en el botón con el icono de un sobre”.
 El problema es que para una persona con discapacidad visual, por ejemplo ciega, no existe la esquina superior derecha o el botón con el icono de un sobre. Situaciones como ésta son las que tenemos que tener en cuenta cuando desarrollemos un sitio web.
 
@@ -39,7 +41,7 @@ pero a menudo olvidamos asegurarnos de que el código que escribimos siga las "W
 Los tests automatizados de accesibilidad web pueden liberar a nuestro equipo de QA de los tests manuales de cada parte de nuestra aplicación, pero, no pueden hacer que nuestro sitio sea accesible de forma automática y mágica.
 Deberíamos considerar los tests automatizados de accesibilidad web como un paso dentro de un proceso de testeo mayor. No podemos olvidar que solo el 20-50% de los problemas de accesibilidad pueden ser detectados mediante tests automatizados.
 
-Aquí teneis mis consejos a la hora de testear una aplicación o sitio web en busca de vulnerabilidades de accesibilidad web.
+Aquí tienes mis consejos a la hora de testear una aplicación o sitio web en busca de vulnerabilidades de accesibilidad web.
 
 ## Testea mientras desarrollas
 
@@ -50,7 +52,7 @@ son muy útiles para encontrar posibles vulnerabilidades de accesibilidad en tu 
 $ npm install react-axe --save-dev
 ```
 
-Asegurate de importar la librería solo si no estás en producción, porque harás todas esas vulnerabilidades públicas.
+Asegurate de importar la librería solo si no estás en producción, porque expondrías todas esas vulnerabilidades publicamente.
 
 ```js:title=IconAccessibility.js
 if (process.env.NODE_ENV !== "production") {
@@ -66,7 +68,7 @@ una fuente de documentación completa con información detallada sobre el proble
 
 ## Usa las herramientas de desarrollo del navegador
 
-Otra gran herramienta que deberías usar es el "color picker" de Google Chrome. Si inspecciones un elemento en tu sitio web y haces click en el cuadro de color delante del código HEX de color en el inspecto de CSS aparecerá una ventana flotante con información de ese color.
+Otra gran herramienta que deberías usar es el "color picker" de Google Chrome. Si inspeccionas un elemento en tu sitio web y haces click en el cuadro de color delante del código HEX de color en el inspecto de CSS aparecerá una ventana flotante con información de ese color.
 Verás la puntuación del ratio de contraste de ese color con el fondo donde esté colocado (texto, botón, ...etc) y podrás ver si pasa los tests AA y AAA de ratio de color.
 Además podrás ver qué colores pasan el test mirando las lineas que aparecen en la palete de colores.
 
@@ -75,7 +77,7 @@ Además podrás ver qué colores pasan el test mirando las lineas que aparecen e
 ## Usa linters
 
 Un linter es una herramienta que analiza el código fuente para encontrar posibles errores, problemas de sintaxis, y vulnerabilidades.
-Si utilizas eslinter en tu aplicación, puede incluir reglas de accesibilidad añadiendo [eslint-plugin-jsx-a11y](https://github.com/evcohen/eslint-plugin-jsx-a11y) a tu aplicación.
+Si utilizas eslinter en tu aplicación, puedes incluir reglas de accesibilidad añadiendo [eslint-plugin-jsx-a11y](https://github.com/evcohen/eslint-plugin-jsx-a11y) a tu aplicación.
 
 ```bash
 $ npm install eslint-plugin-jsx-a11y --save-dev
@@ -95,7 +97,7 @@ $ npm install eslint-plugin-jsx-a11y --save-dev
 
 Tendemos a olvidar que escribir tests unitarios es parte del proceso de desarrollo y no un proceso posterior.
 Escribir tus propios tests unitarios automatizados es la mejor manera de encontrar errores y vulnerabilidades en tu código.
-Si utilizas [jest](https://jestjs.io/), puede crear tus propios tests unitarios de accesibilidad con [jest-axe](https://github.com/nickcolley/jest-axe), una herramienta de la familia de herramientas axe.
+Si utilizas [jest](https://jestjs.io/), puedes crear tus propios tests unitarios de accesibilidad con [jest-axe](https://github.com/nickcolley/jest-axe), una herramienta de la familia de herramientas axe.
 
 ```bash
 $ npm install jest-axe --save-dev
@@ -122,7 +124,7 @@ Si utilizadas un proceso de integración continua (CI/CD), deberías incluir no 
 Así podrás detectar las vulnerabilidades que pasaste por alto durante el proceso de crear y lanzar tu sitio web a producción, evitando lanzar código con errores y un sitio no accesible.
 Además, podrás utilizar los resultados de estos tests automatizados para crear informes para tu equipo de producto y desarrollo.
 
-Aquí tenéis tres herramientas para generar tests automatizados de accesibilidad:
+Aquí tienes tres herramientas para generar tests automatizados de accesibilidad:
 
 - [axe-cli](https://github.com/dequelabs/axe-cli)
 - [pa11y](http://pa11y.org/)
@@ -134,7 +136,7 @@ $ npm install pa11y -g
 $ npm install lighthouse -g
 ```
 
-Después de instalarlas en vuestra máquina, podéis ejecutarlas en la terminal con a URL del sitio web que queráis testear.
+Después de instalarlas en tu máquina, puedes ejecutarlas en la terminal con a URL del sitio web que quieras testear.
 
 ```bash
 $ axe http://www.adrianbolonio.com
@@ -144,12 +146,11 @@ $ pa11y http://www.adrianbolonio.com
 $ lighthouse http://www.adrianbolonio.com
 ```
 
-Son my parecidas entre ellas, así que mi recomendación es que juguéis con todas, y que uséis las que mejor os convenga en cada momento, incluso podéis usar las tres juntas.
+Son my parecidas entre ellas, así que mi recomendación es que juegues con todas, y que uses las que mejor te convenga en cada momento, incluso puedes usar las tres juntas.
 
 ## Haz tests manuales y de simulación
 
-Como dije anteriormente, no podemos olvidar que solo el 20-50% de los problemas de accesibilidad pueden ser detectados mediante tests automatizados,
-por lo que debemos considerar los tests automatizados de accesibilidad web como un paso dentro de un proceso de testeo mayor donde los tests manuales son tan importantes como los tests automatizados.
+Como dije anteriormente, no podemos olvidar que solo el 20-50% de los problemas de accesibilidad pueden ser detectados mediante tests automatizados, por lo que debemos considerar los tests automatizados de accesibilidad web como un paso dentro de un proceso de testeo mayor donde los tests manuales son tan importantes como los tests automatizados.
 
 Las extensiones de navegador que uso a diario son:
 
@@ -163,7 +164,7 @@ Las extensiones de navegador que uso a diario son:
 - [Funkify](https://www.funkify.org)
 - [Totally Automated Accessibility Scanner](https://github.com/Skeletonxf/totally-automated-a11y-scanner)
 
-Además de usar extensiones de navegador, os recomiendo usar el lector de pantalla que viene pre-instalado en vuestro sistema operativo (Voiceover en Mac, Narrator en Windows, y Orca en Linux).
+Además de usar extensiones de navegador, te recomiendo usar el lector de pantalla que viene pre-instalado en tu sistema operativo (Voiceover en Mac, Narrator en Windows, y Orca en Linux).
 
 ## La accesibilidad web no es una “funcionalidad”
 
@@ -172,7 +173,8 @@ Además de usar extensiones de navegador, os recomiendo usar el lector de pantal
 Tenemos que entender que la responsabilidad de crear sitios web accesibles no pertenece solamente a los desarrolladores o testers, sino a todo el equipo, incluidos jefes de proyecto o diseñadores de interfaz y experiencia del usuario (UX/UI)
 
 **La accesibilidad web no es una “funcionalidad”, porque ninguna discapacidad es una elección.**
-Me gustaría dejaros con una frase, que en mi opinión representa los valores de accesibilidad que los desarrolladores deberíamos tener.
+
+Me gustaría dejarte con una frase, que en mi opinión representa los valores de accesibilidad que los desarrolladores deberíamos tener.
 
 > "No se trata solo de que los usuarios discapacitados puedan acceder a tu sitio web, se trata de que todos puedan acceder a tu sitio web".
 >
@@ -180,4 +182,4 @@ Me gustaría dejaros con una frase, que en mi opinión representa los valores de
 >
 > Trenton Moss, Owner of Webcredible Consultancy Firm, UK
 
----
+You can read about testing web accessibility in english in my article ["Testing Web Accessibility"](/en/testing-web-accessibility-part-1)

@@ -31,8 +31,10 @@ const useSiteMetadata = () => {
             title
             slug
           }
-          languages
-          defaultLang
+          footer {
+            title
+            slug
+          }
         }
       }
     }

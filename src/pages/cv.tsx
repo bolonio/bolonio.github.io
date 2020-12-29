@@ -1,54 +1,90 @@
 import { PageRendererProps } from "gatsby"
 import React, { FunctionComponent } from "react"
-import useSiteMetadata from "@hooks/useSiteMetadata"
-import { ContactLink } from "@layouts/PageLayout"
 import { Paragraph } from "@components/Paragraph"
 import styled from "styled-components"
 import { PageLayoutContent } from "@components/content"
 import { PageHeading } from "@components/headings/headings"
 import { Layout } from "@layouts/Layout"
-import introImage from "@images/about.jpg"
+import introImage from "@images/intro3.jpg"
+import { JobItem } from "@components/cv/jobItem"
+import { EducationItem } from "@components/cv/educationItem"
+import { cv } from "@content/cv/cv"
+import { EducationItemType, JobItemType, LanguageItemType } from "@utils/cv"
+import Box from "@components/core/Box"
+import { LanguageItem } from "@components/cv/languageItem"
+import { FormattedMessage, useIntl } from "gatsby-plugin-intl"
+import { ContactCV } from "@components/cv/ContactCV"
 
 const BioParagraph = styled(Paragraph)`
   font-size: 1.5rem;
   margin-bottom: 3rem;
 `
 
+const CVHeading = styled.h2`
+  font-size: 2.5rem;
+`
+
 const About: FunctionComponent<PageRendererProps> = ({ location }) => {
-  const { bio } = useSiteMetadata()
+  const intl = useIntl()
   return (
-    <Layout title="About me" location={location}>
-      <img src={introImage} alt="" />
+    <Layout title="CV" location={location}>
+      <img
+        src={introImage}
+        alt={intl.formatMessage({ id: "PictureOfMeAlt" })}
+      />
       <PageLayoutContent>
-        <PageHeading>CV</PageHeading>
-        <BioParagraph>{bio}</BioParagraph>
+        <PageHeading>Adrián Bolonio</PageHeading>
+        <BioParagraph>
+          <FormattedMessage id={"FullBio"} />
+        </BioParagraph>
 
-        <Paragraph>
-          The best way to contact me is either via my{" "}
-          <ContactLink href="https://twitter.com/bolonio" rel="noopener me">
-            Twitter
-          </ContactLink>{" "}
-          or you can{" "}
-          <ContactLink href="mailto:adrian.bolonio@gmail.com" rel="me">
-            send me an email.
-          </ContactLink>
-        </Paragraph>
+        <Box display="flex" flexDirection={["column", "column", "row"]}>
+          <Box flex="1 1 33%" marginRight={4}>
+            <CVHeading>
+              <FormattedMessage id={"Contact"} />
+            </CVHeading>
+            <hr />
+            <ContactCV />
+            <CVHeading>
+              <FormattedMessage id={"Languages"} />
+            </CVHeading>
+            <hr />
+            {cv.languages.map((language: LanguageItemType, i: number) => (
+              <LanguageItem key={i} language={language} />
+            ))}
+          </Box>
+          <Box display="flex" flex="1 1 100%" flexDirection="column">
+            <Box>
+              <CVHeading>
+                <FormattedMessage id={"Job Experience"} />
+              </CVHeading>
+              <hr />
+              {cv.jobs.map((job: JobItemType, i: number) => (
+                <JobItem key={i} job={job} />
+              ))}
+            </Box>
 
-        <Paragraph>
-          If you’d like me to speak at your conference, feel free to{" "}
-          <ContactLink
-            href="mailto:adrian.bolonio@gmail.com?subject=We would you to speak at our conference"
-            rel="me"
-          >
-            send me an email
-          </ContactLink>
-          , but please include the dates and location of the conference, the
-          type of conference (the topic of the conference, the type of audience,
-          the number of attendees, the number of tracks), the type of the talk
-          (keynote, workshop, panel, lightning talk), and if you can cover
-          travel and accommodation costs, and the accessibility details of the
-          venue.
-        </Paragraph>
+            {/* 
+            <Box>
+              <CVHeading>
+                <FormattedMessage id={"Projects & Publications"} />
+              </CVHeading>
+              <hr />
+              <span>project</span>
+            </Box>
+            */}
+
+            <Box>
+              <CVHeading>
+                <FormattedMessage id={"Education"} />
+              </CVHeading>
+              <hr />
+              {cv.education.map((education: EducationItemType, i: number) => (
+                <EducationItem key={i} education={education} />
+              ))}
+            </Box>
+          </Box>
+        </Box>
       </PageLayoutContent>
     </Layout>
   )

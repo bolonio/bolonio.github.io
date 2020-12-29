@@ -8,6 +8,7 @@ import { Layout } from "@layouts/Layout"
 import { PageLayoutContent } from "@components/content"
 import { PageHeading } from "@components/headings/headings"
 import introImage from "@images/talks.jpg"
+import { FormattedMessage, useIntl } from "gatsby-plugin-intl"
 
 const YearHeader = styled.h2`
   margin: 0;
@@ -20,26 +21,25 @@ const TalkContainer = styled.div`
 `
 
 const Talks: FunctionComponent<PageRendererProps> = ({ location }) => {
+  const intl = useIntl()
   return (
-    <Layout title="My Talks" location={location}>
-      {/* 
-      <Paragraph>
-        but please include the dates and location of the conference, the type of
-        conference (the topic of the conference, the type of audience, the
-        number of attendees, the number of tracks), the type of the talk
-        (keynote, workshop, panel, lightning talk), and if you can cover travel
-        and accommodation costs, and the accessibility details of the venue.
-      </Paragraph>
-      */}
-      <img src={introImage} alt="" />
+    <Layout title={intl.formatMessage({ id: "Talks" })} location={location}>
+      <img
+        src={introImage}
+        alt={intl.formatMessage({ id: "PictureOfMeAlt" })}
+      />
       <PageLayoutContent>
-        <PageHeading>Talks</PageHeading>
-        {talks.map((talk: TalksType, i) => (
+        <PageHeading>
+          <FormattedMessage id={"Talks"} />
+        </PageHeading>
+
+        {talks.map((talk: TalksType, i: number) => (
           <Fragment>
             <YearHeader key={i}>{talk.year}</YearHeader>
+            <hr />
             <TalkContainer>
-              {talk.talks.map((talk: TalkType, i) => (
-                <Talk talk={talk} />
+              {talk.talks.map((talk: TalkType, i: number) => (
+                <Talk key={i} talk={talk} />
               ))}
             </TalkContainer>
           </Fragment>

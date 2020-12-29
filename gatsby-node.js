@@ -4,10 +4,8 @@ const _ = require("lodash")
 
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
-
   const BlogPostLayout = path.resolve(`./src/layouts/BlogPostLayout.tsx`)
   const tagTemplate = path.resolve("./src/layouts/TagPageLayout.tsx")
-
   const result = await graphql(
     `
       {
@@ -19,11 +17,12 @@ exports.createPages = async ({ graphql, actions }) => {
             node {
               fields {
                 slug
-                langKey
+                locale
               }
               frontmatter {
                 title
                 tags
+                lang
               }
             }
           }
@@ -41,25 +40,28 @@ exports.createPages = async ({ graphql, actions }) => {
     throw result.errors
   }
 
-  // Create blog posts pages.
+  // Create blog posts pages
   const posts = result.data.postsGroup.edges
-
-  posts.forEach((post, index) => {
-    const previous = index === posts.length - 1 ? null : posts[index + 1].node
-    const next = index === 0 ? null : posts[index - 1].node
-
+  posts.forEach(post => {
+    const locale = post.node.fields.locale
+    const slug = post.node.fields.slug
+    const title = post.node.frontmatter.title
+    const lang = post.node.frontmatter.lang
+    // console.debug(">>> locale", locale)
+    console.debug(">>> Creating post...", slug)
     createPage({
-      path: post.node.fields.slug,
+      path: slug,
       component: BlogPostLayout,
       context: {
-        slug: post.node.fields.slug,
-        previous,
-        next,
+        slug: slug,
+        locale,
+        title,
+        lang,
       },
     })
   })
 
-  // Create tag pages.
+  // Create tag pages
   const tags = result.data.tagsGroup.group
 
   tags.forEach(tag => {
@@ -75,13 +77,49 @@ exports.createPages = async ({ graphql, actions }) => {
 
 exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions
-
-  if (node.internal.type === `MarkdownRemark` && node.internal.fieldOwners.slug !== 'gatsby-plugin-i18n') {
+  if (node.internal.type === `MarkdownRemark`) {
     const value = createFilePath({ node, getNode })
+    createNodeField({ node, name: `locale`, value: "en" })
     createNodeField({
       name: `slug`,
       node,
       value,
     })
   }
+}
+
+exports.onCreatePage = ({ page, actions }) => {
+  console.debug(">>> Creating page...", page.path)
+  /*
+  const { createPage, deletePage } = actions
+  // console.debug("onCreatePage lang", page)
+  if (page.component.includes("BlogPostLayout")) {
+    deletePage(page)
+    if (page.context.lang === page.context.language) {
+      console.debug(">>>> onCreatePage page", page.context.lang)
+      const path = page.path.replace("/index.es", "")
+      console.debug(">>>> onCreatePage path", path)
+      const slug = page.context.slug.replace("/index.es", "")
+      console.debug(">>>> onCreatePage slug", slug)
+      // console.debug(">>>> onCreatePage page", page)
+      const newPage = {
+        ...page,
+        path: path,
+        context: {
+          ...page.context,
+          slug: slug,
+          intl: {
+            ...page.context.intl,
+            originalPath: path,
+          },
+        },
+      }
+      console.debug(">>>> onCreatePage page", newPage)
+      createPage(newPage)
+      console.debug(
+        ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
+      )
+    }
+  }
+  */
 }

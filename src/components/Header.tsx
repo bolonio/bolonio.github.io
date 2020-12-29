@@ -4,15 +4,8 @@ import { Link } from "gatsby"
 import { LayoutContent } from "@components/content"
 import useSiteMetadata from "@hooks/useSiteMetadata"
 import Logo from "@images/logo.svg"
-
-const HeaderLogo = styled.span`
-  font-size: 1.5rem;
-  font-weight: 300;
-  color: #23333d;
-  @media screen and (max-width: 700px) {
-    display: none;
-  }
-`
+import { FormattedMessage, useIntl } from "gatsby-plugin-intl"
+import { LanguageSelector } from "./LanguageSelector"
 
 const HeaderContainer = styled.header`
   background-color: #ffffff;
@@ -37,6 +30,11 @@ const MenuLink = styled(Link)`
   box-shadow: none;
   color: #23333d;
 
+  @media screen and (max-width: 700px) {
+    font-size: 1.25rem;
+    margin-right: 15px;
+  }
+
   :hover {
     box-shadow: 0 2px 0 0 #23333d;
   }
@@ -47,6 +45,7 @@ const MenuLink = styled(Link)`
 `
 
 const Menu = styled.div`
+  display: flex;
   @media screen and (max-width: 700px) {
     display: flex;
     width: 100%;
@@ -59,28 +58,26 @@ const LogoImage = styled.img`
   margin: 0;
   width: 100px;
   @media screen and (max-width: 700px) {
+    display: none;
     width: 30px;
   }
 `
 
 export const Header: FunctionComponent = () => {
-  const { navigation, languages } = useSiteMetadata()
+  const { navigation } = useSiteMetadata()
+  const intl = useIntl()
   return (
     <HeaderContainer>
       <LayoutContent>
         <StyledNav>
-          <LogoImage src={Logo} alt="Logo" />
+          <LogoImage src={Logo} alt="Adrian Bolonio Logo" />
           <Menu>
             {navigation.map(item => (
-              <MenuLink key={item.slug} to={item.slug}>
-                {item.title}
+              <MenuLink key={item.slug} to={`/${intl.locale}/${item.slug}`}>
+                <FormattedMessage id={item.title} />
               </MenuLink>
             ))}
-            {/* languages.map((lang, i) => (
-              <MenuLink key={i} to={`/${lang}`}>
-                {lang}
-              </MenuLink>
-            )) */}
+            <LanguageSelector />
           </Menu>
         </StyledNav>
       </LayoutContent>

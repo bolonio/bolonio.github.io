@@ -4,23 +4,31 @@ module.exports = {
   siteMetadata,
   plugins: [
     {
+      resolve: `gatsby-plugin-intl`,
+      options: {
+        path: `${__dirname}/src/data/intl`,
+        languages: [`en`, `es`],
+        defaultLanguage: `en`,
+        redirect: true,
+      },
+    },
+    {
       resolve: `gatsby-plugin-alias-imports`,
       options: {
         alias: {
-          '@content': 'content',
-          '@components': 'src/components',
-          '@layouts': 'src/layouts',
-          '@hooks': 'src/hooks',
-          '@images': 'src/images',
-          '@data': 'src/data',
-          '@utils': 'src/utils',
-          '@styles': 'src/styles',
+          "@content": "content",
+          "@context": "src/context",
+          "@components": "src/components",
+          "@layouts": "src/layouts",
+          "@hooks": "src/hooks",
+          "@images": "src/images",
+          "@data": "src/data",
+          "@utils": "src/utils",
+          "@styles": "src/styles",
         },
-        extensions: [
-          "tsx", "ts", "js", "json"
-        ],
-      }
-    }, 
+        extensions: ["tsx", "ts", "js", "json"],
+      },
+    },
     {
       resolve: `gatsby-plugin-feed`,
       options: {
@@ -58,7 +66,6 @@ module.exports = {
                     excerpt
                     fields {
                       slug
-                      langKey
                     }
                     html
                     frontmatter {
@@ -94,32 +101,6 @@ module.exports = {
           },
         ],
       },
-    },
-    {
-      resolve: 'gatsby-plugin-i18n',
-      options: {
-        langKeyForNull: 'any',
-        langKeyDefault: 'en',
-        useLangKeyLayout: true,
-        pagesPaths: [`${__dirname}/src/pages`, `${__dirname}/content/blog`],
-        markdownRemark: {
-          postPage: "src/layouts/BlogPostLayout.tsx",
-          query: `
-          {
-              allMarkdownRemark {
-                  edges {
-                  node {
-                      fields {
-                        slug,
-                        langKey
-                      }
-                  }
-                  }
-              }
-          }
-          `
-        }
-      }
     },
     {
       resolve: `gatsby-source-filesystem`,
@@ -235,12 +216,6 @@ module.exports = {
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
-    {
-      resolve: `gatsby-plugin-google-analytics`,
-      options: {
-        trackingId: `UA-155221350-1`,
-      },
-    },
     `gatsby-plugin-feed`,
     {
       resolve: `gatsby-plugin-manifest`,
@@ -267,10 +242,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-google-fonts`,
       options: {
-        fonts: [
-          "Mulish\:300,400,500,600,700,800,900"
-        ],
+        fonts: ["Mulish:300,400,500,600,700,800,900"],
       },
-    }
+    },
   ],
 }

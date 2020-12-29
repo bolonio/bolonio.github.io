@@ -8,7 +8,8 @@ export interface Post {
 
 export interface PostFields {
   slug: string
-  langKey: string
+  locale: string
+  title: string
 }
 
 export interface PostFrontmatter {
@@ -18,6 +19,7 @@ export interface PostFrontmatter {
   image: PostImage
   imageAlt: string
   tags: string[]
+  lang: string
 }
 
 export interface PostImage {
@@ -46,8 +48,7 @@ export interface SiteMetadata {
   twitterUser: string
   image: string
   navigation: Navigation[]
-  languages: string[]
-  defaultLang: string
+  footer: Navigation[]
 }
 
 interface Social {

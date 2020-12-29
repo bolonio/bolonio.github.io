@@ -7,24 +7,11 @@ import { LatestPosts } from "@components/LatestPosts"
 import introImage from "@images/intro.jpg"
 import { Layout } from "@layouts/Layout"
 import { PageLayoutContent } from "@components/content"
+import { FormattedMessage, useIntl } from "gatsby-plugin-intl"
 
 const Home: FunctionComponent<PageRendererProps> = ({ location }) => {
-  const { bio, author } = useSiteMetadata()
-
-  /*
-  const PostsGrid = styled.div`
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-auto-rows: minmax(270px, auto);
-    grid-gap: 1em;
-    @media screen and (max-width: 1000px) {
-      grid-template-columns: repeat(2, 1fr);
-    }
-    @media screen and (max-width: 700px) {
-      grid-template-columns: repeat(1, 1fr);
-    }
-  `
-  */
+  const { author } = useSiteMetadata()
+  const intl = useIntl()
 
   const VisuallyHiddenHeader = styled.h1`
     border: 0;
@@ -55,21 +42,19 @@ const Home: FunctionComponent<PageRendererProps> = ({ location }) => {
   return (
     <Layout location={location}>
       <VisuallyHiddenHeader>{author}</VisuallyHiddenHeader>
-      <img src={introImage} alt="" />
+      <img
+        src={introImage}
+        alt={intl.formatMessage({ id: "PictureOfMeAlt" })}
+      />
       <PageLayoutContent>
-        <Header>Hello</Header>
-        <BioParagraph>{bio}</BioParagraph>
+        <Header>
+          <FormattedMessage id={"Hello"} />
+        </Header>
+        <BioParagraph>
+          <FormattedMessage id={"FullBio"} />
+        </BioParagraph>
         <LatestPosts />
       </PageLayoutContent>
-      {/* 
-      <hr />
-      <Section>
-        <SectionHeader>
-          <Header>Next Talks</Header>
-          <SectionHeaderLink to="/talks">See all talks</SectionHeaderLink>
-        </SectionHeader>
-      </Section>
-      */}
     </Layout>
   )
 }

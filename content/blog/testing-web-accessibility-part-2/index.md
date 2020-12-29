@@ -1,6 +1,7 @@
 ---
+lang: en
 title: Testing Web Accessibility - Part 2 - Testing the DOM
-date: 2020-01-05T00:02
+date: 2020-01-02
 description: Sometimes we, as developers, inherit and old codebase, or we join a project where no one took care of web accessibility tests. In those situations, you would maybe want to test the whole DOM structure of the application.
 image: ./testing-the-dom.jpeg
 imageAlt: a summary with links of the testing tools to test the accessibility of the whole DOM explained in the blog post

@@ -19,16 +19,17 @@ export const talks = [
       {
         title: "How does your website 'sound' like?",
         conference: "DevFest Siberia",
-        date: "Dec 2020",
+        date: "12/01/2020",
         location: "Novosibirsk, Russia [Online]",
         link: "https://gdg-siberia.com/",
         video: "",
-        slides: "https://speakerdeck.com/bolonio/how-does-your-website-sound-like",
+        slides:
+          "https://speakerdeck.com/bolonio/how-does-your-website-sound-like",
       },
       {
         title: "Testing Web Accessibility",
         conference: "Intersection conference",
-        date: "Oct 2020",
+        date: "10/01/2020",
         location: "Milano, Italy [Online]",
         link: "https://www.intersection-conference.eu/",
         video: "https://www.youtube.com/watch?v=Zc5T_Y2ueKY",
@@ -37,7 +38,7 @@ export const talks = [
       {
         title: "Accessibility in Web Development",
         conference: "UpLeveled (Workshop)",
-        date: "Oct 2020",
+        date: "10/01/2020",
         location: "Vienna, Austria",
         link: "https://upleveled.io/",
         video: "",
@@ -47,7 +48,7 @@ export const talks = [
       {
         title: "Testing Web Accessibility",
         conference: "Frontend Love Meetup",
-        date: "Aug 2020",
+        date: "08/01/2020",
         location: "YouTube [Online]",
         link: "http://frontenddeveloperlove.com/",
         video: "https://www.youtube.com/watch?v=XDncZ-UZ8Hw",
@@ -56,7 +57,7 @@ export const talks = [
       {
         title: "Testing Web Accessibility",
         conference: "BarcelonaJS",
-        date: "Jul 2020",
+        date: "07/01/2020",
         location: "Barcelona, Spain [Online]",
         link: "https://www.meetup.com/BarcelonaJS/",
         video: "https://www.youtube.com/watch?v=sc1CfX2-8v0",
@@ -65,7 +66,7 @@ export const talks = [
       {
         title: "Testing Web Accessibility",
         conference: "DevTalks Reimagined",
-        date: "Jun 2020",
+        date: "06/01/2020",
         location: "Bucharest, Romania [Online]",
         link: "https://www.devtalks.ro/",
         video: "",
@@ -74,7 +75,7 @@ export const talks = [
       {
         title: "Testing Web Accessibility",
         conference: "UXDX Community Eastern Europe",
-        date: "Jun 2020",
+        date: "06/01/2020",
         location: "Vienna, Austria [Online]",
         link: "https://uxdx.com/community/easterneurope/2020",
         video: "https://www.youtube.com/watch?v=-dBsgG7L2EQ",
@@ -83,7 +84,7 @@ export const talks = [
       {
         title: "Accessibility in Web Development",
         conference: "UpLeveled (Workshop)",
-        date: "Jun 2020",
+        date: "06/01/2020",
         location: "Vienna, Austria",
         link: "https://upleveled.io/",
         video: "",
@@ -93,7 +94,7 @@ export const talks = [
       {
         title: "Testing Web Accessibility",
         conference: "Reactadelphia",
-        date: "Apr 2020",
+        date: "04/01/2020",
         location: "Philadelphia, USA [Online]",
         link: "https://twitter.com/reactadelphia",
         video: "https://www.youtube.com/watch?v=Ocem7jAb-Ik",
@@ -102,7 +103,7 @@ export const talks = [
       {
         title: "Testing Web Accessibility",
         conference: "StayAtHome Conf",
-        date: "Mar 2020",
+        date: "03/01/2020",
         location: "Home [Online]",
         link: "https://www.stayathomeconf.com/",
         video: "https://www.youtube.com/watch?v=XmSK1t0w1L8",
@@ -111,7 +112,7 @@ export const talks = [
       {
         title: "Testing Web Accessibility",
         conference: "FrontConf",
-        date: "Mar 2020",
+        date: "03/01/2020",
         location: "Munich, Germany [Online]",
         link: "https://frontconf.com/",
         video: "https://www.youtube.com/watch?v=xCGS1Vq777c",
@@ -120,7 +121,7 @@ export const talks = [
       {
         title: "Testing Web Accessibility",
         conference: "A11yClub Berlin",
-        date: "Mar 2020",
+        date: "03/01/2020",
         location: "Berlin, Germany [Online]",
         link: "https://a11y-meetup-berlin.de/",
         video: "",
@@ -129,7 +130,7 @@ export const talks = [
       {
         title: "Accessibility in Web Development",
         conference: "UpLeveled (Workshop)",
-        date: "Mar 2020",
+        date: "03/01/2020",
         location: "Vienna, Austria",
         link: "https://upleveled.io/",
         video: "",
@@ -139,7 +140,7 @@ export const talks = [
       {
         title: "Testing Web Accessibility",
         conference: "ViennaJS",
-        date: "Feb 2020",
+        date: "02/01/2020",
         location: "Vienna, Austria",
         link: "https://viennajs.org/en/meetup/2020-02",
         video: "https://www.youtube.com/watch?v=ZupKHcb9w-k",
@@ -148,7 +149,7 @@ export const talks = [
       {
         title: "Testing Web Accessibility",
         conference: "TestBustersNight Vienna",
-        date: "Jan 2020",
+        date: "01/01/2020",
         location: "Vienna, Austria",
         link: "https://www.meetup.com/Agile-Test-Automation-Meetup-VIENNA",
         video: "",
@@ -157,7 +158,7 @@ export const talks = [
       {
         title: "Diversity Pannel",
         conference: "SQLSaturday (Diversity Pannel)",
-        date: "Jan 2020",
+        date: "01/01/2020",
         location: "Vienna, Austria",
         link: "https://www.sqlsaturday.com/917/EventHome.aspx",
         video: "",
@@ -171,7 +172,7 @@ export const talks = [
       {
         title: "Testing Web Accessibility",
         conference: "Heisenbug Conf",
-        date: "Dec 2019",
+        date: "12/01/2019",
         location: "Moscow, Russia",
         link: "https://heisenbug-moscow.ru/en/",
         video: "https://www.youtube.com/watch?v=GyXkH5ZmSfk",
@@ -180,7 +181,7 @@ export const talks = [
       {
         title: "Testing Web Accessibility",
         conference: "DevFest Siberia",
-        date: "Dec 2019",
+        date: "12/01/2019",
         location: "Novosibirsk, Russia",
         link: "https://gdg-siberia.com/",
         video: "https://www.youtube.com/watch?v=1eDCdL-3uI0",
@@ -189,7 +190,7 @@ export const talks = [
       {
         title: "Testing Web Accessibility",
         conference: "Developer Melange",
-        date: "Dec 2019",
+        date: "12/01/2019",
         location: "Podcast",
         link: "https://developermelange.github.io/",
         video: "http://developermelange.com/025-accessibility-101/",
@@ -198,7 +199,7 @@ export const talks = [
       {
         title: "Testing Web Accessibility",
         conference: "WebClerks",
-        date: "Nov 2019",
+        date: "11/01/2019",
         location: "Vienna, Austria",
         link: "https://webclerks.at/",
         video: "https://youtu.be/ucLEMETfrTA?t=14220",
@@ -207,7 +208,7 @@ export const talks = [
       {
         title: "Testing Web Accessibility",
         conference: "DevFest Vienna",
-        date: "Nov 2019",
+        date: "11/01/2019",
         location: "Vienna, Austria",
         link: "https://devfest.at/",
         video: "",
@@ -216,7 +217,7 @@ export const talks = [
       {
         title: "Testing Web Accessibility",
         conference: "React Vienna",
-        date: "Nov 2019",
+        date: "11/01/2019",
         location: "Vienna, Austria",
         link: "https://twitter.com/reactvienna",
         video: "",
@@ -225,7 +226,7 @@ export const talks = [
       {
         title: "Testing Web Accessibility",
         conference: "JSConf Colombia",
-        date: "Oct 2019",
+        date: "10/01/2019",
         location: "Medellín, Colombia",
         link: "http://jsconf.co/",
         video: "",
@@ -234,7 +235,7 @@ export const talks = [
       {
         title: "Testing Web Accessibility",
         conference: "AXSChat",
-        date: "Oct 2019",
+        date: "10/01/2019",
         location: "YouTube",
         link: "http://axschat.com/",
         video: "https://www.youtube.com/watch?v=JFaS1JGO71w",
@@ -243,7 +244,7 @@ export const talks = [
       {
         title: "Testing Web Accessibility",
         conference: "UpLeveled (Workshop)",
-        date: "Oct 2019",
+        date: "10/01/2019",
         location: "Vienna, Austria",
         link: "https://upleveled.io/",
         video: "",
@@ -253,7 +254,7 @@ export const talks = [
       {
         title: "Testing Web Accessibility",
         conference: "Accessibility talks",
-        date: "Aug 2019",
+        date: "08/01/2019",
         location: "YouTube",
         link: "https://www.youtube.com/c/accessibilitytalks",
         video: "https://www.youtube.com/watch?v=Nq6UhL_QvZk",
@@ -267,7 +268,7 @@ export const talks = [
       {
         title: "How does your website 'sound' like?",
         conference: "UX Vienna",
-        date: "Dec 2018",
+        date: "12/01/2018",
         location: "Vienna, Austria",
         link: "https://uxvienna.at/",
         video: "",
@@ -277,7 +278,7 @@ export const talks = [
       {
         title: "How does your website 'sound' like?",
         conference: "DevFest Vienna",
-        date: "Nov 2018",
+        date: "11/01/2018",
         location: "Vienna, Austria",
         link: "https://devfest.at/",
         video: "https://www.youtube.com/watch?v=yKYA-7tczuk",
@@ -287,7 +288,7 @@ export const talks = [
       {
         title: "Willhaben Markup Language WHML",
         conference: "ViennaJS",
-        date: "May 2018",
+        date: "05/01/2018",
         location: "Vienna, Austria",
         link: "https://viennajs.org/",
         video: "https://www.youtube.com/watch?v=tJXzyHHh4pc",
@@ -302,7 +303,7 @@ export const talks = [
       {
         title: "Dark Patterns - User Interfaces Designed to Trick People",
         conference: "UX Vienna",
-        date: "Nov 2017",
+        date: "11/01/2017",
         location: "Vienna, Austria",
         link: "https://uxvienna.at/",
         video: "",

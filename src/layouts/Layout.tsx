@@ -1,5 +1,5 @@
 import { PageRendererProps } from "gatsby"
-import React, { ReactNode, Fragment, FunctionComponent } from "react"
+import React, { ReactNode, FunctionComponent, Fragment } from "react"
 import { Header } from "@components/Header"
 import { Footer } from "@components/Footer"
 import styled from "styled-components"

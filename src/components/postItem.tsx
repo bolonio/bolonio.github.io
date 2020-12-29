@@ -3,6 +3,9 @@ import styled from "styled-components"
 import { Link } from "gatsby"
 import { getFormattedDate } from "@utils/date"
 import { Post } from "@utils/types"
+import { useIntl } from "gatsby-plugin-intl"
+import Box from "@components/core/Box"
+import { getFlag } from "@utils/flags"
 
 interface PostItemProps {
   mode?: "horizontal" | "vertical"
@@ -30,12 +33,6 @@ const PostTitle = styled.h2`
   font-family: system-ui, -apple-system, BlinkMacSystemFont, Open Sans,
     sans-serif !important;
   font-size: 1.75rem;
-  @media screen and (max-width: 1000px) {
-    font-size: 1.5rem;
-  }
-  @media screen and (max-width: 700px) {
-    font-size: 2rem;
-  }
 `
 
 const PostDate = styled.span`
@@ -49,12 +46,6 @@ const PostDescription = styled.span`
   font-weight: 300;
   font-size: 1.25rem;
   line-height: 1.5;
-  @media screen and (max-width: 1000px) {
-    font-size: 1rem;
-  }
-  @media screen and (max-width: 700px) {
-    font-size: 1.25rem;
-  }
 `
 
 const PostContent = styled.div`
@@ -83,7 +74,8 @@ export const PostItem = (props: PostItemProps) => {
   const frontmatter = props.post!.frontmatter!
   const fields = props.post!.fields!
   const slug = fields.slug!
-  const date = getFormattedDate(frontmatter.date)
+  const intl = useIntl()
+  const date = getFormattedDate(frontmatter.date, intl.locale)
 
   const PostContainer = styled.div`
     position: relative;
@@ -99,7 +91,6 @@ export const PostItem = (props: PostItemProps) => {
   const PostImage = styled.img`
     margin-bottom: 0px;
 
-    ${props.mode === "horizontal" ? "margin-right: 20px;" : ""};
     ${props.mode === "horizontal"
       ? `
     max-width: 370px;
@@ -112,23 +103,42 @@ export const PostItem = (props: PostItemProps) => {
       : ""};
   `
 
+  const FlagIcon = styled.img`
+    margin: 0;
+  `
+
   const title = frontmatter.title || fields.slug
   return (
     <PostContainer>
-      <PostImage
-        alt={props.post.frontmatter.imageAlt}
-        src={props.post.frontmatter.image.childImageSharp.resize.src}
-      />
+      <Box
+        position="relative"
+        display="flex"
+        marginRight={[0, 3, 3]}
+        marginBottom={[2, 0, 0]}
+      >
+        <PostImage
+          alt={props.post.frontmatter.imageAlt}
+          src={props.post.frontmatter.image.childImageSharp.resize.src}
+        />
+        <Box position="absolute" bottom="0" right="10px">
+          <FlagIcon
+            width={"25px"}
+            src={getFlag(props.post.frontmatter.lang)}
+            alt=""
+            aria-hidden="true"
+          />
+        </Box>
+      </Box>
       <PostContent>
         <PostTitle>
-          <PostLink to={slug}>{title}</PostLink>
+          <PostLink to={`/${intl.locale}/${slug}`}>{title}</PostLink>
         </PostTitle>
         <PostDate>{date}</PostDate>
         <PostTagsContainer>
           {frontmatter.tags.map((tag, i) => (
             <PostTagLink
               key={i}
-              to={`/blog/tag/${tag}`}
+              to={`/${intl.locale}/blog/tag/${tag}`}
               aria-label={`See all posts with the tag ${tag}`}
             >
               #{tag}

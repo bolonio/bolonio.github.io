@@ -8,6 +8,7 @@
 import React from "react"
 import { Helmet } from "react-helmet"
 import useSiteMetadata from "@hooks/useSiteMetadata"
+import { useIntl } from "gatsby-plugin-intl"
 
 interface SEOProps {
   title?: string
@@ -18,18 +19,12 @@ interface SEOProps {
 }
 
 export const SEO = (props: SEOProps) => {
-  const {
-    siteUrl,
-    title,
-    description,
-    author,
-    language,
-    twitterUser,
-    image,
-  } = useSiteMetadata()
-  const lang = language || "es"
+  const { siteUrl, title, author, twitterUser, image } = useSiteMetadata()
+  const intl = useIntl()
+  const lang = intl.locale
   const SEOTitle = props.title || title
-  const SEODescription = props.description || description
+  const SEODescription =
+    props.description || intl.formatMessage({ id: "FullBio" })
   const SEOCanonical = props.canonical || siteUrl
   const SEOImage = props.image
     ? `${siteUrl}${props.image}`

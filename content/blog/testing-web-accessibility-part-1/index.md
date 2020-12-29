@@ -1,6 +1,7 @@
 ---
+lang: en
 title: Testing Web Accessibility - Part 1 - Testing the code
-date: 2020-01-05T00:01
+date: 2020-01-01
 description: Our role as frontend and web developers is to create clear interfaces to make people understand and care about data, independently of their disabilities or impairments, so the only way to be sure that the websites we develop are fully accessible is to test our code.
 image: ./testing-the-code.jpeg
 imageAlt: a summary with links of the testing tools to test accessibility during the development process explained in the blog post

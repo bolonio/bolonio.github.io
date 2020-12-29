@@ -1,6 +1,17 @@
 import React, { FunctionComponent } from "react"
 import styled from "styled-components"
 import { TalkType } from "@utils/types"
+import { FormattedMessage, useIntl } from "gatsby-plugin-intl"
+import { getFormattedDateMMMYYYY } from "@utils/date"
+/*
+import Box from "@components/core/Box"
+import Text from "@components/core/Text"
+import { getFlag } from "@utils/flags"
+
+const FlagIcon = styled.img`
+  margin: 0;
+`
+*/
 
 interface TalkProps {
   talk: TalkType
@@ -59,34 +70,61 @@ const TalkGroup = styled.div`
     flex-direction: column;
   }
 `
-export const Talk: FunctionComponent<TalkProps> = ({ talk }) => (
-  <TalkContainer>
-    <TalkConference>
-      <TalkLink href={talk.link} target="_blank">
-        {talk.conference}
-      </TalkLink>
-    </TalkConference>
-    <TalkGroup>
-      <TalkItem>{talk.location}</TalkItem>
-      <TalkItem>{talk.date}</TalkItem>
-      <TalkItem>
-        {talk.slides ? (
-          <TalkLink href={talk.slides} target="_blank">
-            Slides
-          </TalkLink>
-        ) : (
-          <span>Slides</span>
-        )}
-      </TalkItem>
-      <TalkItem>
-        {talk.video ? (
-          <TalkLink href={talk.video} target="_blank">
-            Video
-          </TalkLink>
-        ) : (
-          <span>Video</span>
-        )}
-      </TalkItem>
-    </TalkGroup>
-  </TalkContainer>
-)
+
+export const Talk: FunctionComponent<TalkProps> = ({ talk }) => {
+  const intl = useIntl()
+  return (
+    <TalkContainer>
+      <TalkConference>
+        <TalkLink href={talk.link} target="_blank">
+          {talk.conference}
+        </TalkLink>
+      </TalkConference>
+      <TalkGroup>
+        <TalkItem>{talk.location}</TalkItem>
+        <TalkItem>{getFormattedDateMMMYYYY(talk.date, intl.locale)}</TalkItem>
+        <TalkItem>
+          {talk.slides ? (
+            <TalkLink href={talk.slides} target="_blank">
+              <FormattedMessage id={"Slides"} />
+            </TalkLink>
+          ) : (
+            <span>
+              <FormattedMessage id={"Slides"} />
+            </span>
+          )}
+        </TalkItem>
+        <TalkItem>
+          {talk.video ? (
+            <TalkLink href={talk.video} target="_blank">
+              Video
+            </TalkLink>
+          ) : (
+            <span>Video</span>
+          )}
+        </TalkItem>
+      </TalkGroup>
+    </TalkContainer>
+
+    /*
+    <Box display="flex" flexDirection="column" marginBottom={4}>
+      <Box display="flex" justifyContent="space-between">
+        <Box display="flex" marginRight={2} alignItems="center">
+          <Text fontWeight="bold" fontSize="3">
+            {talk.conference}
+          </Text>
+          <Text>({getFormattedDateMMMYYYY(talk.date, intl.locale)})</Text>
+        </Box>
+      </Box>
+      <Box display="flex">
+        <Box display="flex" marginRight={2}>
+          <Box marginRight={2} display="flex" alignItems="center">
+            <FlagIcon width={"25px"} src={getFlag(talk.location)} alt="" />
+          </Box>
+          {talk.location}
+        </Box>
+      </Box>
+    </Box>
+    */
+  )
+}

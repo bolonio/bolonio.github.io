@@ -1,8 +1,9 @@
-import { PageRendererProps, Link } from "gatsby"
+import { Link } from "gatsby"
 import React, { FunctionComponent, Fragment } from "react"
 import { PostItem } from "@components/postItem"
 import styled from "styled-components"
-import useLatestPosts from "@hooks/useLatestPosts"
+import { FormattedMessage, useIntl } from "gatsby-plugin-intl"
+import useAllBlogPosts from "@hooks/useAllBlogPosts"
 
 const SectionHeader = styled.div`
   display: flex;
@@ -48,18 +49,27 @@ const Post = styled.div`
 `
 
 export const LatestPosts: FunctionComponent = () => {
-  const latestPosts = useLatestPosts()
-
+  const intl = useIntl()
+  const posts = useAllBlogPosts().slice(0, 3)
+  /*
+  const filteredPosts = posts
+    .filter(post => post.node.frontmatter.lang.includes(intl.locale))
+    .slice(0, 3)
+  */
   return (
     <Fragment>
       <SectionHeader>
-        <Header>Latest Posts</Header>
-        <SectionHeaderLink to="/blog">All blog posts</SectionHeaderLink>
+        <Header>
+          <FormattedMessage id="Latest Posts" />
+        </Header>
+        <SectionHeaderLink to={`/${intl.locale}/blog`}>
+          <FormattedMessage id="All blog posts" />
+        </SectionHeaderLink>
       </SectionHeader>
       <PostsGrid>
-        {latestPosts.map((item, i) => (
-          <Post>
-            <PostItem key={i} post={item.node} mode="horizontal" />
+        {posts.map((post, i) => (
+          <Post key={i}>
+            <PostItem post={post.node} mode="horizontal" />
           </Post>
         ))}
       </PostsGrid>

@@ -1,9 +1,10 @@
 ---
+lang: en
 title: Creating a React library based on the collection of accessible PUXL SVG icons
-date: 2020-05-25T00:01
+date: 2020-05-25
 description: I decided to create a React library based on the collection of accessible PUXL icons library, an open source collection of more than 300 SVG icons custom tailored for PUXL framework, each with its own accessible title and description.
 image: puxl.png
-imageAlt: a decorative image with the PUXL logo and the link to the GitHub repository of the React library explained in the blog post
+imageAlt: a decorative image with the PUXL logo and a screenshot with several icons
 tags:
   - react
   - accessibility
@@ -225,3 +226,5 @@ You can find the **react-puxl-icons** package in [npm](https://www.npmjs.com/pac
 
 This is an open source project, so if you have any suggestion on how this project could be improved, please read the [contributing guidelines](https://github.com/bolonio/react-puxl-icons/blob/master/CONTRIBUTING.md).
 I'd love all and any contributions. You can submit issues and enhancement requests through the [issues page on GitHub](https://github.com/bolonio/react-puxl-icons/issues).
+
+Puedes [leer este artículo en español](/es/react-puxl-icons-es)

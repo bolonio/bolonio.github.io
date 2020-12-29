@@ -22,7 +22,7 @@ const useA11yInReactBlogPosts = () => {
             excerpt
             fields {
               slug
-              langKey
+              locale
             }
             html
             frontmatter {

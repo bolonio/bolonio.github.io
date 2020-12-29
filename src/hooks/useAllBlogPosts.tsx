@@ -12,17 +12,14 @@ interface Props {
 const useAllBlogPosts = () => {
   const data = useStaticQuery<Props>(graphql`
     query {
-      allMarkdownRemark(
-        sort: { fields: [frontmatter___date], order: DESC }
-        filter: { fields: { langKey: { regex: "/(en|any)/" } } }
-      ) {
+      allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
         edges {
           node {
             id
             excerpt
             fields {
               slug
-              langKey
+              locale
             }
             html
             frontmatter {
@@ -40,6 +37,7 @@ const useAllBlogPosts = () => {
               }
               tags
               imageAlt
+              lang
             }
           }
         }

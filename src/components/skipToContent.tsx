@@ -1,3 +1,4 @@
+import { FormattedMessage } from "gatsby-plugin-intl"
 import React, { FunctionComponent } from "react"
 import styled from "styled-components"
 
@@ -22,5 +23,7 @@ const SkipContainer = styled.a`
   }
 `
 export const SkipToContent: FunctionComponent = () => (
-  <SkipContainer href="#content">Skip to content</SkipContainer>
+  <SkipContainer href="#content">
+    <FormattedMessage id={"Skip to content"} />
+  </SkipContainer>
 )

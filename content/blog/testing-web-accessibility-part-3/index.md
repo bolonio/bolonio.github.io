@@ -1,6 +1,7 @@
 ---
+lang: en
 title: Testing Web Accessibility - Part 3 - Testing in the browser
-date: 2020-01-05T00:03
+date: 2020-01-03
 description: Automated accessibility tests can free up your quality assurance (QA) team from manual testing every part of your application, but they can’t automatically make your site accessible. Only 20% to 50% of all accessibility issues can be detected with automated tests, so we need to consider those automated accessibility tests as one step of a larger testing process.
 image: ./testing-in-the-browser.jpeg
 imageAlt: a summary with links of the testing tools to manual test the accessibility of a site explained in the blog post
