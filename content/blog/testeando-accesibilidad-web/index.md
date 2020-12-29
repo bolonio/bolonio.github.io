@@ -2,7 +2,7 @@
 lang: es
 title: Testeando Accesibilidad Web
 date: 2020-10-13
-description: a accesibilidad web no se trata solo de navegación por teclado, contraste de color, o lectores de pantalla. La accesibilidad es un indicador perfecto de la calidad de un sitio web. Cuando un sitio web es accesible, generalmente significa que es inclusivo, usable, ofrece una excelente experiencia de usuario para todos, y además es rápido.
+description: La accesibilidad web no se trata solo de navegación por teclado, contraste de color, o lectores de pantalla. La accesibilidad es un indicador perfecto de la calidad de un sitio web. Cuando un sitio web es accesible, generalmente significa que es inclusivo, usable, ofrece una excelente experiencia de usuario para todos, y además es rápido.
 image: testeando-intro.png
 imageAlt: Imagen decorativa con dos capturas de pantalla y el titulo del articulo, "Testeando Accesibilidad Web"
 tags:
