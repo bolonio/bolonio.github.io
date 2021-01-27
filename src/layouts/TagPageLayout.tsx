@@ -62,6 +62,7 @@ export const pageQuery = graphql`
           id
           excerpt
           fields {
+            slug
             locale
           }
           html
@@ -80,6 +81,7 @@ export const pageQuery = graphql`
             }
             tags
             imageAlt
+            lang
           }
         }
       }
