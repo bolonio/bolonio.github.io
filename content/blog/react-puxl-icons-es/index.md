@@ -4,7 +4,7 @@ title: Creando una librería de React basada en la colección de iconos accesibl
 date: 2020-05-25
 description: He creado una librería de React basada en la colección de iconos accesibles de PUXL, una colección de código abierto de más de 300 iconos SVG personalizados por PUXL framework, en la que cada icono tiene un título y una descripción accesible.
 image: puxl.png
-imageAlt: una imagen decorartiva con el logo de PUXL y una captura de pantalla con varios iconos
+imageAlt: una imagen decorativa con el logo de PUXL y una captura de pantalla con varios iconos
 tags:
   - react
   - accesibilidad

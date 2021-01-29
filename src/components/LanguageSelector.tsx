@@ -24,6 +24,14 @@ const FlagButton = styled.button`
   line-height: 0px;
   margin-right: 25px;
   cursor: pointer;
+
+  :hover {
+    box-shadow: 0 2px 0 0 #23333d;
+  }
+  :focus {
+    outline: 3px solid #23333d;
+    outline-offset: 0.5rem;
+  }
 `
 
 const FlagIcon = styled.img`

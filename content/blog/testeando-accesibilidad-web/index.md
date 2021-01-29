@@ -3,7 +3,7 @@ lang: es
 title: Testeando Accesibilidad Web
 date: 2020-10-13
 description: La accesibilidad web no se trata solo de navegación por teclado, contraste de color, o lectores de pantalla. La accesibilidad es un indicador perfecto de la calidad de un sitio web. Cuando un sitio web es accesible, generalmente significa que es inclusivo, usable, ofrece una excelente experiencia de usuario para todos, y además es rápido.
-image: testeando-intro.png
+image: intro.png
 imageAlt: Imagen decorativa con dos capturas de pantalla y el titulo del articulo, "Testeando Accesibilidad Web"
 tags:
   - accesibilidad
@@ -166,9 +166,9 @@ Las extensiones de navegador que uso a diario son:
 
 Además de usar extensiones de navegador, te recomiendo usar el lector de pantalla que viene pre-instalado en tu sistema operativo (Voiceover en Mac, Narrator en Windows, y Orca en Linux).
 
-## La accesibilidad web no es una “funcionalidad”
+## La accesibilidad web no es una "funcionalidad"
 
-![Una cita en inglés que dice "accessibility is not a feature"](./AccessibilityIsNotAFeature.jpg)
+![Una cita en inglés que dice "La accesibilidad web no es una funcionalidad"](./frase.png)
 
 Tenemos que entender que la responsabilidad de crear sitios web accesibles no pertenece solamente a los desarrolladores o testers, sino a todo el equipo, incluidos jefes de proyecto o diseñadores de interfaz y experiencia del usuario (UX/UI)
 
