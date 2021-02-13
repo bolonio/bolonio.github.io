@@ -18,7 +18,7 @@ Puedes [leer este artículo en español](/es/accesibilidad-con-storybook)
 
 # Storybook
 
-**[Storybook](https://storybook.js.org/)** is an open source library that allows you to test and document your components in an isolated environment, without having to take into account the possible dependencies that you would have if you developed those components directly in your application.
+**[Storybook](https://storybook.js.org/)** is an open source library that allows you to develop and document your components in an isolated environment, without having to take into account the possible dependencies that you would have if you developed those components directly in your application.
 
 You can see the code in the [project repository](https://github.com/bolonio/a11y-storybook) on my Github profile.
 
@@ -63,13 +63,13 @@ Let's see how we can test the accessibility of the components with Storybook.
 The first thing I have to do is add the [addon-a11y](https://github.com/storybookjs/storybook/tree/next/addons/a11y) to my project.
 
 ```bash
-$ npm install @storybook/addon-a11y --dev
+$ npm install @storybook/addon-a11y --save-dev
 ```
 
 After that I add it to the _addons_ list in the file `./.storybook/main.js`
 
 ```js:title=./.storybook/main.js
-module.exports = s{
+module.exports = {
   stories: ["../src/**/*.stories.mdx", "../src/**/*.stories.@(js|jsx|ts|tsx)"],
   addons: [
     "@storybook/addon-links",
