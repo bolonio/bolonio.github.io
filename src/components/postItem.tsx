@@ -4,8 +4,9 @@ import { Link } from "gatsby"
 import { getFormattedDate } from "@utils/date"
 import { Post } from "@utils/types"
 import { useIntl } from "gatsby-plugin-intl"
+import Text from "@components/core/Text"
 import Box from "@components/core/Box"
-import { getFlag } from "@utils/flags"
+// import { getFlag } from "@utils/flags"
 
 interface PostItemProps {
   mode?: "horizontal" | "vertical"
@@ -33,30 +34,6 @@ const PostTitle = styled.h2`
   font-family: system-ui, -apple-system, BlinkMacSystemFont, Open Sans,
     sans-serif !important;
   font-size: 1.75rem;
-`
-
-const PostDate = styled.span`
-  font-weight: 300;
-  font-size: 1rem;
-  line-height: 1.5;
-  margin-bottom: 5px;
-`
-
-const PostDescription = styled.span`
-  font-weight: 300;
-  font-size: 1.25rem;
-  line-height: 1.5;
-`
-
-const PostContent = styled.div`
-  display: flex;
-  flex-direction: column;
-`
-
-const PostTagsContainer = styled.div`
-  display: flex;
-  margin-bottom: 10px;
-  flex-wrap: wrap;
 `
 
 const PostTagLink = styled(PostLink)`
@@ -120,6 +97,7 @@ export const PostItem = (props: PostItemProps) => {
           alt={props.post.frontmatter.imageAlt}
           src={props.post.frontmatter.image.childImageSharp.resize.src}
         />
+        {/*
         <Box position="absolute" bottom="0" right="10px">
           <FlagIcon
             width={"25px"}
@@ -128,13 +106,19 @@ export const PostItem = (props: PostItemProps) => {
             aria-hidden="true"
           />
         </Box>
+        */}
       </Box>
-      <PostContent>
+
+      <Box display="flex" flexDirection="column">
         <PostTitle>
           <PostLink to={`/${intl.locale}/${slug}`}>{title}</PostLink>
         </PostTitle>
-        <PostDate>{date}</PostDate>
-        <PostTagsContainer>
+        <Box marginBottom="1">
+          <Text fontWeight="300" fontSize="1rem" lineHeight="1.5">
+            {date}
+          </Text>
+        </Box>
+        <Box display="flex" marginBottom="1" flexWrap="wrap">
           {frontmatter.tags.map((tag, i) => (
             <PostTagLink
               key={i}
@@ -144,9 +128,11 @@ export const PostItem = (props: PostItemProps) => {
               #{tag}
             </PostTagLink>
           ))}
-        </PostTagsContainer>
-        <PostDescription>{props.post.excerpt}</PostDescription>
-      </PostContent>
+        </Box>
+        <Text fontWeight="300" fontSize="1.25rem" lineHeight="1.5">
+          {props.post.excerpt}
+        </Text>
+      </Box>
     </PostContainer>
   )
 }

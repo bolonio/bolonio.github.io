@@ -18,11 +18,9 @@ const PostsGrid = styled.div`
 const Blog: FunctionComponent<PageRendererProps> = ({ location }) => {
   const intl = useIntl()
   const posts = useAllBlogPosts()
-  /*
   const filteredPosts = posts.filter(post =>
     post.node.frontmatter.lang.includes(intl.locale)
   )
-  */
 
   return (
     <Layout title="Blog" location={location}>
@@ -33,7 +31,7 @@ const Blog: FunctionComponent<PageRendererProps> = ({ location }) => {
       <PageLayoutContent>
         <PageHeading>Blog</PageHeading>
         <PostsGrid>
-          {posts.map((post, i) => (
+          {filteredPosts.map((post, i) => (
             <PostItem key={i} post={post.node} mode="horizontal" />
           ))}
         </PostsGrid>

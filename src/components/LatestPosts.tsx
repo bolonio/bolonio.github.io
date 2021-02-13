@@ -50,12 +50,11 @@ const Post = styled.div`
 
 export const LatestPosts: FunctionComponent = () => {
   const intl = useIntl()
-  const posts = useAllBlogPosts().slice(0, 3)
-  /*
+  const posts = useAllBlogPosts()
   const filteredPosts = posts
     .filter(post => post.node.frontmatter.lang.includes(intl.locale))
     .slice(0, 3)
-  */
+
   return (
     <Fragment>
       <SectionHeader>
@@ -67,7 +66,7 @@ export const LatestPosts: FunctionComponent = () => {
         </SectionHeaderLink>
       </SectionHeader>
       <PostsGrid>
-        {posts.map((post, i) => (
+        {filteredPosts.map((post, i) => (
           <Post key={i}>
             <PostItem post={post.node} mode="horizontal" />
           </Post>
