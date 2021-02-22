@@ -32,13 +32,13 @@ Let me show you some tools that can help you with that:
 
 ### A command line interface for axe to run quick accessibility tests
 
-Another excellent tool from the axe tool family is [axe-cli](https://github.com/dequelabs/axe-cli).
-axe-cli provides a command line interface for axe to run quick accessibility tests.
+Another excellent tool from the axe tool family is [@axe-core/cli](https://github.com/dequelabs/axe-core-npm/tree/develop/packages/cli).
+@axe-core/cli provides a command line interface for axe to run quick accessibility tests.
 
 To start using it, you need to install it globally.
 
 ```bash
-$ npm install -g axe-cli
+$ npm install -g @axe-core/cli
 ```
 
 You can now run the axe command in your terminal, followed by the URL of the page you wish to test. Here it is a quick example:
@@ -50,7 +50,7 @@ $ axe http://www.adrianbolonio.com
 Similar to what I told you in the first part of the series with react-axe, each violation includes the description of the issue, the HTML element in where the violation was found, and a link to the [dequeuniversity](https://dequeuniversity.com/), a full documentation source with detailed information about the issue, and the steps to solve it.
 Several ocurrences of the same violation are grouped.
 
-![A slide of a presentation on how to use the tool axe-cli](../../assets/blog/axe-cli.jpeg)
+![A slide of a presentation on how to use the tool @axe-core/cli](../../assets/blog/axe-cli.jpeg)
 
 You can use the `--rules` flag to set which rules you wish to run, or you can use `--tags` to tell axe to run all rules that have that specific tag. For example:
 

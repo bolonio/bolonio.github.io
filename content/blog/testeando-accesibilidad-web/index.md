@@ -126,12 +126,12 @@ Además, podrás utilizar los resultados de estos tests automatizados para crear
 
 Aquí tienes tres herramientas para generar tests automatizados de accesibilidad:
 
-- [axe-cli](https://github.com/dequelabs/axe-cli)
+- [@axe-core/cli](https://github.com/dequelabs/axe-core-npm/tree/develop/packages/cli)
 - [pa11y](http://pa11y.org/)
 - [Lighthouse](https://developers.google.com/web/tools/lighthouse/)
 
 ```bash
-$ npm install axe-cli -g
+$ npm install @axe-core/cli -g
 $ npm install pa11y -g
 $ npm install lighthouse -g
 ```

@@ -124,4 +124,4 @@ As you have seen, Storybook is not only a tool to document your components in an
 The project and the components used in this article have been developed in React, but Storybook has support for many more frameworks like Vue, Angular, Web Components, React Native ... etc.
 You can reado more at the [official Storybook website](https://storybook.js.org/). You can see the code in the [project repository](https://github.com/bolonio/a11y-storybook) on my Github profile.
 
-If you want to continue learning about web accessibility, you can follow me on [my twitter account](https://twitter.com/bolonio), and do not hesitate to [contact me](/es/about) or tweet me if you have any questions or doubt.
+If you want to continue learning about web accessibility, you can follow me on [my twitter account](https://twitter.com/bolonio), and do not hesitate to [contact me](/en/about) or tweet me if you have any questions or doubt.
