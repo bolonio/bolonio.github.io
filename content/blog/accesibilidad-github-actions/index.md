@@ -2,7 +2,7 @@
 lang: es
 title: Automatizando los test de accesibilidad de tu código fuente con GitHub Actions
 date: 2021-02-22
-description: Automatizar tus test de accesibilidad directamente en tu repositorio de GitHub es ahora realmente fácil con GitHub Actions.
+description: Automatizar tus test de accesibilidad con librerías como axe, pa11y, lighthouse, o test unitarios directamente en tu repositorio de GitHub es realmente fácil con GitHub Actions.
 image: intro.png
 imageAlt: una imagen decorativa con la frase "Automatizando los test de accesibilidad de tu código fuente con GitHub Actions"
 tags:
@@ -12,7 +12,8 @@ tags:
   - GitHub
 ---
 
-Automatizar tus test de accesibilidad directamente en tu repositorio de GitHub es ahora realmente fácil con GitHub Actions. Pero primero vamos a definir qué son y sus flujos de trabajo.
+Automatizar tus test de accesibilidad con librerías como axe, pa11y, lighthouse, o test unitarios directamente en tu repositorio de GitHub es realmente fácil con GitHub Actions.
+Pero primero vamos a definir qué son las GitHub Actions y sus flujos de trabajo.
 
 You can [read this article in English](/en/accessibility-github-actions)
 
@@ -23,8 +24,8 @@ Las GitHub Actions te permiten ejecutar una serie de sentencias y comandos despu
 
 ## Flujos de trabajo
 
-Github define un **[flujo de trabajo](https://docs.github.com/es/actions/reference/workflow-syntax-for-github-actions)** como un proceso automatizado configurable formado por uno o más trabajos.
-La configuración de flujo de trabajo para definir eventos, tareas, y pasos a ejecutar en las GitHub Actions se definen usan archivos YAML que deberán estar alojados en la carpeta `.github/workflows`.
+Github define un **[flujo de trabajo](https://docs.github.com/es/actions/reference/workflow-syntax-for-github-actions)** como un proceso automatizado configurable formado por uno o más tareas.
+La configuración de flujo de trabajo para definir eventos, tareas, y pasos a ejecutar en las GitHub Actions se definen mediante archivos YAML que deberán estar alojados en la carpeta `.github/workflows`.
 
 # Usando GitHub Actions para automatizar test de accesibilidad
 
@@ -32,7 +33,7 @@ Ya que hemos visto qué son las GitHub Actions, vamos a ver cómo podemos usarla
 
 He creado una aplicación de ejemplo en React con un pequeño componente de imagen y algunos errores de accesibilidad. Puedes ver el código en el **[repositorio del proyecto](https://github.com/bolonio/a11y-github-actions)** en mi perfil de Github.
 
-Lo primero es definir cuando queremos que la GitHub Action se ejecute. Podemos configurarla para que se ejecute inmediatamente después de cada _push_ a cualquiera de nuestras ramas (incluyendo la principal _master_).
+Lo primero es definir cuándo queremos que la GitHub Action se ejecute. Podemos configurarla para que se ejecute inmediatamente después de cada _push_ a cualquiera de nuestras ramas (incluyendo la principal _master_).
 Puedes cambiar _master_ por _main_ si tu rama principal tiene ese nombre.
 
 ```yaml:title=.github/workflows/example.yaml
@@ -107,7 +108,7 @@ jobs:
 Ahora solo me queda probarla. Una vez creada mi _Pull Request_, mi GitHub Action empezará a ejecutarse y el resultado aparecerá directamente al final de mi _Pull Request_.
 Puedes verlo en esta [_Pull Request_](https://github.com/bolonio/a11y-github-actions/pull/1).
 
-![Una captura de pantalla de las GitHub Actions que se ejecutan en una Pull Request en GitHub](./GitHubAction1.png)
+![Una captura de pantalla de las GitHub Actions que se ejecutan en una Pull Request en GitHub. Se ve cómo la GitHub Action de unit tests ha fallado debido a las vulnerabilidades de accessibilidad.](./GitHubAction1.png)
 
 Podremos acceder a los detalles de la GitHub Action y ver los resultados de mis test unitarios, para poder resolver las vulnerabilidades de accesibilidad que tengo en mi código.
 
@@ -118,8 +119,8 @@ Podremos acceder a los detalles de la GitHub Action y ver los resultados de mis 
 **[axe](https://www.deque.com/axe/)** es una familia de herramientas creadas por [Deque](https://www.deque.com/axe/), la cual incluye una interfaz de línea de comandos (CLI), [@axe-core/cli](https://github.com/dequelabs/axe-core-npm/tree/develop/packages/cli), que ejecuta el motor de busqueda de vulnerabilidades de accesibilidad axe, y que podemos usar desde una terminal.
 En mi siguiente GitHub Action quiero ejecutar esa CLI en cada _Pull Request_.
 
-> Hay que tener en cuenta que @axe-core/cli es una herramienta informativa, y que solo ejecuta test de accesibilidad y muestra los resultados en pantalla.
-> Para conseguir que la ejecución de dichos test provoquen un error en la ejecución debemos añadir la opción `--exit` al comando axe.
+Hay que tener en cuenta que @axe-core/cli es una herramienta informativa, y que solo ejecuta test de accesibilidad y muestra los resultados en pantalla.
+Para conseguir que la ejecución de dichos test provoquen un error en la ejecución debemos añadir la opción `--exit` al comando axe.
 
 Así quedaría la versión final de mi flujo de trabajo:
 
@@ -148,10 +149,10 @@ jobs:
           axe http://localhost:3000 --exit
 ```
 
-Como hemos visto en la GitHub Action anterior, al ir la _Pull Request_ que tenía creada y he actualizado con un _commit_ nuevo, mis dos GitHub Actions se ejecutarán de nuevo.
+Como hemos visto en la GitHub Action anterior en la _Pull Request_ previamente creada, al actualizarla con un _commit_ nuevo, las dos GitHub Actions se ejecutarán de nuevo.
 Puedes verlo en esta [_Pull Request_](https://github.com/bolonio/a11y-github-actions/pull/1).
 
-![Una captura de pantalla de las GitHub Actions que se ejecutan en una Pull Request en GitHub](./GitHubAction2.png)
+![Una captura de pantalla de las GitHub Actions que se ejecutan en una Pull Request en GitHub. Se ve cómo la GitHub Action de axe ha fallado debido a las vulnerabilidades de accessibilidad.](./GitHubAction2.png)
 
 Y siempre podemos inspeccionar los detalles de cada GitHub Action para conocer las vulnerabilidades de accesibilidad que han provocado el error en la ejecución.
 
@@ -161,13 +162,13 @@ Y siempre podemos inspeccionar los detalles de cada GitHub Action para conocer l
 
 GitHub ofrece también una librería de aplicaciones, las cuales podemos instalar directamente en nuestro repositorio de código, y que permiten ejecutar diversas tareas y eventos similares a las GitHub Actions.
 Una de ellas es **[axe-linter](https://axe-linter.deque.com/)** y la puedes encontrar directamente en [marketplace de GitHub](https://github.com/marketplace/axe-linter).
-Simplemente tienes que instalarla en tu repositorio gratuitamente, y estará lista para ser usada. Esta aplicación, al igual que mi GitHub Actions, se ejecutará en cada _Pull Request_ y buscará vulnerabilidades de accesibilidad.
+Simplemente tienes que instalarla en tu repositorio gratuitamente, y estará lista para ser usada. Esta aplicación, al igual que las GitHub Actions, se ejecutará en cada _Pull Request_ y buscará vulnerabilidades de accesibilidad.
 
 La diferencia que he visto en comparación con mi propia GitHub Action es el tipo de vulnerabilidades que encuentra, ya que axe-linter solo puede encontrar esas vulnerabilidades en código HTML escrito por ti, y no en el HTML generado por mi aplicación de React como lo hace @axe-core/cli. Igualmente, creo que es una aplicación super útil para determinar si tu código es accesible, así que la mantendré en mi repositorio de ejemplo para que puedas ver cómo funciona.
 Al igual que con las GitHub Actions, y una vez que actualice mi _Pull Request_ (en este caso he añadido un error de HTML explicito en mi código), se ejecutará junto con las otras GitHub Actions.
 Puedes verlo en esta [_Pull Request_](https://github.com/bolonio/a11y-github-actions/pull/1).
 
-![Una captura de pantalla de la aplicación axe-linter en GitHub con una vunerabilidad de accesibilidad"](./GitHubAction3.png)
+![Una captura de pantalla de la aplicación axe-linter en GitHub con una vunerabilidad de accesibilidad". Se ve cómo la GitHub Action de axe-linter ha fallado debido a las vulnerabilidades de accessibilidad.](./GitHubAction3.png)
 
 Como siempre, podemos ver los resultados de los test, esta vez agrupados por vulnerabilidad.
 
@@ -208,7 +209,7 @@ jobs:
 Como ya hemos visto antes, en cada actualización de mi _Pull Request_, se ejecutarán todas mis GitHub Actions, incluyendo también mi aplicación de axe-linter.
 Puedes verlo en esta [_Pull Request_](https://github.com/bolonio/a11y-github-actions/pull/1).
 
-![Una captura de pantalla de las GitHub Actions que se ejecutan en una Pull Request en GitHub](./GitHubAction4.png)
+![Una captura de pantalla de las GitHub Actions que se ejecutan en una Pull Request en GitHub. Se ve cómo la GitHub Action de pa11y ha fallado debido a las vulnerabilidades de accessibilidad.](./GitHubAction4.png)
 
 Y al igual que en las anteriores, podrás acceder a los detalles del test directamente desde la _Pull Request_.
 
@@ -219,7 +220,7 @@ Y al igual que en las anteriores, podrás acceder a los detalles del test direct
 Después de crear todas mis GitHub Actions, y en cada creación o actualización de cualquier _Pull Request_, mi código será testeado en busca de vulnerabilidades de accesibilidad, pero todos esos test de momento son informativos, y aún tengo la opción final de hacer _merge_ de mi _Pull Request_, cosa que no queremos que suceda.
 
 Para desactivar el botón para hacer _merge_ de cualquier _Pull Request_ que tenga vulnerabilidades de accesibilidad tendrás que crear una nueva regla de protección de ramas en tu repositorio.
-Pulsa en la pestaña **Settings** de tu repositorio y después pulsa en **Branches** en el menú izquierdo.
+Accede al menú **Settings** en la pestaña superior de tu repositorio y después en las opciones de **Branches** en el menú izquierdo.
 Deberás poner un asterisco `*` en el campo **_Branch name pattern_** y activar la opción **_Require status checks to pass before merging_**. Solo te queda guardar los cambios pulsando el botón _Save Changes_.
 
 ![Una captura de pantalla de la configuración de reglas de protección de ramas en GitHub"](./BlockMerge.png)
@@ -227,7 +228,7 @@ Deberás poner un asterisco `*` en el campo **_Branch name pattern_** y activar 
 Si vuelves a tu _Pull Request_, podrás ver que el botón _Merge pull request_ está desactivado y no se puede hacer _merge_ hasta que no se resuelvan las vulnerabilidades de accesibilidad y todas las GitHub Actions tengan resultados satisfactorios.
 Así tu aplicación estará protegida de aceptar cualquier código no accesible.
 
-> Nota adicional: Si eres **propietario** del repositorio podrás comprobar que siempre podrás hacer _merge_ de las _Pull Requests_. La protección será efectiva para los contribuidores.
+Nota adicional: Si eres **propietario** del repositorio podrás comprobar que siempre podrás hacer _merge_ de las _Pull Requests_. La protección será efectiva para los contribuidores.
 
 # Usando GitHub Actions para automatizar informes con Lighthouse
 
@@ -283,7 +284,7 @@ module.exports = {
 Una vez actualizada mi _Pull Request_, se ejecutará junto a las otras GitHub Actions.
 Puedes verlo en esta [_Pull Request_](https://github.com/bolonio/a11y-github-actions/pull/1).
 
-![Una captura de pantalla de las GitHub Actions que se ejecutan en una Pull Request en GitHub](./GitHubAction5.png)
+![Una captura de pantalla de las GitHub Actions que se ejecutan en una Pull Request en GitHub. Se ve cómo la GitHub Action de lighthouse no ha fallado por ser una herramienta informativa.](./GitHubAction5.png)
 
 Verás que Lighthouse tiene un _tick_ verde, y no una cruz roja, ya que es una herramienta informativa y no fallará si tu código tiene errores.
 Si inspeccionas los detalles de ejecución de la GitHub Action, y al haber configurado el alojamiento de los informes de manera pública, aparece un link al informe generado.

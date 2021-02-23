@@ -2,7 +2,7 @@
 lang: en
 title: Automating the accessibility tests of your source code with GitHub Actions
 date: 2021-02-22
-description: Automating your accessibility tests directly in your GitHub repository is now really easy with GitHub Actions.
+description: Automating your accessibility tests with libraries like axe, pa11y, lighthouse, or unit tests directly in your GitHub repository is really easy with GitHub Actions.
 image: intro.png
 imageAlt: a decorative image with the quote "Automating the accessibility tests of your source code with GitHub Actions"
 tags:
@@ -12,14 +12,14 @@ tags:
   - GitHub
 ---
 
-Automating your accessibility tests directly in your GitHub repository is now really easy with GitHub Actions. But first let's define what they are and their workflows.
+Automating your accessibility tests with libraries like axe, pa11y, lighthouse, or unit tests directly in your GitHub repository is really easy with GitHub Actions. But first, let's define what GitHub Actions are and their workflows.
 
 Puedes [leer este artículo en español](/es/accesibilidad-github-actions)
 
 # GitHub Actions
 
 **[GitHub Actions](https://docs.github.com/en/actions)** allow you to automate, customize, and execute your software development workflows right in your repository with GitHub Actions.
-GitHub Actions allow you to execute a series of statements and commands after a specific event has occurred, simply put, it's your own _pipeline CI / CD_ directly in your repository.
+With GitHub Actions you could execute a series of statements and commands after a specific event has occurred, simply put, it's your own _pipeline CI / CD_ directly in your repository.
 
 ## Workflows
 
@@ -40,7 +40,7 @@ on: [push]
 jobs: ...
 ```
 
-or we can configure it to run on any _Pull Request_ to our main _master_ branch.
+Or we can configure it to run on any _Pull Request_ to our main _master_ branch.
 
 ```yaml:title=.github/workflows/example.yaml
 name: example
@@ -106,7 +106,7 @@ jobs:
 Now I just have to try it. After my _Pull Request_ is created, my GitHub Action will start executing and the result will appear directly at the end of my _Pull Request_.
 You can see it in this [_Pull Request_](https://github.com/bolonio/a11y-github-actions/pull/1).
 
-![A screenshot of the GitHub Actions that are executed in a Pull Request on GitHub](./GitHubAction1.png)
+![A screenshot of the GitHub Actions that are executed in a Pull Request on GitHub. It's shown how the GitHub Action for unit tests has failed due to accessibility vulnerabilities.](./GitHubAction1.png)
 
 We will be able to access the details of the GitHub Action and see the results of the unit tests, to be able to solve the accessibility vulnerabilities in the code.
 
@@ -117,8 +117,8 @@ We will be able to access the details of the GitHub Action and see the results o
 **[axe](https://www.deque.com/axe/)** is a family of tools created by [Deque](https://www.deque.com/axe/), which includes a command line interface (CLI), [@axe-core/cli](https://github.com/dequelabs/axe-core-npm/tree/develop/packages/cli), which runs the axe search engine for accessibility vulnerabilities, and that we can use from a terminal.
 In my next GitHub Action I want to run that CLI on every _Pull Request_.
 
-> Keep in mind that @axe-core/cli is an informative tool, and that it only executes accessibility tests and displays the results on the screen.
-> To make the execution of these tests cause an error in the execution we must add the option `--exit` to the axe command.
+Keep in mind that @axe-core/cli is an informative tool, and that it only executes accessibility tests and displays the results on the screen.
+To make the execution of these tests cause an error in the execution we must add the option `--exit` to the axe command.
 
 This is what the final version of my workflow would look like:
 
@@ -150,7 +150,7 @@ jobs:
 As we have seen in the previous GitHub Action, when I go to the _Pull Request_ that I had created and I have updated with a new _commit_, my two GitHub Actions will be executed again.
 You can see it in this [_Pull Request_](https://github.com/bolonio/a11y-github-actions/pull/1).
 
-![A screenshot of the GitHub Actions that are executed in a Pull Request on GitHub](./GitHubAction2.png)
+![A screenshot of the GitHub Actions that are executed in a Pull Request on GitHub. It's shown how the GitHub Action for axe has failed due to accessibility vulnerabilities.](./GitHubAction2.png)
 
 And we can always inspect the details of each GitHub Action to find out the accessibility vulnerabilities that caused the execution to fail.
 
@@ -166,9 +166,9 @@ The difference that I have seen compared to my own GitHub Action is the type of 
 As with the GitHub Actions, and once I update my _Pull Request_ (in this case I have added an explicit HTML error in my code), it will run alongside the other GitHub Actions.
 You can see it in this [_Pull Request_](https://github.com/bolonio/a11y-github-actions/pull/1).
 
-![A screenshot of the axe-linter application on GitHub with an accessibility vulnerability](./GitHubAction3.png)
+![A screenshot of the axe-linter application on GitHub with an accessibility vulnerability. It's shown how the GitHub Action for axe-linter has failed due to accessibility vulnerabilities.](./GitHubAction3.png)
 
-Como siempre, podemos ver los resultados de los test, esta vez agrupados por vulnerabilidad.
+As always, we can see the results of the tests, this time grouped by vulnerability.
 
 ![A screenshot of the details of the axe-linter application running in a Pull Request on GitHub](./GitHubAction3.1.png)
 
@@ -207,7 +207,7 @@ jobs:
 As we've seen before, on every update to my _Pull Request_, all my GitHub Actions will be executed, including my axe-linter app as well.
 You can see it in this [_Pull Request_](https://github.com/bolonio/a11y-github-actions/pull/1).
 
-![A screenshot of the GitHub Actions that are executed in a Pull Request on GitHub](./GitHubAction4.png)
+![A screenshot of the GitHub Actions that are executed in a Pull Request on GitHub. It's shown how the GitHub Action for pa11y has failed due to accessibility vulnerabilities.](./GitHubAction4.png)
 
 And as in the previous ones, you can access the details of the test directly from the _Pull Request_.
 
@@ -218,7 +218,7 @@ And as in the previous ones, you can access the details of the test directly fro
 After creating all my GitHub Actions, and on each creation or update of any _Pull Request_, my code will be tested for accessibility vulnerabilities, but all those tests are informative at the moment, and I still have the final option to _merge_ my _Pull Request_, which we don't want to happen.
 
 To disable the button to _merge_ any _Pull Request_ that has accessibility vulnerabilities you will have to create a new branch protection rule in your repository.
-Click on the **Settings** tab of your repository and then click on **Branches** in the left menu.
+Access the **Settings** menu on the upper tab of your repository and then access **Branches** in the left menu.
 You should put an asterisk `*` in the field **_Branch name pattern_** and activate the checkbox **_Require status checks to pass before merging_**.
 You only have to save the changes by pressing the _Save Changes_ button.
 
@@ -226,7 +226,7 @@ You only have to save the changes by pressing the _Save Changes_ button.
 
 If you go back to your _Pull Request_, you will see that the _Merge pull request_ button is disabled and _merge_ cannot be done until the accessibility vulnerabilities are resolved and all GitHub Actions have satisfactory results. This way your application will be protected from accepting any inaccessible code.
 
-> Additional note: If you are **the owner** of the repository, you can check that you can always _merge_ the _Pull Requests_. The protection will be effective for contributors.
+Additional note: If you are **the owner** of the repository, you can check that you can always _merge_ the _Pull Requests_. The protection will be effective for contributors.
 
 # Using GitHub Actions to automate reports with Lighthouse
 
@@ -281,7 +281,7 @@ module.exports = {
 Once my _Pull Request_ is updated, it will run alongside the other GitHub Actions.
 You can see it in this [_Pull Request_](https://github.com/bolonio/a11y-github-actions/pull/1).
 
-![A screenshot of the GitHub Actions that are executed in a Pull Request on GitHub](./GitHubAction5.png)
+![A screenshot of the GitHub Actions that are executed in a Pull Request on GitHub. It's shown how the GitHub Action for lighthouse has not failed because it is an informational tool.](./GitHubAction5.png)
 
 You will see that Lighthouse has a green _tick_, and not a red cross, as it is an informational tool and will not crash if your code has errors.
 If you inspect the execution details of the GitHub Action, and having configured the hosting of the reports publicly, a link to the generated report appears.
